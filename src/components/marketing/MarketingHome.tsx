@@ -56,24 +56,27 @@ const PROFILE = [
 ];
 
 const UNI_CRITERIA = [
-  { title: "Programme", desc: "Que vais-je réellement étudier ?" },
-  { title: "Adéquation", desc: "Mon profil correspond-il aux prérequis ?" },
-  { title: "Sélectivité", desc: "Quel niveau de candidature est réaliste ?" },
-  { title: "Budget", desc: "Frais de scolarité et coût de la ville." },
-  { title: "Localisation", desc: "Quel environnement étudiant me correspond ?" },
-  { title: "Débouchés", desc: "Que permet réellement cette formation ?" },
+  { n: "01", title: "Programme", desc: "Que vais-je réellement étudier ?" },
+  { n: "02", title: "Adéquation", desc: "Mon profil correspond-il aux prérequis ?" },
+  { n: "03", title: "Sélectivité", desc: "Quel niveau de candidature est réaliste ?" },
+  { n: "04", title: "Budget", desc: "Frais de scolarité et coût de la ville." },
+  { n: "05", title: "Localisation", desc: "Quel environnement étudiant me correspond ?" },
+  { n: "06", title: "Débouchés", desc: "Que permet réellement cette formation ?" },
 ];
 
 const STRATEGY = [
   {
+    n: "01",
     title: "Ambitieuse",
     desc: "Des formations plus sélectives qui correspondent à votre projet et méritent d'être tentées.",
   },
   {
+    n: "02",
     title: "Réaliste",
     desc: "Des candidatures cohérentes avec votre dossier académique et votre profil.",
   },
   {
+    n: "03",
     title: "Prudente",
     desc: "Des options supplémentaires pour réduire le risque d'une stratégie trop concentrée.",
   },
@@ -318,40 +321,80 @@ export function MarketingHome() {
               Chaque étape influence la suivante. Nous construisons donc votre projet dans
               le bon ordre plutôt que de commencer directement par les candidatures.
             </p>
+            <div className="ed-journey-mark" aria-hidden="true">
+              01&nbsp;—&nbsp;06
+            </div>
           </div>
-          <div className="ed-numbered-rows">
+
+          <div className="ed-journey-list">
             {JOURNEY.map((step) => (
-              <div className="ed-numbered-row" key={step.n}>
-                <span className="ed-step-number">{step.n}</span>
-                <div>
-                  <h3>
-                    <a href="#dossier">
-                      {step.title} <IconArrow />
-                    </a>
-                  </h3>
+              <a className="ed-journey-item" href="#dossier" key={step.n}>
+                <span className="ed-journey-num">{step.n}</span>
+                <div className="ed-journey-body">
+                  <div className="ed-journey-title-row">
+                    <h3>{step.title}</h3>
+                    <IconArrow />
+                  </div>
                   <p>{step.desc}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </section>
 
-        <section className="ed-section ed-wrap">
+        <section className="ed-section ed-wrap ed-start" id="orientation">
           <p className="ed-eyebrow">02 — TOUT COMMENCE PAR VOUS</p>
-          <h2>Vous ne savez pas encore exactement quoi étudier ? C&apos;est là que tout commence.</h2>
-          <p>Avant de parler d&apos;universités, nous prenons le temps de comprendre votre profil.</p>
-          <div className="ed-feature-grid cols-4">
-            {PROFILE.map((item) => (
-              <article className="ed-feature-card" key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
-              </article>
-            ))}
+          <h2 className="ed-start-title">
+            <span className="ed-start-lead">
+              Vous ne savez pas encore exactement quoi étudier ?
+            </span>{" "}
+            <span className="ed-start-accent">C&apos;est là que tout commence.</span>
+          </h2>
+
+          <div className="ed-start-grid">
+            <div className="ed-start-photo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={ASSETS.library}
+                alt="Étudiante consultant des ouvrages en bibliothèque"
+              />
+            </div>
+
+            <div className="ed-start-panel">
+              <p className="ed-start-intro">
+                Avant de parler d&apos;universités, nous prenons le temps de comprendre votre
+                profil.
+              </p>
+
+              <div className="ed-start-rows">
+                {PROFILE.map((item) => (
+                  <div className="ed-start-row" key={item.title}>
+                    <strong>{item.title}</strong>
+                    <span>{item.desc}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a className="ed-start-cta" href="#parcours">
+                Découvrir l&apos;orientation <span aria-hidden="true">→</span>
+              </a>
+
+              <p className="ed-start-note">Une recommandation doit toujours avoir une raison.</p>
+            </div>
           </div>
         </section>
 
-        <section className="ed-section ed-wrap ed-split">
-          <div>
+        <section className="ed-section ed-wrap ed-human" id="accompagnement">
+          <div className="ed-human-photo">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={ASSETS.conversation}
+              alt="Échange entre étudiants et conseiller"
+            />
+            <span className="ed-human-badge">L&apos;échange fait la différence.</span>
+          </div>
+
+          <div className="ed-human-copy">
             <p className="ed-eyebrow">03 — UN ACCOMPAGNEMENT HUMAIN</p>
             <h2>Une vraie personne qui connaît votre dossier.</h2>
             <p>
@@ -362,51 +405,77 @@ export function MarketingHome() {
               La technologie organise les informations et votre progression. Elle ne
               remplace pas la réflexion, le conseil ou la discussion.
             </p>
+            <hr className="ed-human-rule" />
+            <p className="ed-human-emphasis">
+              Votre projet n&apos;est pas généré automatiquement. Il est construit avec vous.
+            </p>
+            <a href="mailto:hello@eef.fr" className="ed-button ed-human-cta">
+              Parler à un conseiller <IconArrow />
+            </a>
+          </div>
+        </section>
+
+        <section className="ed-section ed-wrap ed-method" id="methode">
+          <p className="ed-eyebrow">04 — CHOISIR AVEC MÉTHODE</p>
+
+          <div className="ed-method-head">
+            <h2>Une université ne se résume pas à son nom.</h2>
             <p>
-              <strong>Votre projet n&apos;est pas généré automatiquement. Il est construit avec vous.</strong>
+              Deux formations portant presque le même intitulé peuvent proposer des
+              contenus, des niveaux de sélection, des coûts et des perspectives très
+              différents.
             </p>
           </div>
-          <div className="ed-photo">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={ASSETS.conversation} alt="Échange avec un conseiller" />
-          </div>
-        </section>
 
-        <section className="ed-section ed-wrap">
-          <p className="ed-eyebrow">04 — CHOISIR AVEC MÉTHODE</p>
-          <h2>Une université ne se résume pas à son nom.</h2>
-          <p>
-            Deux formations portant presque le même intitulé peuvent proposer des contenus,
-            des niveaux de sélection, des coûts et des perspectives très différents.
-          </p>
-          <div className="ed-photo" style={{ marginTop: "1.75rem", minHeight: 320 }}>
+          <div className="ed-method-photo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={ASSETS.campus} alt="Campus universitaire" />
+            <img src={ASSETS.campus} alt="Entrée d'un établissement universitaire" />
+            <span className="ed-method-badge">Comparer moins. Comparer mieux.</span>
           </div>
-          <div className="ed-feature-grid cols-3">
+
+          <div className="ed-method-grid">
             {UNI_CRITERIA.map((item) => (
-              <article className="ed-feature-card" key={item.title}>
+              <article className="ed-method-item" key={item.n}>
+                <span className="ed-method-num">{item.n}</span>
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </article>
             ))}
           </div>
+
+          <a className="ed-method-cta" href="#parcours">
+            Explorer notre méthode de sélection <span aria-hidden="true">→</span>
+          </a>
         </section>
 
-        <section className="ed-section ed-wrap">
+        <section className="ed-section ed-wrap ed-strategy" id="strategie">
           <p className="ed-eyebrow">05 — LA STRATÉGIE</p>
-          <h2>Ne pas candidater au hasard.</h2>
-          <p>
-            Une bonne stratégie ne consiste pas à multiplier les candidatures. Elle
-            consiste à construire une sélection cohérente.
-          </p>
-          <div className="ed-feature-grid cols-3">
+
+          <div className="ed-strategy-head">
+            <h2>Ne pas candidater au hasard.</h2>
+            <p>
+              Une bonne stratégie ne consiste pas à multiplier les candidatures. Elle
+              consiste à construire une sélection cohérente.
+            </p>
+          </div>
+
+          <div className="ed-strategy-grid">
             {STRATEGY.map((item) => (
-              <article className="ed-feature-card" key={item.title}>
+              <article className="ed-strategy-item" key={item.n}>
+                <span className="ed-strategy-num">{item.n}</span>
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </article>
             ))}
+          </div>
+
+          <div className="ed-strategy-foot">
+            <p className="ed-strategy-note">
+              Une candidature prudente ne signifie jamais qu&apos;une admission est garantie.
+            </p>
+            <a className="ed-strategy-cta" href="#parcours">
+              Construire ma stratégie <span aria-hidden="true">→</span>
+            </a>
           </div>
         </section>
 
