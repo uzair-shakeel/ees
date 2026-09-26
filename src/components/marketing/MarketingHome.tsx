@@ -697,242 +697,653 @@ export function MarketingHome() {
         </section>
 
         {/* 06 Dossier */}
-        <section
+         <section
+          className="mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-[64px] md:w-[calc(100%-128px)] md:pt-[88px]"
           id="dossier"
-          className={`${wrap} grid items-center gap-8 py-[5.5rem] max-md:py-14 md:grid-cols-[1.05fr_0.95fr] md:gap-12`}
         >
-          <div>
-            <p className={eyebrow}>06 — VOTRE DOSSIER</p>
-            <h2 className={sectionH2}>
+          <div className="max-w-[720px]">
+            <p className="text-[10px] leading-[15px] mb-[23px] tracking-[1.6px] font-medium text-[#173b5d]">
+              06 — VOTRE DOSSIER
+            </p>
+            <h2 className="text-[40px] leading-[1.1] font-medium tracking-[-1.8px] md:text-[64px] md:tracking-[-2.88px]">
               Votre parcours doit être compris, pas simplement envoyé.
             </h2>
-            <p className={`${bodyMuted} mt-[1.15rem] max-w-[40rem]`}>
-              Un bon dossier relie votre parcours passé, votre choix de formation et votre
-              projet futur de manière cohérente.
+            <p className="mt-5 text-[14px] leading-[1.75] text-[#5e7282] md:mt-[26px]">
+              Un bon dossier relie votre parcours passé, votre choix de
+              formation et votre projet futur de manière cohérente.
             </p>
-            <ul className="mt-6 grid list-none gap-3 p-0">
+            <p className="mt-5 text-[14px] leading-[1.75] text-[#5e7282] md:mt-[26px]">
+              Nous vous aidons à structurer, relire et améliorer votre
+              présentation. Les informations et motivations restent toujours les
+              vôtres.
+            </p>
+            <div className="mb-12 mt-6 flex h-[44px] items-center gap-[15px] text-[13px] font-medium text-[#102b43] underline decoration-[#c6d9e7] underline-offset-6 md:mb-[88px] md:mt-[30px]">
+              <span>Comprendre l&apos;accompagnement dossier</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                className="lucide lucide-arrow-right"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </div>
+
+            <ul className="space-y-5 py-12 md:space-y-[26px] md:py-[88px]">
               {DOSSIER_STEPS.map((step) => (
-                <li key={step} className="grid grid-cols-[1.5rem_1fr] items-start gap-2.5 text-eef-navy">
-                  <span className="mt-[0.45rem] size-[0.55rem] rounded-full bg-eef-blue" />
-                  <span>{step}</span>
+                <li key={step} className="flex items-center gap-[18px]">
+                  <span className="border border-[#c6d9e7] rounded-full w-[22px] h-[22px] flex items-center justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#5e7282"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      className="lucide lucide-arrow-right"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </span>
+                  <span className="text-[19px] leading-[1.2] font-medium tracking-[-0.475px]">
+                    {step}
+                  </span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="min-h-[280px] overflow-hidden rounded-[18px] border border-eef-soft bg-eef-soft">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={ASSETS.library}
-              alt="Préparation du dossier"
-              className="min-h-[280px] size-full object-cover"
-            />
+        </section>
+
+        <section
+          className="mx-auto w-[calc(100%-48px)] max-w-[1360px] py-16 md:w-[calc(100%-88px)] md:py-[80px]"
+          id="installation"
+        >
+          <p className="text-[10px] leading-[15px] mb-[23px] tracking-[1.6px] font-medium text-[#173b5d]">
+            08 — ET APRÈS L&apos;ADMISSION ?
+          </p>
+          <h2 className="max-w-[650px] text-[40px] leading-[1.1] font-medium tracking-[-1.8px] md:text-[64px] md:tracking-[-2.88px]">
+            L&apos;admission n&apos;est pas la dernière étape.
+          </h2>
+          <div className="mt-8 grid gap-8 lg:mt-[50px] lg:grid-cols-[1.2fr_1fr] lg:gap-[65px]">
+            <figure className="">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={ASSETS.city}
+                alt="Vie en France"
+                className="h-full w-full rounded-t-[28px] rounded-bl-[28px] rounded-br-[100px]"
+              />
+              <div className="mt-[20px] h-[44px] text-[13px] text-[#102b43] font-medium gap-[15px] flex items-center underline decoration-[#c6d9e7] underline-offset-6">
+                <span>Préparer mon arrivée</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="lucide lucide-arrow-right"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </div>
+            </figure>
+            <div className="">
+              {AFTER.map((item) => (
+                <a
+                  href="#"
+                  className="flex items-start gap-[22px] border-t border-[#c6d9e7] py-[28px]"
+                  key={item.n}
+                >
+                  <span className="w-[25px] pt-[5px] text-[10px] text-[#63a8d8]">
+                    {item.n}
+                  </span>
+                  <div className="w-full flex flex-col">
+                    <div className="w-full flex items-center justify-between gap-4">
+                      <h3 className="text-[26px] leading-[31.19px] tracking-[-0.91px] font-medium text-[#102b43]">
+                        {item.title}
+                      </h3>
+                      <span className="text-[#173b5d]" aria-hidden="true">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="22"
+                          height="22"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          className="lucide lucide-arrow-up-right"
+                          aria-hidden="true"
+                        >
+                          <path d="M7 7h10v10"></path>
+                          <path d="M7 17 17 7"></path>
+                        </svg>
+                      </span>
+                    </div>
+                    <p className="mt-2.5 text-[13px] leading-[1.75] text-[#5e7282]">
+                      {item.desc}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* Installation */}
-        <section id="installation" className={`${wrap} py-[5.5rem] max-md:py-14`}>
-          <p className={eyebrow}>08 — ET APRÈS L&apos;ADMISSION ?</p>
-          <h2 className={sectionH2}>L&apos;admission n&apos;est pas la dernière étape.</h2>
-          <div className="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {AFTER.map((item) => (
-              <article
-                key={item.n}
-                className="rounded-2xl border border-eef-soft bg-white px-[1.3rem] py-5"
+        <section className="mx-auto w-[calc(100%-48px)] max-w-[1360px] py-16 md:w-[calc(100%-80px)] md:py-20">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-[10px] leading-[15px] mb-[23px] tracking-[1.6px] font-medium text-[#173b5d]">
+                LE JOURNAL EEF
+              </p>
+              <h2 className="max-w-[500px] text-[40px] leading-[1.1] font-medium tracking-[-1.8px] md:text-[64px] md:tracking-[-2.88px]">
+                Comprendre avant de décider.
+              </h2>
+            </div>
+
+            <div className="mt-[20px] h-[44px] text-[13px] text-[#102b43] font-medium gap-[15px] flex items-center underline decoration-[#c6d9e7] underline-offset-6">
+              <span>Toutes les ressources</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                className="lucide lucide-arrow-right"
+                aria-hidden="true"
               >
-                <p className={eyebrow}>{item.n}</p>
-                <h3 className="m-0 text-[1.05rem] font-semibold text-eef-ink">{item.title}</h3>
-                <p className="mt-1.5 text-[0.92rem] leading-normal text-eef-secondary">
-                  {item.desc}
-                </p>
-              </article>
-            ))}
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </div>
           </div>
-          <div className="mt-7 min-h-[300px] overflow-hidden rounded-[18px] border border-eef-soft bg-eef-soft">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={ASSETS.city} alt="Vie en France" className="min-h-[300px] size-full object-cover" />
+
+          <div className="mt-8 grid gap-8 lg:mt-[48px] lg:grid-cols-[1.25fr_1fr] lg:gap-[65px]">
+            <a href="#parcours" className="group block min-w-0">
+              <div className="aspect-[2/1] overflow-hidden rounded-[22px] bg-[#e4eff6]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={ASSETS.library}
+                  alt="Étudiante cherchant un livre dans une bibliothèque"
+                  className="h-full w-full object-cover transition-transform duration-500"
+                />
+              </div>
+              <p className="mt-[25px] text-[10px] leading-[15px] font-medium uppercase tracking-[1.6px] text-[#173b5d]">
+                {ARTICLES[0].tag}
+              </p>
+              <h3 className="mt-3 max-w-[540px] text-[23px] leading-[1.2] tracking-[-1.155px] font-medium text-[#102b43] md:text-[33px]">
+                {ARTICLES[0].title}
+              </h3>
+              <span className="mt-[25px] inline-flex items-center gap-[14px] text-[12px] leading-[18.59px] text-[#102b43]">
+                Lire le guide{" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="lucide lucide-arrow-up-right"
+                  aria-hidden="true"
+                >
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </span>
+            </a>
+
+            <div>
+              {ARTICLES.slice(1).map((article) => (
+                <a
+                  href="#parcours"
+                  className="flex items-center justify-between gap-4 border-t first:border-t-0 border-[#e5e7eb] first:pt-0 py-6"
+                  key={article.title}
+                >
+                  <div>
+                    <p className="mb-[11px] text-[9px] leading-[13.5px] font-medium uppercase tracking-[1.44px] text-[#173b5d]">
+                      {article.tag}
+                    </p>
+                    <h3 className="max-w-[340px] text-[22px] leading-[1.2] tracking-[-0.55px] font-medium text-[#102b43]">
+                      {article.title}
+                    </h3>
+                  </div>
+                  <span className=" text-[#173b5d]" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="21"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      className="lucide lucide-arrow-up-right"
+                      aria-hidden="true"
+                    >
+                      <path d="M7 7h10v10"></path>
+                      <path d="M7 17 17 7"></path>
+                    </svg>
+                  </span>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* Journal */}
-        <section className={`${wrap} py-[5.5rem] max-md:py-14`}>
-          <p className={eyebrow}>LE JOURNAL EEF</p>
-          <h2 className={sectionH2}>Comprendre avant de décider.</h2>
-          <div className="mt-8 grid gap-0">
-            {ARTICLES.map((article) => (
-              <a
-                key={article.title}
-                href="#parcours"
-                className="group flex items-center justify-between gap-4 border-b border-eef-border py-5 text-inherit transition hover:bg-white/40"
-              >
-                <div>
-                  <p className={eyebrow}>{article.tag}</p>
-                  <h3 className="m-0 text-[1.15rem] font-semibold text-eef-ink transition group-hover:text-eef-navy">
-                    {article.title}
-                  </h3>
-                </div>
-                <span className="shrink-0 text-eef-ink opacity-70 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                  <IconArrow />
-                </span>
-              </a>
-            ))}
-          </div>
-        </section>
-
-        {/* Workspace */}
-        <section className={`${wrap} py-12 text-center`}>
-          <p className={eyebrow}>VOTRE ESPACE ÉTUDIANT</p>
-          <p className="mx-auto mb-5 mt-2 font-display text-[clamp(1.5rem,3vw,2.2rem)] leading-[1.15] tracking-[-0.03em] text-eef-ink">
+        <section className="mx-auto grid w-[calc(100%-48px)] max-w-[1360px] grid-cols-1 gap-6 border-b border-[#c6d9e7] py-[56px] md:w-[calc(100%-88px)] md:py-[65px] sm:grid-cols-[1fr_1.7fr_1fr] sm:items-center sm:gap-8">
+          <p className="text-[10px] leading-[15px] font-medium uppercase tracking-[1.6px] text-[#173b5d]">
+            VOTRE ESPACE ÉTUDIANT
+          </p>
+          <p className="text-[26px] leading-[1.3] tracking-[-0.78px] text-[#102b43] md:text-[24px] md:leading-[1.35] md:tracking-[-0.72px]">
             Des outils pour organiser.
             <br />
             Des humains pour conseiller.
           </p>
           <Link
             href="/login"
-            className="inline-flex rounded-full px-3 py-2 text-eef-deep transition hover:bg-eef-soft"
+            className="mt-[20px] h-[44px] text-[13px] text-[#102b43] font-medium gap-[15px] flex items-center justify-start underline decoration-[#c6d9e7] underline-offset-6 sm:justify-end"
           >
-            Ouvrir Mon Dossier →
+            <span>Ouvrir Mon Dossier</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="lucide lucide-arrow-right"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
           </Link>
         </section>
 
-        {/* Final CTA */}
-        <section className={`${wrap} pb-[4.5rem] pt-8`}>
-          <div className="relative grid items-center gap-6 overflow-hidden rounded-[22px] bg-eef-navy px-6 py-8 text-white md:grid-cols-[1.2fr_0.8fr] md:px-11 md:py-11">
-            <div>
-              <h2 className="m-0 text-[clamp(1.7rem,3.5vw,2.6rem)] font-medium tracking-[-0.03em] text-white">
+        <section className="mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-[60px] pb-16 md:w-[calc(100%-88px)]">
+          <div className="relative grid min-h-[300px] overflow-hidden rounded-[28px] bg-[#173b5d] px-8 py-10 text-white md:grid-cols-[1.2fr_0.8fr] md:items-center md:px-[60px] md:py-[56px]">
+            <div className="relative z-10 max-w-[560px]">
+              <h2 className="max-w-[540px] text-[34px] leading-[1.15] tracking-[-1.3741px] font-medium md:text-[40px]">
                 Votre projet mérite plus qu&apos;une liste d&apos;universités.
               </h2>
-              <p className="mt-3 text-white/80">
+              <p className="mt-4 text-[14px] leading-[1.6] text-[#ffffffb8]">
                 Commençons par comprendre où vous voulez aller.
               </p>
-              <div className="mt-6 flex flex-wrap gap-2.5">
+              <div className="mt-[30px] flex flex-wrap gap-[14px] max-md:flex-col max-md:items-stretch">
                 <a
                   href="mailto:hello@eef.fr"
-                  className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-[13px] font-medium text-eef-navy"
+                  className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full bg-[#ffffff] px-[22px] transition-colors hover:bg-[#eaf2f7] max-md:w-full"
                 >
-                  Parler à un conseiller
+                  <span className="flex items-center gap-2.5 text-[13px] font-medium text-[#193e5f]">
+                    Parler à un conseiller
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      className="lucide lucide-arrow-right"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </span>
                 </a>
                 <Link
                   href="/register"
-                  className="inline-flex items-center justify-center rounded-full border border-white/35 bg-transparent px-5 py-2.5 text-[13px] font-medium text-white"
+                  className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-white/50 px-[22px] transition-colors hover:bg-white/10 max-md:w-full"
                 >
-                  Commencer
+                  <span className="flex items-center gap-2.5 text-[13px] font-medium text-[#ffffff]">
+                    Découvrir Procédure EEF
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      className="lucide lucide-arrow-right"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </span>
                 </Link>
               </div>
             </div>
-            <div className="flex items-center justify-center" aria-hidden>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={ASSETS.logoMark} alt="" className="w-[min(220px,70%)] opacity-90" />
+            <div
+              className="pointer-events-none absolute -right-20 top-1/2 flex size-[360px] -translate-y-1/2 items-center justify-center sm:-right-8 md:size-[480px]"
+              aria-hidden="true"
+            >
+              <div className="absolute size-full rounded-full border border-white/10" />
+              <div className="absolute size-[78%] rounded-full border border-white/10" />
+              <div className="absolute size-[49%] rounded-full border border-white/10" />
+              <div className="relative flex size-[100px] items-center justify-center rounded-full border border-white/15 bg-white/[0.07]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={ASSETS.logoMark}
+                  alt=""
+                  className="absolute left-1/2 top-1/2 w-[80px] -translate-x-1/2 -translate-y-1/2 transform object-contain opacity-90 brightness-0 invert"
+                />
+              </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="relative overflow-hidden border-t border-eef-soft bg-[#eef6fb] pb-8 pt-12">
-        <div className={wrap}>
-          <div className="grid gap-8 md:grid-cols-[1.1fr_auto_1.6fr] md:gap-10">
+      <footer className="relative isolate overflow-hidden border-t border-[#c6d9e7] bg-[linear-gradient(180deg,#f5fafd,#f5fafd_32%,#e7f1fb_70%,#d8e8f7)]">
+        <div className="relative z-10 mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-[96px] pb-[200px] max-md:pt-[60px] max-md:pb-[120px] md:w-[calc(100%-88px)]">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-[60px] xl:grid-cols-[minmax(0,1.1fr)_auto_minmax(0,1.6fr)]">
             <div>
               <Link href="/" aria-label="Procédure EEF — Accueil">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={ASSETS.logo} alt="eef" className="h-[26px] w-auto" />
+                <img src={ASSETS.logo} alt="eef" className="h-[32px] w-auto" />
               </Link>
-              <p className="mt-3.5 max-w-[18rem] text-[0.95rem] text-eef-secondary">
+              <p className="mt-[22px] max-w-[270px] text-[15px] font-medium leading-[1.75] text-[#102b43]">
                 Votre projet d&apos;études en France, accompagné de A à Z.
               </p>
               <a
+                className="mt-5 inline-flex items-center gap-[7px] text-[14px] text-[#5e7282]"
                 href="mailto:hello@eef.fr"
-                className="mt-3.5 inline-flex items-center gap-1 text-eef-deep"
               >
-                Nous écrire <IconArrow />
+                Nous écrire
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="lucide lucide-arrow-up-right"
+                  aria-hidden="true"
+                >
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
               </a>
+              <div
+                className="mt-[26px] flex gap-[14px]"
+                aria-label="Réseaux sociaux"
+              >
+                <span
+                  className="flex size-10 items-center justify-center rounded-full border border-[#c6d9e7] bg-white/50 text-[#102b43]"
+                  aria-label="Instagram"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    className="lucide lucide-instagram"
+                    aria-hidden="true"
+                  >
+                    <rect
+                      width="20"
+                      height="20"
+                      x="2"
+                      y="2"
+                      rx="5"
+                      ry="5"
+                    ></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                  </svg>
+                </span>
+                <span
+                  className="flex size-10 items-center justify-center rounded-full border border-[#c6d9e7] bg-white/50 text-[#102b43]"
+                  aria-label="LinkedIn"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    className="lucide lucide-linkedin"
+                    aria-hidden="true"
+                  >
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect width="4" height="12" x="2" y="9"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </span>
+                <span
+                  className="flex size-10 items-center justify-center rounded-full border border-[#c6d9e7] bg-white/50 text-[#102b43]"
+                  aria-label="Twitter"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    className="lucide lucide-twitter"
+                    aria-hidden="true"
+                  >
+                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                  </svg>
+                </span>
+              </div>
             </div>
 
-            <div>
-              <a
-                href="mailto:hello@eef.fr"
-                className="inline-flex items-center gap-2 rounded-full bg-eef-navy px-5 py-3 text-[13px] font-medium text-white"
+            <a
+              className="inline-flex min-h-[52px] items-center justify-center gap-2.5 justify-self-start rounded-full bg-[#193e5f] px-7 text-[13px] font-medium text-white transition-colors hover:bg-[#25577f] lg:justify-self-center"
+              href="mailto:hello@eef.fr"
+            >
+              <span className="text-white flex items-center gap-2.5">
+                Parler à un conseiller
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                className="lucide lucide-arrow-up-right"
+                aria-hidden="true"
               >
-                Parler à un conseiller <IconArrow />
-              </a>
-            </div>
+                <path d="M7 7h10v10"></path>
+                <path d="M7 17 17 7"></path>
+              </svg>
+              </span>
+            </a>
 
-            <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-              {[
-                {
-                  title: "S'orienter",
-                  links: [
-                    ["#parcours", "Orientation"],
-                    ["#parcours", "Formations"],
-                    ["#parcours", "Universités"],
-                  ],
-                },
-                {
-                  title: "Candidater",
-                  links: [
-                    ["#dossier", "Stratégie"],
-                    ["#dossier", "Dossier"],
-                    ["/login", "Procédure EEF"],
-                  ],
-                },
-                {
-                  title: "S'installer",
-                  links: [
-                    ["#installation", "Logement"],
-                    ["#installation", "Démarches"],
-                    ["#installation", "Vie en France"],
-                  ],
-                },
-                {
-                  title: "Procédure EEF",
-                  links: [
-                    ["/login", "Espace étudiant"],
-                    ["/register", "Commencer"],
-                    ["mailto:hello@eef.fr", "Contact"],
-                  ],
-                },
-              ].map((col) => (
-                <nav key={col.title} aria-label={col.title} className="flex flex-col gap-2">
-                  <p className="m-0 mb-1 text-[12px] font-semibold text-eef-ink">{col.title}</p>
-                  {col.links.map(([href, label]) =>
-                    href.startsWith("/") ? (
-                      <Link key={label} href={href} className="text-[13px] text-eef-secondary hover:text-eef-navy">
-                        {label}
-                      </Link>
-                    ) : (
-                      <a key={label} href={href} className="text-[13px] text-eef-secondary hover:text-eef-navy">
-                        {label}
-                      </a>
-                    ),
-                  )}
-                </nav>
-              ))}
+            <div className="flex min-w-0 flex-wrap justify-end gap-x-[44px] gap-y-8 max-md:grid max-md:grid-cols-2 max-md:justify-end max-md:gap-x-[44px] max-md:gap-y-8 lg:col-span-2 lg:self-start xl:col-span-1">
+              <nav
+                aria-label="S'orienter"
+                className="flex min-w-0 flex-col items-start gap-1"
+              >
+                <p className="mb-2 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-[#102b43]">
+                  S&apos;orienter
+                </p>
+                <a
+                  className="py-1 text-[13px] leading-6 text-[#5e7282] hover:text-[#102b43]"
+                  href="#parcours"
+                >
+                  Orientation
+                </a>
+                <a
+                  className="py-1 text-[13px] leading-6 text-[#5e7282] hover:text-[#102b43]"
+                  href="#parcours"
+                >
+                  Formations
+                </a>
+                <a
+                  className="py-1 text-[13px] leading-6 text-[#5e7282] hover:text-[#102b43]"
+                  href="#parcours"
+                >
+                  Universités
+                </a>
+              </nav>
+              <nav
+                aria-label="Candidater"
+                className="flex min-w-0 flex-col items-start gap-1"
+              >
+                <p className="mb-2 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-[#102b43]">
+                  Candidater
+                </p>
+                <a
+                  className="py-1 text-[13px] leading-6 text-[#5e7282] hover:text-[#102b43]"
+                  href="#dossier"
+                >
+                  Stratégie
+                </a>
+                <a
+                  className="py-1 text-[13px] leading-6 text-[#5e7282] hover:text-[#102b43]"
+                  href="#dossier"
+                >
+                  Dossier
+                </a>
+                <Link
+                  className="py-1 text-[13px] leading-6 text-[#5e7282] hover:text-[#102b43]"
+                  href="/login"
+                >
+                  Procédure EEF
+                </Link>
+              </nav>
+              <nav
+                aria-label="S'installer"
+                className="flex min-w-0 flex-col items-start gap-1"
+              >
+                <p className="mb-2 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-[#102b43]">
+                  S&apos;installer
+                </p>
+                <a
+                  className="py-1 text-[13px] leading-6 text-[#5e7282] hover:text-[#102b43]"
+                  href="#installation"
+                >
+                  Logement
+                </a>
+                <a
+                  className="py-1 text-[13px] leading-6 text-[#5e7282] hover:text-[#102b43]"
+                  href="#installation"
+                >
+                  Démarches
+                </a>
+                <a
+                  className="py-1 text-[13px] leading-6 text-[#5e7282] hover:text-[#102b43]"
+                  href="#installation"
+                >
+                  Vie en France
+                </a>
+              </nav>
+              <nav
+                aria-label="Procédure EEF"
+                className="flex min-w-0 flex-col items-start gap-1"
+              >
+                <p className="mb-2 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-[#102b43]">
+                  Procédure EEF
+                </p>
+                <Link
+                  className="py-1 text-[13px] leading-6 text-[#5e7282] hover:text-[#102b43]"
+                  href="/login"
+                >
+                  Espace étudiant
+                </Link>
+                <Link
+                  className="py-1 text-[13px] leading-6 text-[#5e7282] hover:text-[#102b43]"
+                  href="/register"
+                >
+                  Commencer
+                </Link>
+                <a
+                  className="py-1 text-[13px] leading-6 text-[#5e7282] hover:text-[#102b43]"
+                  href="mailto:hello@eef.fr"
+                >
+                  Contact
+                </a>
+              </nav>
             </div>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-eef-border pt-6 text-[12px] text-eef-secondary">
-            <p className="m-0">© 2026 Procédure EEF</p>
-            <nav aria-label="Informations légales" className="flex flex-wrap gap-4">
-              <a href="#" className="hover:text-eef-navy">
+          <div className="mt-20 flex flex-col gap-4 border-t border-[#c6d9e7] pt-[26px] md:flex-row md:items-center md:justify-between">
+            <p className="text-[11px] leading-[19.25px] text-[#5e7282]">
+              © 2026 Procédure EEF
+            </p>
+            <nav
+              aria-label="Informations légales"
+              className="flex flex-wrap gap-x-6 gap-y-2 text-[#5e7282] text-[11px] leading-[19.25px] max-md:gap-x-5"
+            >
+              <a href="#" className="hover:text-[#102b43]">
                 Mentions légales
               </a>
-              <a href="#" className="hover:text-eef-navy">
+              <a href="#" className="hover:text-[#102b43]">
                 Politique de confidentialité
               </a>
-              <a href="#" className="hover:text-eef-navy">
+              <a href="#" className="hover:text-[#102b43]">
                 Conditions
               </a>
-              <a href="#" className="hover:text-eef-navy">
+              <a href="#" className="hover:text-[#102b43]">
                 Cookies
               </a>
             </nav>
           </div>
-          <p className="mt-4 text-[12px] text-eef-secondary">
-            Procédure EEF est un service indépendant et n&apos;est pas affilié à Campus
-            France ou au gouvernement français.
+          <p className="relative z-10 mt-[18px] max-w-[700px] text-[11px] leading-[19.25px] text-[#5e7282]/85">
+            Procédure EEF est un service indépendant et n&apos;est pas affilié à
+            Campus France ou au gouvernement français.
           </p>
         </div>
         <span
-          className="pointer-events-none absolute bottom-[-0.35em] right-4 select-none text-[clamp(6rem,18vw,14rem)] font-medium leading-none tracking-[-0.06em] text-[#d7e8f3]"
-          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 bottom-[2em] select-none font-display text-[min(40vw,580px)] leading-[0.8] font-semibold text-[#d5e5f1]/70 tracking-[-29px]"
+          aria-hidden="true"
         >
           eef
         </span>
