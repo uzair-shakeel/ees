@@ -9,7 +9,7 @@ const ASSETS = {
   conversation: "/marketing/assets/img-003.webp",
   student: "/marketing/assets/img-004.webp",
   library: "/marketing/assets/img-005.webp",
-  campus: "/marketing/assets/img-006.webp",
+  campus: "/marketing/assets/img-006.PNG",
   city: "/marketing/assets/img-007.webp",
   logoMark: "/marketing/assets/img-008.png",
 };
@@ -145,14 +145,55 @@ const wrap = "mx-auto w-[calc(100%-2.5rem)] max-w-[1360px] lg:w-[calc(100%-8rem)
 const eyebrow =
   "m-0 mb-[1.15rem] text-[10px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]";
 const sectionH2 =
-  "m-0 font-medium text-eef-ink tracking-[-0.03em] leading-[1.14] text-[clamp(2rem,4vw,55px)]";
-const bodyMuted = "m-0 text-[14px] leading-[1.65] text-eef-secondary";
+  "m-0 font-medium text-eef-ink tracking-[-0.03em] leading-[1.14] text-[60px]";
+const bodyMuted = "m-0 text-[15px] leading-[1.65] text-eef-secondary";
 const pillBase =
-  "inline-flex min-h-[52px] items-center justify-center gap-[11px] whitespace-nowrap rounded-full border border-[#173b5d] px-6 text-[13px] font-medium transition hover:-translate-y-0.5";
+  "inline-flex min-h-[52px] cursor-pointer items-center justify-center gap-[11px] whitespace-nowrap rounded-full border border-[#173b5d] px-6 text-[14px] font-medium transition hover:-translate-y-0.5";
 const btnPrimary =
-  "inline-flex min-h-[43px] items-center justify-center gap-3.5 rounded-full bg-eef-navy px-[19px] text-[12px] font-medium text-white transition hover:bg-eef-ink [&_svg]:transition-transform hover:[&_svg]:translate-x-0.5 hover:[&_svg]:-translate-y-0.5";
+  "inline-flex min-h-[43px] cursor-pointer items-center justify-center gap-3.5 rounded-full bg-eef-navy px-[19px] text-[13px] font-medium text-white transition hover:bg-eef-ink [&_svg]:transition-transform hover:[&_svg]:translate-x-0.5 hover:[&_svg]:-translate-y-0.5";
 const textLink =
-  "inline-flex items-center gap-1 text-[13px] font-medium text-eef-ink underline decoration-eef-border underline-offset-[5px] transition hover:text-eef-navy hover:decoration-eef-navy";
+  "inline-flex cursor-pointer items-center gap-1 text-[13px] font-medium text-eef-ink underline decoration-eef-border underline-offset-[5px] transition hover:text-eef-navy hover:decoration-eef-navy";
+
+const NAV_ITEMS = [
+  {
+    label: "S'orienter",
+    links: [
+      { href: "#orientation", label: "Orientation" },
+      { href: "#parcours", label: "Formations" },
+      { href: "#methode", label: "Universités" },
+      { href: "#parcours", label: "Bourses" },
+    ],
+  },
+  {
+    label: "Candidater",
+    links: [
+      { href: "#strategie", label: "Stratégie de candidature" },
+      { href: "#dossier", label: "Préparer son dossier" },
+      { href: "#dossier", label: "Procédure Études en France" },
+      { href: "#methode", label: "Voies d'admission" },
+    ],
+  },
+  {
+    label: "S'installer",
+    links: [
+      { href: "#installation", label: "Vie en France" },
+      { href: "#installation", label: "Logement" },
+      { href: "#installation", label: "Visa et démarches" },
+      { href: "#installation", label: "Budget étudiant" },
+    ],
+  },
+  {
+    label: "Comprendre",
+    links: [
+      { href: "#parcours", label: "Ressources" },
+      { href: "#methode", label: "Notre méthode" },
+      { href: "#parcours", label: "FAQ" },
+      { href: "#accompagnement", label: "Communauté" },
+      { href: "#parcours", label: "Carrière" },
+      { href: "#parcours", label: "Parents" },
+    ],
+  },
+];
 
 function IconSearch() {
   return (
@@ -215,25 +256,45 @@ export function MarketingHome() {
           </Link>
 
           <nav
-            className="mx-auto hidden items-center justify-center gap-[25px] lg:flex"
+            className="mx-auto hidden h-full items-center justify-center gap-[25px] lg:flex"
             aria-label="Navigation principale"
           >
-            {["S'orienter", "Candidater", "S'installer", "Comprendre"].map((label) => (
-              <button
-                key={label}
-                type="button"
-                className="inline-flex min-h-11 items-center gap-1.5 whitespace-nowrap border-0 bg-transparent p-0 text-[12px] font-medium text-eef-ink transition hover:text-eef-navy"
-              >
-                {label}
-                <IconChevron />
-              </button>
+            {NAV_ITEMS.map((item) => (
+              <div key={item.label} className="group relative flex h-full items-center">
+                <button
+                  type="button"
+                  className="inline-flex min-h-11 cursor-pointer items-center gap-1.5 whitespace-nowrap border-0 bg-transparent p-0 text-[12px] font-medium text-eef-ink transition group-hover:text-eef-navy"
+                >
+                  {item.label}
+                  <IconChevron />
+                </button>
+
+                <div className="pointer-events-none absolute left-1/2 top-full z-50 w-[280px] -translate-x-1/2 pt-2 group-hover:pointer-events-auto">
+                  <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:grid-rows-[1fr]">
+                    <div className="min-h-0 overflow-hidden">
+                      <div className="origin-top rounded-[18px] border border-eef-border bg-white p-2.5 shadow-[0_10px_30px_rgba(16,43,67,0.06)]">
+                        {item.links.map((link) => (
+                          <a
+                            key={link.label}
+                            href={link.href}
+                            className="flex cursor-pointer items-center justify-between rounded-[9px] px-3 py-3.5 text-[13px] text-eef-ink transition hover:bg-eef-mist hover:text-eef-navy"
+                          >
+                            {link.label}
+                            <IconArrow />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
           </nav>
 
           <div className="hidden items-center justify-end gap-[23px] lg:flex">
             <Link
               href="/login"
-              className="inline-flex min-h-11 items-center gap-2 text-[12px] font-medium text-eef-ink transition hover:text-eef-navy"
+              className="inline-flex min-h-11 cursor-pointer items-center gap-2 text-[12px] font-medium text-eef-ink transition hover:text-eef-navy"
             >
               Espace étudiant <IconArrow />
             </Link>
@@ -244,7 +305,7 @@ export function MarketingHome() {
 
           <button
             type="button"
-            className="ml-auto border-0 bg-transparent p-1.5 text-eef-ink lg:hidden"
+            className="ml-auto cursor-pointer border-0 bg-transparent p-1.5 text-eef-ink lg:hidden"
             aria-label="Ouvrir le menu"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
@@ -258,6 +319,21 @@ export function MarketingHome() {
             menuOpen ? "" : "hidden"
           }`}
         >
+          {NAV_ITEMS.map((item) => (
+            <div key={item.label} className="border-b border-eef-soft pb-2">
+              <p className="px-3.5 py-2 text-[12px] font-semibold text-eef-ink">{item.label}</p>
+              {item.links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="block rounded-[10px] px-3.5 py-2.5 text-[14px] text-eef-secondary hover:bg-eef-soft hover:text-eef-navy"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ))}
           <Link
             href="/login"
             onClick={() => setMenuOpen(false)}
@@ -402,19 +478,19 @@ export function MarketingHome() {
                 href="#dossier"
                 className="group grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-[1.15rem] gap-y-1 border-b border-eef-border py-[1.2rem] text-inherit"
               >
-                <span className="pt-0.5 text-[14px] font-medium leading-tight tracking-[0.02em] text-[#8eb4d0]">
+                <span className="pt-0.5 text-[11px] font-medium leading-tight tracking-[0.02em] text-[#8eb4d0]">
                   {step.n}
                 </span>
                 <div className="min-w-0">
                   <div className="flex items-start justify-between gap-4">
-                    <h3 className="m-0 text-[18px] font-semibold leading-tight tracking-[-0.02em] text-eef-ink transition group-hover:text-eef-navy">
+                    <h3 className="m-0 text-[23px] font-[500] leading-tight tracking-[-0.02em] text-eef-ink transition group-hover:text-eef-navy">
                       {step.title}
                     </h3>
                     <span className="mt-0.5 shrink-0 text-eef-ink opacity-75 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-eef-navy">
                       <IconArrow />
                     </span>
                   </div>
-                  <p className="mt-1.5 max-w-[34rem] text-[14px] leading-snug text-eef-secondary">
+                  <p className="mt-1.5 max-w-[34rem] text-[13px] leading-snug text-eef-secondary">
                     {step.desc}
                   </p>
                 </div>
@@ -434,7 +510,7 @@ export function MarketingHome() {
           </h2>
 
           <div className="mt-11 grid items-stretch gap-9 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-[clamp(2.5rem,5vw,4.5rem)]">
-            <div className="aspect-[4/5] max-h-[560px] overflow-hidden rounded-[16px_7.5rem_16px_16px] bg-eef-soft max-md:aspect-[5/4] max-md:max-h-none max-md:rounded-[14px_4.5rem_14px_14px]">
+            <div className="aspect-[5/5] max-h-[560px] overflow-hidden rounded-[16px_7.5rem_16px_16px] bg-eef-soft max-md:aspect-[5/4] max-md:max-h-none max-md:rounded-[14px_4.5rem_14px_14px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={ASSETS.library}
@@ -453,12 +529,12 @@ export function MarketingHome() {
                 {PROFILE.map((item) => (
                   <div
                     key={item.title}
-                    className="grid grid-cols-1 items-baseline gap-1.5 border-b border-eef-border py-4 sm:grid-cols-[minmax(7.5rem,0.38fr)_minmax(0,1fr)] sm:gap-x-6 sm:gap-y-4 sm:py-[1.15rem]"
+                    className="grid grid-cols-1 items-baseline gap-1.5 border-b border-eef-border py-[17px] sm:grid-cols-[minmax(7.5rem,0.38fr)_minmax(0,1fr)] sm:gap-x-6 sm:gap-y-4 sm:py-[1.15rem]"
                   >
-                    <strong className="text-[18px] font-semibold tracking-[-0.01em] text-eef-ink">
+                    <strong className="text-[16px] font-[500] tracking-[-0.01em] text-eef-ink">
                       {item.title}
                     </strong>
-                    <span className="text-[14px] leading-normal text-eef-secondary">
+                    <span className="text-[12px] leading-normal text-eef-secondary">
                       {item.desc}
                     </span>
                   </div>
@@ -467,12 +543,12 @@ export function MarketingHome() {
 
               <a
                 href="#parcours"
-                className="mt-7 inline-flex items-center gap-1.5 text-[13px] font-medium text-eef-blue transition hover:text-eef-navy [&_span]:transition-transform hover:[&_span]:translate-x-[3px]"
+                className="mt-7 inline-flex items-center gap-1.5 text-[13px] font-medium hoveer:underline transition hover:text-eef-navy [&_span]:transition-transform hover:[&_span]:translate-x-[3px]"
               >
                 Découvrir l&apos;orientation <span aria-hidden>→</span>
               </a>
 
-              <p className="mb-0 mt-auto pt-8 text-[13px] leading-snug text-[#9aafbf]">
+              <p className="mb-0 mt-auto pt-2 text-[13px] leading-snug text-[#9aafbf]">
                 Une recommandation doit toujours avoir une raison.
               </p>
             </div>
@@ -484,7 +560,7 @@ export function MarketingHome() {
           id="accompagnement"
           className={`${wrap} grid items-start gap-10 py-[5.5rem] max-md:py-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-[clamp(2.75rem,5vw,4.75rem)]`}
         >
-          <div className="relative aspect-[1/1.08] max-h-[580px] overflow-hidden rounded-[28px] bg-eef-soft max-md:aspect-[5/4] max-md:max-h-none">
+          <div className="relative aspect-[1/1] max-h-[580px] overflow-hidden rounded-[28px] bg-eef-soft max-md:aspect-[5/4] max-md:max-h-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={ASSETS.conversation}
@@ -509,8 +585,8 @@ export function MarketingHome() {
               La technologie organise les informations et votre progression. Elle ne
               remplace pas la réflexion, le conseil ou la discussion.
             </p>
-            <hr className="mt-[1.85rem] w-full max-w-[26rem] border-0 border-t border-eef-border" />
-            <p className="mt-[1.85rem] max-w-[24rem] text-[18px] font-medium leading-normal text-eef-ink">
+            <hr className="mt-[22px] w-full max-w-[26rem] border-0 border-t border-eef-border" />
+            <p className="mt-[22px] max-w-[24rem] text-[18px] font-medium leading-normal text-eef-ink">
               Votre projet n&apos;est pas généré automatiquement. Il est construit avec vous.
             </p>
             <a
@@ -530,19 +606,19 @@ export function MarketingHome() {
             <h2 className={`${sectionH2} max-w-[11em]`}>
               Une université ne se résume pas à son nom.
             </h2>
-            <p className={`${bodyMuted} max-w-[28rem] md:justify-self-end md:pt-1`}>
+            <p className={`text-[15px] leading-[1.65] text-eef-secondary max-w-[28rem] md:justify-self-end md:pt-1`}>
               Deux formations portant presque le même intitulé peuvent proposer des
               contenus, des niveaux de sélection, des coûts et des perspectives très
               différents.
             </p>
           </div>
 
-          <div className="relative mt-10 aspect-[21/9] min-h-[260px] max-h-[420px] overflow-hidden rounded-[28px] bg-eef-soft max-md:aspect-[16/10] max-md:min-h-[200px] max-md:max-h-none">
+          <div className="relative mt-10 min-w-[980px] min-h-[260px] max-h-[420px] overflow-hidden rounded-[28px] bg-eef-soft max-md:min-h-[200px] max-md:max-h-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={ASSETS.campus}
               alt="Entrée d'un établissement universitaire"
-              className="size-full object-cover"
+              className="size-full object-contain"
             />
             <span className="absolute bottom-[1.15rem] left-[1.15rem] inline-flex items-center rounded-full bg-white px-3.5 py-2 text-[9px] font-semibold uppercase leading-tight tracking-[0.12em] text-eef-navy shadow-[0_2px_10px_rgba(16,43,67,0.08)]">
               Comparer moins. Comparer mieux.
@@ -559,13 +635,13 @@ export function MarketingHome() {
                   (i + 1) % 3 === 0 ? "max-lg:sm:border-r-0 max-lg:sm:pr-0" : ""
                 } ${(i + 1) % 3 === 1 ? "max-lg:sm:pl-0" : ""}`}
               >
-                <span className="mb-2.5 block text-[10px] font-medium tracking-[0.04em] text-[#9aafbf]">
+                <span className="mb-2.5 block text-[9px] font-medium tracking-[0.04em] text-[#9aafbf]">
                   {item.n}
                 </span>
                 <h3 className="m-0 text-[18px] font-semibold leading-tight tracking-[-0.02em] text-eef-ink">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-[14px] leading-snug text-eef-secondary">{item.desc}</p>
+                <p className="mt-2 text-[11px] leading-snug text-eef-secondary">{item.desc}</p>
               </article>
             ))}
           </div>
@@ -576,38 +652,45 @@ export function MarketingHome() {
         </section>
 
         {/* 05 Strategy */}
-        <section id="strategie" className={`${wrap} py-[5.5rem] max-md:py-14`}>
-          <p className={eyebrow}>05 — LA STRATÉGIE</p>
+        <section id="strategie" className={`${wrap} py-20 max-md:py-14`}>
+          <p className="m-0 mb-5 text-[10px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]">
+            05 — LA STRATÉGIE
+          </p>
 
-          <div className="grid items-start gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-[clamp(2rem,4vw,4rem)]">
-            <h2 className={`${sectionH2} max-w-[10em]`}>Ne pas candidater au hasard.</h2>
-            <p className={`${bodyMuted} max-w-[26rem] md:justify-self-end md:pt-1`}>
+          <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-16 lg:gap-24">
+            <h2 className="m-0 max-w-[9em] text-[clamp(1.85rem,4vw,46px)] font-medium leading-[1.15] tracking-[-0.03em] text-eef-ink">
+              Ne pas candidater au hasard.
+            </h2>
+            <p className="m-0 max-w-[26rem] text-[14px] leading-[1.65] text-eef-secondary md:justify-self-end md:pt-1">
               Une bonne stratégie ne consiste pas à multiplier les candidatures. Elle
               consiste à construire une sélection cohérente.
             </p>
           </div>
 
-          <div className="mt-11 grid gap-8 md:grid-cols-3 md:gap-[clamp(1.75rem,3vw,3rem)]">
+          <div className="mt-16 grid gap-10 md:mt-20 md:grid-cols-3 md:gap-12 lg:gap-16">
             {STRATEGY.map((item) => (
-              <article key={item.n} className="border-t border-eef-border pt-[1.35rem]">
-                <span className="mb-[1.1rem] block text-[clamp(2.75rem,5vw,4rem)] font-medium leading-none tracking-[-0.04em] text-[#9ec4df]">
+              <article key={item.n} className="border-t border-eef-border pt-6">
+                <span className="mb-5 block text-[70px] font-medium leading-none tracking-[-0.04em] text-[#9ec4df]">
                   {item.n}
                 </span>
-                <h3 className="m-0 text-[18px] font-semibold leading-tight tracking-[-0.02em] text-eef-ink">
+                <h3 className="m-0 text-[33px] font-semibold leading-tight tracking-[-0.02em] text-eef-ink">
                   {item.title}
                 </h3>
-                <p className="mt-2.5 max-w-[22rem] text-[14px] leading-snug text-eef-secondary">
+                <p className="mt-3 max-w-[14rem] text-[14px] leading-[1.55] text-eef-secondary">
                   {item.desc}
                 </p>
               </article>
             ))}
           </div>
 
-          <div className="mt-10 flex flex-wrap items-end justify-between gap-4 gap-x-8">
+          <div className="mt-16 flex flex-wrap items-end justify-between gap-4 gap-x-8 md:mt-20">
             <p className="m-0 max-w-[28rem] text-[12px] leading-snug text-[#9aafbf]">
               Une candidature prudente ne signifie jamais qu&apos;une admission est garantie.
             </p>
-            <a href="#parcours" className={`${textLink} gap-1 [&_span]:no-underline hover:[&_span]:translate-x-[3px] [&_span]:transition-transform`}>
+            <a
+              href="#parcours"
+              className="inline-flex items-center gap-1 text-[13px] font-medium text-eef-ink underline decoration-eef-border underline-offset-[5px] transition hover:text-eef-navy hover:decoration-eef-navy [&_span]:no-underline [&_span]:transition-transform hover:[&_span]:translate-x-[3px]"
+            >
               Construire ma stratégie <span aria-hidden>→</span>
             </a>
           </div>
