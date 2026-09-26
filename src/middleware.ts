@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 import { COOKIE_NAME, decodeSession } from "@/lib/session-token";
 import { ADMIN_APP_PATH } from "@/lib/admin-path";
 
-const PUBLIC_PATHS = ["/", "/login", "/register"];
+const PUBLIC_PATHS = ["/", "/login", "/register", "/carriere"];
 const PUBLIC_API = ["/api/auth/login", "/api/auth/register", "/api/auth/logout"];
 
 export async function middleware(request: NextRequest) {
