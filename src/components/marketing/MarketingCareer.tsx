@@ -4,10 +4,8 @@ import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import {
   MarketingShell,
+  ASSETS,
   wrap,
-  eyebrow,
-  sectionH2,
-  bodyMuted,
   btnPrimary,
 } from "@/components/marketing/MarketingShell";
 
@@ -24,19 +22,19 @@ const JOB_TARGETS = [
 const NEXT_TOOLS = [
   {
     title: "Revue LinkedIn",
-    desc: "Optimisez votre profil pour attirer recruteurs et opportunités pertinentes.",
+    desc: "Titre, profil, mots-clés et positionnement réseau.",
   },
   {
     title: "Lettres de motivation",
-    desc: "Des modèles structurés pour expliquer votre projet avec clarté.",
+    desc: "Assistant de structuration par programme et par offre.",
   },
   {
     title: "Simulateur d'entretien",
-    desc: "Préparez vos réponses aux questions les plus fréquentes.",
+    desc: "Questions types du marché français, avec retours.",
   },
   {
     title: "Suivi de candidatures",
-    desc: "Organisez vos démarches et ne perdez plus aucune échéance.",
+    desc: "Stages et emplois : contacts, relances, statuts, résultats.",
   },
 ];
 
@@ -88,23 +86,30 @@ export function MarketingCareer() {
           <span className="text-eef-ink">Carrière</span>
         </nav>
 
-        <p className={eyebrow}>CARRIÈRE</p>
+        <p className="m-0 mb-[10px] text-[9px] font-medium uppercase tracking-[0.16em] text-eef-blue">
+          CARRIÈRE
+        </p>
 
-        <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-16 lg:gap-24">
-          <h1 className="m-0 max-w-[11em] text-[clamp(2rem,4.5vw,46px)] font-medium leading-[1.12] tracking-[-0.03em] text-eef-ink">
+        <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-16 lg:gap-24">
+          <h1 className="m-0 max-w-[9em] text-[clamp(2.5rem,7vw,78px)] font-medium leading-[1.05] tracking-[-0.03em] text-eef-ink">
             Votre diplôme n&apos;est pas la ligne d&apos;arrivée.
           </h1>
-          <p className={`${bodyMuted} max-w-[28rem] md:justify-self-end md:pt-2`}>
-            Une fois le diplôme en poche, le vrai travail commence. Analyseur de CV ATS,
-            préparation d&apos;entretiens, stratégie LinkedIn — des outils concrets pour
-            transformer votre formation en carrière.
+          <p className="m-0 max-w-[28rem] text-[16px] leading-[1.65] text-eef-secondary md:justify-self-end md:pt-2">
+            Analyseur de CV ATS, préparation d&apos;entretiens, suivi de candidatures de
+            stage et d&apos;emploi : transformez vos études en France en carrière en France.
           </p>
         </div>
 
-        <div className="mt-12 flex min-h-[220px] items-center justify-center rounded-[28px] border border-dashed border-eef-border bg-[#edf4f9] px-6 py-16 text-center max-md:mt-8 max-md:min-h-[160px] max-md:rounded-[22px]">
-          <p className="m-0 max-w-md text-[14px] text-eef-secondary">
-            [Illustration du parcours étudiant en France]
-          </p>
+        <div className="relative mt-12 overflow-hidden rounded-[28px] bg-eef-soft max-md:mt-8 max-md:rounded-[22px]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={ASSETS.student}
+            alt="Étudiant travaillant sur un ordinateur"
+            className="aspect-[21/9] min-h-[240px] w-full object-cover max-md:aspect-[16/10] max-md:min-h-[200px]"
+          />
+          <span className="absolute bottom-5 left-5 inline-flex items-center rounded-[10px] bg-white/95 px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-eef-navy shadow-[0_2px_12px_rgba(16,43,67,0.08)] backdrop-blur-sm max-md:bottom-3 max-md:left-3 max-md:px-3">
+            Comprendre. Choisir. Avancer.
+          </span>
         </div>
       </section>
 
@@ -186,34 +191,37 @@ export function MarketingCareer() {
           </form>
 
           <div className="lg:pt-6">
-            <IconSparkle />
-            <h2 className="mt-4 m-0 max-w-[16em] text-[18px] font-semibold leading-snug tracking-[-0.02em] text-eef-ink">
+            
+            <h2 className="mt-4 m-0 max-w-[16em] text-[27px] font-semibold leading-snug tracking-[-0.02em] text-eef-ink">
               Compatibilité ATS, format, mots-clés, impact.
             </h2>
-            <p className={`${bodyMuted} mt-4 max-w-[28rem]`}>
-              Les recruteurs scannent d&apos;abord votre CV avec des logiciels ATS. Cet
-              outil vous aide à vérifier la lisibilité, les mots-clés manquants et la
-              structure — pour que votre profil arrive jusqu&apos;à un humain.
+            <p className="mt-4 m-0 max-w-[28rem] text-[15px] leading-[1.55] text-eef-secondary">
+              Analyse déterministe de structure et de couverture de mots-clés selon
+              votre poste cible — avec des actions concrètes, pas des généralités.
             </p>
           </div>
         </div>
       </section>
 
       {/* Beyond CV */}
-      <section className={`${wrap} pb-24 pt-8 max-md:pb-16`}>
-        <p className={eyebrow}>LA SUITE</p>
-        <h2 className={sectionH2}>Au-delà du CV.</h2>
+      <section className={`${wrap} mt-[60px] pb-24 max-md:pb-16`}>
+        <p className="m-0 mb-[10px] text-[11px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]">
+          LA SUITE
+        </p>
+        <h2 className="m-0 text-[60px] font-semibold leading-[1.2] tracking-[-0.02em] text-eef-ink">
+          Au-delà du CV.
+        </h2>
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4 lg:gap-10">
+        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
           {NEXT_TOOLS.map((item) => (
-            <article key={item.title} className="flex flex-col border-t border-eef-border pt-6">
-              <h3 className="m-0 text-[18px] font-semibold tracking-[-0.02em] text-eef-ink">
+            <article key={item.title} className="flex flex-col">
+              <h3 className="m-0 text-[27px] font-semibold tracking-[-0.02em] text-eef-ink">
                 {item.title}
               </h3>
-              <p className="mt-3 flex-1 text-[14px] leading-[1.55] text-eef-secondary">
+              <p className="mt-2.5 flex-1 m-0 text-[14px] leading-[1.55] text-eef-secondary">
                 {item.desc}
               </p>
-              <span className="mt-6 inline-flex w-fit rounded-full bg-[#e8eef4] px-3 py-1.5 text-[12px] font-medium text-eef-secondary">
+              <span className="mt-5 inline-flex w-fit rounded-full bg-[#e8eef4] px-3 py-1.5 text-[11px] font-medium text-eef-secondary">
                 Bientôt disponible
               </span>
             </article>

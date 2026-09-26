@@ -188,9 +188,9 @@ const NAV_ITEMS = [
       { href: "#parcours", label: "Ressources" },
       { href: "#methode", label: "Notre méthode" },
       { href: "#parcours", label: "FAQ" },
-      { href: "#accompagnement", label: "Communauté" },
+      { href: "/communaute", label: "Communauté" },
       { href: "/carriere", label: "Carrière" },
-      { href: "#parcours", label: "Parents" },
+      { href: "/parents", label: "Parents" },
     ],
   },
 ];
