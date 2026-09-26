@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 import { COOKIE_NAME, decodeSession } from "@/lib/session-token";
 import { ADMIN_APP_PATH } from "@/lib/admin-path";
 
-const PUBLIC_PATHS = ["/login", "/register"];
+const PUBLIC_PATHS = ["/", "/login", "/register"];
 const PUBLIC_API = ["/api/auth/login", "/api/auth/register", "/api/auth/logout"];
 
 export async function middleware(request: NextRequest) {
@@ -12,6 +12,7 @@ export async function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/uploads") ||
+    pathname.startsWith("/marketing") ||
     pathname === "/favicon.ico"
   ) {
     return NextResponse.next();
@@ -23,7 +24,7 @@ export async function middleware(request: NextRequest) {
   }
 
   const isPublicPage = PUBLIC_PATHS.some(
-    (p) => pathname === p || pathname.startsWith(`${p}/`),
+    (p) => pathname === p || (p !== "/" && pathname.startsWith(`${p}/`)),
   );
   const isPublicApi = PUBLIC_API.some((p) => pathname === p);
   const isApi = pathname.startsWith("/api/");
@@ -33,12 +34,9 @@ export async function middleware(request: NextRequest) {
   const token = request.cookies.get(COOKIE_NAME)?.value;
   const session = await decodeSession(token);
 
+  // Marketing homepage is public
   if (pathname === "/") {
-    if (!session) {
-      return NextResponse.redirect(new URL("/login", request.url));
-    }
-    const dest = session.role === "ADMIN" ? ADMIN_APP_PATH : "/mon-dossier";
-    return NextResponse.redirect(new URL(dest, request.url));
+    return NextResponse.next();
   }
 
   if (isPublicApi) {
