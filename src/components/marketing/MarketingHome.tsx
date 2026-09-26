@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import "@/styles/marketing.css";
 
 const ASSETS = {
   logo: "/marketing/assets/img-001.png",
@@ -142,6 +141,19 @@ const ARTICLES = [
   },
 ];
 
+const wrap = "mx-auto w-[calc(100%-2.5rem)] max-w-[1360px] lg:w-[calc(100%-8rem)]";
+const eyebrow =
+  "m-0 mb-[1.15rem] text-[10px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]";
+const sectionH2 =
+  "m-0 font-medium text-eef-ink tracking-[-0.03em] leading-[1.14] text-[clamp(2rem,4vw,55px)]";
+const bodyMuted = "m-0 text-[14px] leading-[1.65] text-eef-secondary";
+const pillBase =
+  "inline-flex min-h-[52px] items-center justify-center gap-[11px] whitespace-nowrap rounded-full border border-[#173b5d] px-6 text-[13px] font-medium transition hover:-translate-y-0.5";
+const btnPrimary =
+  "inline-flex min-h-[43px] items-center justify-center gap-3.5 rounded-full bg-eef-navy px-[19px] text-[12px] font-medium text-white transition hover:bg-eef-ink [&_svg]:transition-transform hover:[&_svg]:translate-x-0.5 hover:[&_svg]:-translate-y-0.5";
+const textLink =
+  "inline-flex items-center gap-1 text-[13px] font-medium text-eef-ink underline decoration-eef-border underline-offset-[5px] transition hover:text-eef-navy hover:decoration-eef-navy";
+
 function IconSearch() {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -192,37 +204,47 @@ export function MarketingHome() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="public-site">
-      <header className="ed-header">
-        <div className="ed-nav-inner">
-          <Link href="/" className="ed-logo" aria-label="Procédure EEF — Accueil">
+    <div className="min-h-screen bg-eef-mist text-eef-ink [&_a]:no-underline [&_img]:block [&_img]:max-w-full">
+      <header className="sticky top-0 z-40 h-20 border-b border-eef-border bg-eef-mist">
+        <div
+          className={`${wrap} flex h-full max-w-[1512px] items-center justify-between gap-6 lg:grid lg:grid-cols-[1fr_auto_1fr]`}
+        >
+          <Link href="/" className="shrink-0 justify-self-start" aria-label="Procédure EEF — Accueil">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={ASSETS.logo} alt="eef" />
+            <img src={ASSETS.logo} alt="eef" className="h-10 w-[71px] object-contain" />
           </Link>
 
-          <nav className="ed-desktop-nav" aria-label="Navigation principale">
+          <nav
+            className="mx-auto hidden items-center justify-center gap-[25px] lg:flex"
+            aria-label="Navigation principale"
+          >
             {["S'orienter", "Candidater", "S'installer", "Comprendre"].map((label) => (
-              <div className="ed-nav-group" key={label}>
-                <button type="button">
-                  {label}
-                  <IconChevron />
-                </button>
-              </div>
+              <button
+                key={label}
+                type="button"
+                className="inline-flex min-h-11 items-center gap-1.5 whitespace-nowrap border-0 bg-transparent p-0 text-[12px] font-medium text-eef-ink transition hover:text-eef-navy"
+              >
+                {label}
+                <IconChevron />
+              </button>
             ))}
           </nav>
 
-          <div className="ed-desktop-actions">
-            <Link href="/login" className="ed-student-link">
+          <div className="hidden items-center justify-end gap-[23px] lg:flex">
+            <Link
+              href="/login"
+              className="inline-flex min-h-11 items-center gap-2 text-[12px] font-medium text-eef-ink transition hover:text-eef-navy"
+            >
               Espace étudiant <IconArrow />
             </Link>
-            <a href="mailto:hello@eef.fr" className="ed-button">
+            <a href="mailto:hello@eef.fr" className={btnPrimary}>
               Parler à un conseiller <IconArrow />
             </a>
           </div>
 
           <button
             type="button"
-            className="ed-mobile-toggle"
+            className="ml-auto border-0 bg-transparent p-1.5 text-eef-ink lg:hidden"
             aria-label="Ouvrir le menu"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
@@ -231,410 +253,604 @@ export function MarketingHome() {
           </button>
         </div>
 
-        <div className={`ed-mobile-menu${menuOpen ? " open" : ""}`}>
-          <Link href="/login" onClick={() => setMenuOpen(false)}>
+        <div
+          className={`grid gap-2 border-t border-eef-border bg-eef-mist px-5 pb-5 pt-3 lg:hidden ${
+            menuOpen ? "" : "hidden"
+          }`}
+        >
+          <Link
+            href="/login"
+            onClick={() => setMenuOpen(false)}
+            className="rounded-[10px] px-3.5 py-3 text-[15px] text-eef-ink hover:bg-eef-soft"
+          >
             Espace étudiant
           </Link>
-          <Link href="/register" onClick={() => setMenuOpen(false)}>
+          <Link
+            href="/register"
+            onClick={() => setMenuOpen(false)}
+            className="rounded-[10px] px-3.5 py-3 text-[15px] text-eef-ink hover:bg-eef-soft"
+          >
             Commencer
           </Link>
-          <a href="mailto:hello@eef.fr">Parler à un conseiller</a>
+          <a
+            href="mailto:hello@eef.fr"
+            className="rounded-[10px] px-3.5 py-3 text-[15px] text-eef-ink hover:bg-eef-soft"
+          >
+            Parler à un conseiller
+          </a>
         </div>
       </header>
 
       <main>
-        <section className="ed-hp-hero ed-wrap">
-          <h1 className="ed-hp-title">
+        {/* Hero */}
+        <section className={`${wrap} flex flex-col items-center px-0 pb-[92px] pt-16 text-center max-md:pb-[60px] max-md:pt-10`}>
+          <h1 className="mx-auto max-w-[1120px] text-[clamp(33px,5.2vw,74px)] font-medium leading-[1.1] tracking-[-0.03em] text-eef-ink">
             {"Construisez votre projet d'études"}
             <br />
-            <Link href="/register" className="ed-hp-chip">
+            <Link
+              href="/register"
+              className="mx-2.5 inline-flex -translate-y-[7px] items-center gap-2 rounded-full border border-eef-border bg-white px-[18px] py-2 align-middle text-[clamp(13px,1.25vw,16px)] font-medium tracking-normal text-eef-secondary shadow-[0_2px_12px_rgba(16,43,67,0.05)] transition hover:border-eef-blue hover:text-eef-ink hover:shadow-[0_4px_18px_rgba(99,168,216,0.15)] [&_svg]:text-eef-blue"
+            >
               <IconSearch />
               Trouver ma voie
             </Link>
             {" en France avec "}
             <a
               href="mailto:hello@eef.fr"
-              className="ed-hp-avatar"
+              className="mx-3 inline-flex size-[clamp(50px,5.6vw,80px)] -translate-y-[5px] overflow-hidden rounded-full border-[3px] border-white align-middle shadow-[0_6px_20px_rgba(16,43,67,0.12)] transition hover:-translate-y-[9px]"
               aria-label="Parler à un conseiller"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={ASSETS.advisor} alt="" />
+              <img src={ASSETS.advisor} alt="" className="size-full object-cover object-center" />
             </a>
             {" un\u00A0conseiller humain."}
           </h1>
 
-          <p className="ed-hp-subtitle">
+          <p className="mx-auto mt-6 max-w-[600px] text-[clamp(15px,1.5vw,19px)] font-medium leading-normal text-eef-ink">
             Orientation, formations, candidatures et installation — un accompagnement
             humain à chaque étape.
           </p>
 
-          <nav className="ed-hp-tabs" aria-label="Étapes du parcours">
-            <a href="#parcours">Orientation</a>
-            <span aria-hidden />
-            <a href="#parcours" className="active">
+          <nav
+            className="mt-[30px] flex flex-wrap items-center justify-center gap-3.5 text-[13px] text-eef-secondary"
+            aria-label="Étapes du parcours"
+          >
+            <a href="#parcours" className="px-0.5 py-1 transition hover:text-eef-ink">
+              Orientation
+            </a>
+            <span className="h-px w-[26px] bg-eef-border" aria-hidden />
+            <a href="#parcours" className="px-0.5 py-1 font-semibold text-eef-ink">
               Formations
             </a>
-            <span aria-hidden />
-            <a href="#dossier">Candidature</a>
-            <span aria-hidden />
-            <a href="#installation">Installation</a>
+            <span className="h-px w-[26px] bg-eef-border" aria-hidden />
+            <a href="#dossier" className="px-0.5 py-1 transition hover:text-eef-ink">
+              Candidature
+            </a>
+            <span className="h-px w-[26px] bg-eef-border" aria-hidden />
+            <a href="#installation" className="px-0.5 py-1 transition hover:text-eef-ink">
+              Installation
+            </a>
           </nav>
 
-          <div className="ed-hp-cta">
-            <a href="#parcours" className="ed-hp-pill ed-hp-pill-light">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3.5">
+            <a href="#parcours" className={`${pillBase} bg-transparent text-[#173b5d] hover:bg-[#173b5d0f]`}>
               <IconRoute />
               Parcours de A à Z
             </a>
-            <Link href="/login" className="ed-hp-pill ed-hp-pill-dark">
+            <Link href="/login" className={`${pillBase} bg-[#173b5d] text-white hover:border-[#122f4b] hover:bg-[#122f4b]`}>
               Espace étudiant
             </Link>
-            <a href="mailto:hello@eef.fr" className="ed-hp-pill ed-hp-pill-primary">
+            <a
+              href="mailto:hello@eef.fr"
+              className={`${pillBase} bg-[#173b5d] text-white hover:border-[#122f4b] hover:bg-[#122f4b]`}
+            >
               Parler à un conseiller
               <IconArrow />
             </a>
           </div>
 
-          <div className="ed-hp-foot">
-            <div className="ed-hp-avatars" aria-hidden>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={ASSETS.advisor} alt="" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={ASSETS.conversation} alt="" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={ASSETS.student} alt="" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={ASSETS.library} alt="" />
+          <div className="mt-16 flex flex-col items-center gap-4">
+            <div className="flex items-center" aria-hidden>
+              {[ASSETS.advisor, ASSETS.conversation, ASSETS.student, ASSETS.library].map(
+                (src, i) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    key={src}
+                    src={src}
+                    alt=""
+                    className={`size-[46px] rounded-full border-2 border-eef-mist object-cover shadow-[0_2px_12px_rgba(16,43,67,0.09)] ${
+                      i === 0 ? "" : "-ml-[13px]"
+                    }`}
+                  />
+                ),
+              )}
             </div>
-            <p className="ed-hp-foot-label">Un accompagnement humain, pas un algorithme.</p>
+            <p className="m-0 text-[13px] text-eef-secondary">
+              Un accompagnement humain, pas un algorithme.
+            </p>
           </div>
         </section>
 
-        <section className="ed-section ed-wrap ed-journey" id="parcours">
-          <div className="ed-journey-intro">
-            <p className="ed-eyebrow">01 — DE A À Z</p>
-            <h2>
+        {/* 01 Journey */}
+        <section
+          id="parcours"
+          className={`${wrap} grid items-stretch gap-12 py-[5.5rem] max-md:py-14 lg:grid-cols-[minmax(260px,0.4fr)_minmax(0,0.6fr)] lg:gap-[clamp(3rem,6vw,5.5rem)]`}
+        >
+          <div className="relative flex h-full min-h-full flex-col self-stretch pb-[5.5rem]">
+            <p className={eyebrow}>01 — DE A À Z</p>
+            <h2 className={`${sectionH2} max-w-[12em]`}>
               Votre parcours,
               <br />
               étape par étape.
             </h2>
-            <p>
+            <p className={`${bodyMuted} mt-[1.15rem] max-w-[28rem]`}>
               Chaque étape influence la suivante. Nous construisons donc votre projet dans
               le bon ordre plutôt que de commencer directement par les candidatures.
             </p>
-            <div className="ed-journey-mark" aria-hidden="true">
+            <div
+              className="pointer-events-none absolute bottom-0 left-0 hidden select-none whitespace-nowrap text-[clamp(3.25rem,5.5vw,5rem)] font-medium leading-none tracking-[-0.04em] text-[#c5d5e3] lg:block"
+              aria-hidden
+            >
               01&nbsp;—&nbsp;06
             </div>
           </div>
 
-          <div className="ed-journey-list">
+          <div className="self-stretch border-t border-eef-border">
             {JOURNEY.map((step) => (
-              <a className="ed-journey-item" href="#dossier" key={step.n}>
-                <span className="ed-journey-num">{step.n}</span>
-                <div className="ed-journey-body">
-                  <div className="ed-journey-title-row">
-                    <h3>{step.title}</h3>
-                    <IconArrow />
+              <a
+                key={step.n}
+                href="#dossier"
+                className="group grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-[1.15rem] gap-y-1 border-b border-eef-border py-[1.2rem] text-inherit"
+              >
+                <span className="pt-0.5 text-[14px] font-medium leading-tight tracking-[0.02em] text-[#8eb4d0]">
+                  {step.n}
+                </span>
+                <div className="min-w-0">
+                  <div className="flex items-start justify-between gap-4">
+                    <h3 className="m-0 text-[18px] font-semibold leading-tight tracking-[-0.02em] text-eef-ink transition group-hover:text-eef-navy">
+                      {step.title}
+                    </h3>
+                    <span className="mt-0.5 shrink-0 text-eef-ink opacity-75 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-eef-navy">
+                      <IconArrow />
+                    </span>
                   </div>
-                  <p>{step.desc}</p>
+                  <p className="mt-1.5 max-w-[34rem] text-[14px] leading-snug text-eef-secondary">
+                    {step.desc}
+                  </p>
                 </div>
               </a>
             ))}
           </div>
         </section>
 
-        <section className="ed-section ed-wrap ed-start" id="orientation">
-          <p className="ed-eyebrow">02 — TOUT COMMENCE PAR VOUS</p>
-          <h2 className="ed-start-title">
-            <span className="ed-start-lead">
+        {/* 02 Start */}
+        <section id="orientation" className={`${wrap} py-[5.5rem] max-md:py-14`}>
+          <p className={eyebrow}>02 — TOUT COMMENCE PAR VOUS</p>
+          <h2 className={`${sectionH2} max-w-[min(13.5em,100%)]`}>
+            <span className="text-eef-ink">
               Vous ne savez pas encore exactement quoi étudier ?
             </span>{" "}
-            <span className="ed-start-accent">C&apos;est là que tout commence.</span>
+            <span className="text-eef-blue">C&apos;est là que tout commence.</span>
           </h2>
 
-          <div className="ed-start-grid">
-            <div className="ed-start-photo">
+          <div className="mt-11 grid items-stretch gap-9 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-[clamp(2.5rem,5vw,4.5rem)]">
+            <div className="aspect-[4/5] max-h-[560px] overflow-hidden rounded-[16px_7.5rem_16px_16px] bg-eef-soft max-md:aspect-[5/4] max-md:max-h-none max-md:rounded-[14px_4.5rem_14px_14px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={ASSETS.library}
                 alt="Étudiante consultant des ouvrages en bibliothèque"
+                className="size-full object-cover"
               />
             </div>
 
-            <div className="ed-start-panel">
-              <p className="ed-start-intro">
+            <div className="flex h-full min-w-0 flex-col">
+              <p className="m-0 max-w-[28rem] text-[14px] font-medium leading-snug text-eef-ink">
                 Avant de parler d&apos;universités, nous prenons le temps de comprendre votre
                 profil.
               </p>
 
-              <div className="ed-start-rows">
+              <div className="mt-7 border-t border-eef-border">
                 {PROFILE.map((item) => (
-                  <div className="ed-start-row" key={item.title}>
-                    <strong>{item.title}</strong>
-                    <span>{item.desc}</span>
+                  <div
+                    key={item.title}
+                    className="grid grid-cols-1 items-baseline gap-1.5 border-b border-eef-border py-4 sm:grid-cols-[minmax(7.5rem,0.38fr)_minmax(0,1fr)] sm:gap-x-6 sm:gap-y-4 sm:py-[1.15rem]"
+                  >
+                    <strong className="text-[18px] font-semibold tracking-[-0.01em] text-eef-ink">
+                      {item.title}
+                    </strong>
+                    <span className="text-[14px] leading-normal text-eef-secondary">
+                      {item.desc}
+                    </span>
                   </div>
                 ))}
               </div>
 
-              <a className="ed-start-cta" href="#parcours">
-                Découvrir l&apos;orientation <span aria-hidden="true">→</span>
+              <a
+                href="#parcours"
+                className="mt-7 inline-flex items-center gap-1.5 text-[13px] font-medium text-eef-blue transition hover:text-eef-navy [&_span]:transition-transform hover:[&_span]:translate-x-[3px]"
+              >
+                Découvrir l&apos;orientation <span aria-hidden>→</span>
               </a>
 
-              <p className="ed-start-note">Une recommandation doit toujours avoir une raison.</p>
+              <p className="mb-0 mt-auto pt-8 text-[13px] leading-snug text-[#9aafbf]">
+                Une recommandation doit toujours avoir une raison.
+              </p>
             </div>
           </div>
         </section>
 
-        <section className="ed-section ed-wrap ed-human" id="accompagnement">
-          <div className="ed-human-photo">
+        {/* 03 Human */}
+        <section
+          id="accompagnement"
+          className={`${wrap} grid items-start gap-10 py-[5.5rem] max-md:py-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-[clamp(2.75rem,5vw,4.75rem)]`}
+        >
+          <div className="relative aspect-[1/1.08] max-h-[580px] overflow-hidden rounded-[28px] bg-eef-soft max-md:aspect-[5/4] max-md:max-h-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={ASSETS.conversation}
               alt="Échange entre étudiants et conseiller"
+              className="size-full object-cover"
             />
-            <span className="ed-human-badge">L&apos;échange fait la différence.</span>
+            <span className="absolute bottom-[1.15rem] left-[1.15rem] inline-flex items-center rounded-[7px] bg-white px-3.5 py-2 text-[9px] font-semibold uppercase leading-tight tracking-[0.14em] text-eef-navy shadow-[0_2px_10px_rgba(16,43,67,0.08)]">
+              L&apos;échange fait la différence.
+            </span>
           </div>
 
-          <div className="ed-human-copy">
-            <p className="ed-eyebrow">03 — UN ACCOMPAGNEMENT HUMAIN</p>
-            <h2>Une vraie personne qui connaît votre dossier.</h2>
-            <p>
+          <div className="flex min-w-0 flex-col items-start pt-0.5">
+            <p className={`${eyebrow} text-eef-navy`}>03 — UN ACCOMPAGNEMENT HUMAIN</p>
+            <h2 className={`${sectionH2} max-w-[11.5em]`}>
+              Une vraie personne qui connaît votre dossier.
+            </h2>
+            <p className={`${bodyMuted} mt-[1.15rem] max-w-[26rem]`}>
               Votre conseiller apprend à connaître votre parcours, vos hésitations et vos
               objectifs avant de vous orienter.
             </p>
-            <p>
+            <p className={`${bodyMuted} mt-[0.85rem] max-w-[26rem]`}>
               La technologie organise les informations et votre progression. Elle ne
               remplace pas la réflexion, le conseil ou la discussion.
             </p>
-            <hr className="ed-human-rule" />
-            <p className="ed-human-emphasis">
+            <hr className="mt-[1.85rem] w-full max-w-[26rem] border-0 border-t border-eef-border" />
+            <p className="mt-[1.85rem] max-w-[24rem] text-[18px] font-medium leading-normal text-eef-ink">
               Votre projet n&apos;est pas généré automatiquement. Il est construit avec vous.
             </p>
-            <a href="mailto:hello@eef.fr" className="ed-button ed-human-cta">
+            <a
+              href="mailto:hello@eef.fr"
+              className={`${btnPrimary} mt-[1.85rem] min-h-12 px-[1.35rem] text-[13px]`}
+            >
               Parler à un conseiller <IconArrow />
             </a>
           </div>
         </section>
 
-        <section className="ed-section ed-wrap ed-method" id="methode">
-          <p className="ed-eyebrow">04 — CHOISIR AVEC MÉTHODE</p>
+        {/* 04 Method */}
+        <section id="methode" className={`${wrap} py-[5.5rem] max-md:py-14`}>
+          <p className={eyebrow}>04 — CHOISIR AVEC MÉTHODE</p>
 
-          <div className="ed-method-head">
-            <h2>Une université ne se résume pas à son nom.</h2>
-            <p>
+          <div className="grid items-start gap-6 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-[clamp(2rem,4vw,4rem)]">
+            <h2 className={`${sectionH2} max-w-[11em]`}>
+              Une université ne se résume pas à son nom.
+            </h2>
+            <p className={`${bodyMuted} max-w-[28rem] md:justify-self-end md:pt-1`}>
               Deux formations portant presque le même intitulé peuvent proposer des
               contenus, des niveaux de sélection, des coûts et des perspectives très
               différents.
             </p>
           </div>
 
-          <div className="ed-method-photo">
+          <div className="relative mt-10 aspect-[21/9] min-h-[260px] max-h-[420px] overflow-hidden rounded-[28px] bg-eef-soft max-md:aspect-[16/10] max-md:min-h-[200px] max-md:max-h-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={ASSETS.campus} alt="Entrée d'un établissement universitaire" />
-            <span className="ed-method-badge">Comparer moins. Comparer mieux.</span>
+            <img
+              src={ASSETS.campus}
+              alt="Entrée d'un établissement universitaire"
+              className="size-full object-cover"
+            />
+            <span className="absolute bottom-[1.15rem] left-[1.15rem] inline-flex items-center rounded-full bg-white px-3.5 py-2 text-[9px] font-semibold uppercase leading-tight tracking-[0.12em] text-eef-navy shadow-[0_2px_10px_rgba(16,43,67,0.08)]">
+              Comparer moins. Comparer mieux.
+            </span>
           </div>
 
-          <div className="ed-method-grid">
-            {UNI_CRITERIA.map((item) => (
-              <article className="ed-method-item" key={item.n}>
-                <span className="ed-method-num">{item.n}</span>
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
+          <div className="mt-9 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+            {UNI_CRITERIA.map((item, i) => (
+              <article
+                key={item.n}
+                className={`border-eef-border p-5 max-md:border-b max-md:py-[1.15rem] max-md:pl-0 max-md:pr-3.5 sm:border-r ${
+                  i === 0 ? "sm:pl-0" : ""
+                } ${i === UNI_CRITERIA.length - 1 ? "sm:border-r-0 sm:pr-0" : ""} ${
+                  (i + 1) % 3 === 0 ? "max-lg:sm:border-r-0 max-lg:sm:pr-0" : ""
+                } ${(i + 1) % 3 === 1 ? "max-lg:sm:pl-0" : ""}`}
+              >
+                <span className="mb-2.5 block text-[10px] font-medium tracking-[0.04em] text-[#9aafbf]">
+                  {item.n}
+                </span>
+                <h3 className="m-0 text-[18px] font-semibold leading-tight tracking-[-0.02em] text-eef-ink">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-[14px] leading-snug text-eef-secondary">{item.desc}</p>
               </article>
             ))}
           </div>
 
-          <a className="ed-method-cta" href="#parcours">
-            Explorer notre méthode de sélection <span aria-hidden="true">→</span>
+          <a href="#parcours" className={`${textLink} mt-8 gap-1.5 [&_span]:no-underline hover:[&_span]:translate-x-[3px] [&_span]:transition-transform`}>
+            Explorer notre méthode de sélection <span aria-hidden>→</span>
           </a>
         </section>
 
-        <section className="ed-section ed-wrap ed-strategy" id="strategie">
-          <p className="ed-eyebrow">05 — LA STRATÉGIE</p>
+        {/* 05 Strategy */}
+        <section id="strategie" className={`${wrap} py-[5.5rem] max-md:py-14`}>
+          <p className={eyebrow}>05 — LA STRATÉGIE</p>
 
-          <div className="ed-strategy-head">
-            <h2>Ne pas candidater au hasard.</h2>
-            <p>
+          <div className="grid items-start gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-[clamp(2rem,4vw,4rem)]">
+            <h2 className={`${sectionH2} max-w-[10em]`}>Ne pas candidater au hasard.</h2>
+            <p className={`${bodyMuted} max-w-[26rem] md:justify-self-end md:pt-1`}>
               Une bonne stratégie ne consiste pas à multiplier les candidatures. Elle
               consiste à construire une sélection cohérente.
             </p>
           </div>
 
-          <div className="ed-strategy-grid">
+          <div className="mt-11 grid gap-8 md:grid-cols-3 md:gap-[clamp(1.75rem,3vw,3rem)]">
             {STRATEGY.map((item) => (
-              <article className="ed-strategy-item" key={item.n}>
-                <span className="ed-strategy-num">{item.n}</span>
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
+              <article key={item.n} className="border-t border-eef-border pt-[1.35rem]">
+                <span className="mb-[1.1rem] block text-[clamp(2.75rem,5vw,4rem)] font-medium leading-none tracking-[-0.04em] text-[#9ec4df]">
+                  {item.n}
+                </span>
+                <h3 className="m-0 text-[18px] font-semibold leading-tight tracking-[-0.02em] text-eef-ink">
+                  {item.title}
+                </h3>
+                <p className="mt-2.5 max-w-[22rem] text-[14px] leading-snug text-eef-secondary">
+                  {item.desc}
+                </p>
               </article>
             ))}
           </div>
 
-          <div className="ed-strategy-foot">
-            <p className="ed-strategy-note">
+          <div className="mt-10 flex flex-wrap items-end justify-between gap-4 gap-x-8">
+            <p className="m-0 max-w-[28rem] text-[12px] leading-snug text-[#9aafbf]">
               Une candidature prudente ne signifie jamais qu&apos;une admission est garantie.
             </p>
-            <a className="ed-strategy-cta" href="#parcours">
-              Construire ma stratégie <span aria-hidden="true">→</span>
+            <a href="#parcours" className={`${textLink} gap-1 [&_span]:no-underline hover:[&_span]:translate-x-[3px] [&_span]:transition-transform`}>
+              Construire ma stratégie <span aria-hidden>→</span>
             </a>
           </div>
         </section>
 
-        <section className="ed-section ed-wrap ed-split" id="dossier">
+        {/* 06 Dossier */}
+        <section
+          id="dossier"
+          className={`${wrap} grid items-center gap-8 py-[5.5rem] max-md:py-14 md:grid-cols-[1.05fr_0.95fr] md:gap-12`}
+        >
           <div>
-            <p className="ed-eyebrow">06 — VOTRE DOSSIER</p>
-            <h2>Votre parcours doit être compris, pas simplement envoyé.</h2>
-            <p>
+            <p className={eyebrow}>06 — VOTRE DOSSIER</p>
+            <h2 className={sectionH2}>
+              Votre parcours doit être compris, pas simplement envoyé.
+            </h2>
+            <p className={`${bodyMuted} mt-[1.15rem] max-w-[40rem]`}>
               Un bon dossier relie votre parcours passé, votre choix de formation et votre
               projet futur de manière cohérente.
             </p>
-            <ul className="ed-checklist">
+            <ul className="mt-6 grid list-none gap-3 p-0">
               {DOSSIER_STEPS.map((step) => (
-                <li key={step}>
-                  <span className="dot" />
+                <li key={step} className="grid grid-cols-[1.5rem_1fr] items-start gap-2.5 text-eef-navy">
+                  <span className="mt-[0.45rem] size-[0.55rem] rounded-full bg-eef-blue" />
                   <span>{step}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="ed-photo">
+          <div className="min-h-[280px] overflow-hidden rounded-[18px] border border-eef-soft bg-eef-soft">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={ASSETS.library} alt="Préparation du dossier" />
+            <img
+              src={ASSETS.library}
+              alt="Préparation du dossier"
+              className="min-h-[280px] size-full object-cover"
+            />
           </div>
         </section>
 
-        <section className="ed-section ed-wrap" id="installation">
-          <p className="ed-eyebrow">08 — ET APRÈS L&apos;ADMISSION ?</p>
-          <h2>L&apos;admission n&apos;est pas la dernière étape.</h2>
-          <div className="ed-feature-grid cols-4" style={{ marginTop: "1.75rem" }}>
+        {/* Installation */}
+        <section id="installation" className={`${wrap} py-[5.5rem] max-md:py-14`}>
+          <p className={eyebrow}>08 — ET APRÈS L&apos;ADMISSION ?</p>
+          <h2 className={sectionH2}>L&apos;admission n&apos;est pas la dernière étape.</h2>
+          <div className="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {AFTER.map((item) => (
-              <article className="ed-feature-card" key={item.n}>
-                <p className="ed-eyebrow">{item.n}</p>
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
+              <article
+                key={item.n}
+                className="rounded-2xl border border-eef-soft bg-white px-[1.3rem] py-5"
+              >
+                <p className={eyebrow}>{item.n}</p>
+                <h3 className="m-0 text-[1.05rem] font-semibold text-eef-ink">{item.title}</h3>
+                <p className="mt-1.5 text-[0.92rem] leading-normal text-eef-secondary">
+                  {item.desc}
+                </p>
               </article>
             ))}
           </div>
-          <div className="ed-photo" style={{ marginTop: "1.75rem", minHeight: 300 }}>
+          <div className="mt-7 min-h-[300px] overflow-hidden rounded-[18px] border border-eef-soft bg-eef-soft">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={ASSETS.city} alt="Vie en France" />
+            <img src={ASSETS.city} alt="Vie en France" className="min-h-[300px] size-full object-cover" />
           </div>
         </section>
 
-        <section className="ed-section ed-wrap">
-          <p className="ed-eyebrow">LE JOURNAL EEF</p>
-          <h2>Comprendre avant de décider.</h2>
-          <div className="ed-articles">
+        {/* Journal */}
+        <section className={`${wrap} py-[5.5rem] max-md:py-14`}>
+          <p className={eyebrow}>LE JOURNAL EEF</p>
+          <h2 className={sectionH2}>Comprendre avant de décider.</h2>
+          <div className="mt-8 grid gap-0">
             {ARTICLES.map((article) => (
-              <a href="#parcours" key={article.title}>
+              <a
+                key={article.title}
+                href="#parcours"
+                className="group flex items-center justify-between gap-4 border-b border-eef-border py-5 text-inherit transition hover:bg-white/40"
+              >
                 <div>
-                  <p className="ed-eyebrow">{article.tag}</p>
-                  <h3>{article.title}</h3>
+                  <p className={eyebrow}>{article.tag}</p>
+                  <h3 className="m-0 text-[1.15rem] font-semibold text-eef-ink transition group-hover:text-eef-navy">
+                    {article.title}
+                  </h3>
                 </div>
-                <IconArrow />
+                <span className="shrink-0 text-eef-ink opacity-70 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <IconArrow />
+                </span>
               </a>
             ))}
           </div>
         </section>
 
-        <section className="ed-workspace-link ed-wrap">
-          <p className="ed-eyebrow">VOTRE ESPACE ÉTUDIANT</p>
-          <p>
+        {/* Workspace */}
+        <section className={`${wrap} py-12 text-center`}>
+          <p className={eyebrow}>VOTRE ESPACE ÉTUDIANT</p>
+          <p className="mx-auto mb-5 mt-2 font-display text-[clamp(1.5rem,3vw,2.2rem)] leading-[1.15] tracking-[-0.03em] text-eef-ink">
             Des outils pour organiser.
             <br />
             Des humains pour conseiller.
           </p>
-          <Link href="/login" className="ed-text-link">
+          <Link
+            href="/login"
+            className="inline-flex rounded-full px-3 py-2 text-eef-deep transition hover:bg-eef-soft"
+          >
             Ouvrir Mon Dossier →
           </Link>
         </section>
 
-        <section className="ed-final ed-wrap">
-          <div className="ed-final-card">
-            <div className="ed-final-copy">
-              <h2>Votre projet mérite plus qu&apos;une liste d&apos;universités.</h2>
-              <p>Commençons par comprendre où vous voulez aller.</p>
-              <div className="ed-final-actions">
-                <a href="mailto:hello@eef.fr" className="ed-final-btn ed-final-btn-primary">
+        {/* Final CTA */}
+        <section className={`${wrap} pb-[4.5rem] pt-8`}>
+          <div className="relative grid items-center gap-6 overflow-hidden rounded-[22px] bg-eef-navy px-6 py-8 text-white md:grid-cols-[1.2fr_0.8fr] md:px-11 md:py-11">
+            <div>
+              <h2 className="m-0 text-[clamp(1.7rem,3.5vw,2.6rem)] font-medium tracking-[-0.03em] text-white">
+                Votre projet mérite plus qu&apos;une liste d&apos;universités.
+              </h2>
+              <p className="mt-3 text-white/80">
+                Commençons par comprendre où vous voulez aller.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2.5">
+                <a
+                  href="mailto:hello@eef.fr"
+                  className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-[13px] font-medium text-eef-navy"
+                >
                   Parler à un conseiller
                 </a>
-                <Link href="/register" className="ed-final-btn ed-final-btn-outline">
+                <Link
+                  href="/register"
+                  className="inline-flex items-center justify-center rounded-full border border-white/35 bg-transparent px-5 py-2.5 text-[13px] font-medium text-white"
+                >
                   Commencer
                 </Link>
               </div>
             </div>
-            <div className="ed-final-art" aria-hidden>
+            <div className="flex items-center justify-center" aria-hidden>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={ASSETS.logoMark} alt="" />
+              <img src={ASSETS.logoMark} alt="" className="w-[min(220px,70%)] opacity-90" />
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="ed-footer">
-        <div className="ed-wrap">
-          <div className="ed-footer-grid">
-            <div className="ed-footer-brand">
-              <Link href="/" className="ed-footer-logo" aria-label="Procédure EEF — Accueil">
+      <footer className="relative overflow-hidden border-t border-eef-soft bg-[#eef6fb] pb-8 pt-12">
+        <div className={wrap}>
+          <div className="grid gap-8 md:grid-cols-[1.1fr_auto_1.6fr] md:gap-10">
+            <div>
+              <Link href="/" aria-label="Procédure EEF — Accueil">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={ASSETS.logo} alt="eef" />
+                <img src={ASSETS.logo} alt="eef" className="h-[26px] w-auto" />
               </Link>
-              <p className="ed-footer-tagline">
+              <p className="mt-3.5 max-w-[18rem] text-[0.95rem] text-eef-secondary">
                 Votre projet d&apos;études en France, accompagné de A à Z.
               </p>
-              <a className="ed-footer-mail" href="mailto:hello@eef.fr">
+              <a
+                href="mailto:hello@eef.fr"
+                className="mt-3.5 inline-flex items-center gap-1 text-eef-deep"
+              >
                 Nous écrire <IconArrow />
               </a>
             </div>
 
             <div>
-              <a className="ed-footer-cta" href="mailto:hello@eef.fr">
+              <a
+                href="mailto:hello@eef.fr"
+                className="inline-flex items-center gap-2 rounded-full bg-eef-navy px-5 py-3 text-[13px] font-medium text-white"
+              >
                 Parler à un conseiller <IconArrow />
               </a>
             </div>
 
-            <div className="ed-footer-nav">
-              <nav aria-label="S'orienter">
-                <p className="ed-footer-col-title">S&apos;orienter</p>
-                <a href="#parcours">Orientation</a>
-                <a href="#parcours">Formations</a>
-                <a href="#parcours">Universités</a>
-              </nav>
-              <nav aria-label="Candidater">
-                <p className="ed-footer-col-title">Candidater</p>
-                <a href="#dossier">Stratégie</a>
-                <a href="#dossier">Dossier</a>
-                <Link href="/login">Procédure EEF</Link>
-              </nav>
-              <nav aria-label="S'installer">
-                <p className="ed-footer-col-title">S&apos;installer</p>
-                <a href="#installation">Logement</a>
-                <a href="#installation">Démarches</a>
-                <a href="#installation">Vie en France</a>
-              </nav>
-              <nav aria-label="Procédure EEF">
-                <p className="ed-footer-col-title">Procédure EEF</p>
-                <Link href="/login">Espace étudiant</Link>
-                <Link href="/register">Commencer</Link>
-                <a href="mailto:hello@eef.fr">Contact</a>
-              </nav>
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+              {[
+                {
+                  title: "S'orienter",
+                  links: [
+                    ["#parcours", "Orientation"],
+                    ["#parcours", "Formations"],
+                    ["#parcours", "Universités"],
+                  ],
+                },
+                {
+                  title: "Candidater",
+                  links: [
+                    ["#dossier", "Stratégie"],
+                    ["#dossier", "Dossier"],
+                    ["/login", "Procédure EEF"],
+                  ],
+                },
+                {
+                  title: "S'installer",
+                  links: [
+                    ["#installation", "Logement"],
+                    ["#installation", "Démarches"],
+                    ["#installation", "Vie en France"],
+                  ],
+                },
+                {
+                  title: "Procédure EEF",
+                  links: [
+                    ["/login", "Espace étudiant"],
+                    ["/register", "Commencer"],
+                    ["mailto:hello@eef.fr", "Contact"],
+                  ],
+                },
+              ].map((col) => (
+                <nav key={col.title} aria-label={col.title} className="flex flex-col gap-2">
+                  <p className="m-0 mb-1 text-[12px] font-semibold text-eef-ink">{col.title}</p>
+                  {col.links.map(([href, label]) =>
+                    href.startsWith("/") ? (
+                      <Link key={label} href={href} className="text-[13px] text-eef-secondary hover:text-eef-navy">
+                        {label}
+                      </Link>
+                    ) : (
+                      <a key={label} href={href} className="text-[13px] text-eef-secondary hover:text-eef-navy">
+                        {label}
+                      </a>
+                    ),
+                  )}
+                </nav>
+              ))}
             </div>
           </div>
 
-          <div className="ed-footer-legal">
-            <p>© 2026 Procédure EEF</p>
-            <nav aria-label="Informations légales">
-              <a href="#">Mentions légales</a>
-              <a href="#">Politique de confidentialité</a>
-              <a href="#">Conditions</a>
-              <a href="#">Cookies</a>
+          <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-eef-border pt-6 text-[12px] text-eef-secondary">
+            <p className="m-0">© 2026 Procédure EEF</p>
+            <nav aria-label="Informations légales" className="flex flex-wrap gap-4">
+              <a href="#" className="hover:text-eef-navy">
+                Mentions légales
+              </a>
+              <a href="#" className="hover:text-eef-navy">
+                Politique de confidentialité
+              </a>
+              <a href="#" className="hover:text-eef-navy">
+                Conditions
+              </a>
+              <a href="#" className="hover:text-eef-navy">
+                Cookies
+              </a>
             </nav>
           </div>
-          <p className="ed-footer-disclaimer">
+          <p className="mt-4 text-[12px] text-eef-secondary">
             Procédure EEF est un service indépendant et n&apos;est pas affilié à Campus
             France ou au gouvernement français.
           </p>
         </div>
-        <span className="ed-footer-mega" aria-hidden>
+        <span
+          className="pointer-events-none absolute bottom-[-0.35em] right-4 select-none text-[clamp(6rem,18vw,14rem)] font-medium leading-none tracking-[-0.06em] text-[#d7e8f3]"
+          aria-hidden
+        >
           eef
         </span>
       </footer>
