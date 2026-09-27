@@ -10,6 +10,8 @@ const PUBLIC_PATHS = [
   "/carriere",
   "/parents",
   "/communaute",
+  "/faq",
+  "/methode",
 ];
 const PUBLIC_API = ["/api/auth/login", "/api/auth/register", "/api/auth/logout"];
 
