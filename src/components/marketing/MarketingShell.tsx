@@ -30,7 +30,7 @@ export const NAV_ITEMS = [
     links: [
       { href: "/orientation", label: "Orientation" },
       { href: "/formations", label: "Formations" },
-      { href: "/methode", label: "Universités" },
+      { href: "/universites", label: "Universités" },
       { href: "/parcours", label: "Bourses" },
     ],
   },
