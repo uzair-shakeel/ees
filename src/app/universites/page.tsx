@@ -71,6 +71,7 @@ const orientationWrap =
 
 const page = () => {
     const [selectedFilters, setSelectedFilters] = useState<Record<string, string | null>>({});
+    const [filtersOpen, setFiltersOpen] = useState(false);
 
     function toggleFilter(label: string, option: string) {
         setSelectedFilters((current) => ({
@@ -217,29 +218,41 @@ const page = () => {
                     </p>
                 </div>
 
-                <div className="flex items-center h-[58px] gap-2 rounded-full border border-[#c6d9e7] bg-white pl-5 pr-2 py-2 shadow-[rgba(37,39,37,0.08)_0px_10px_30px_-12px]">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-search h-5 w-5 shrink-0 text-[#5e7282]"
-                        aria-hidden="true"
+                <div className="flex h-[58px] items-center gap-2 rounded-full border border-[#c6d9e7] bg-white py-2 pl-5 pr-2 shadow-[rgba(37,39,37,0.08)_0px_10px_30px_-12px] max-md:h-auto max-md:flex-wrap max-md:rounded-[18px] max-md:p-2">
+                    <div className="flex min-w-0 flex-1 items-center gap-2 max-md:basis-full max-md:px-2">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="lucide lucide-search h-5 w-5 shrink-0 text-[#5e7282]"
+                            aria-hidden="true"
+                        >
+                            <path d="m21 21-4.34-4.34"></path>
+                            <circle cx="11" cy="11" r="8"></circle>
+                        </svg>
+                        <input
+                            type="search"
+                            placeholder="Rechercher une université, une école ou une formation"
+                            className="min-w-0 flex-1 bg-transparent py-2 text-[15px] text-[#102B43] outline-none placeholder:text-[#9aabba]"
+                            aria-label="Rechercher une université, une école ou une formation"
+                        />
+                    </div>
+                    <button
+                        type="button"
+                        onClick={() => setFiltersOpen(true)}
+                        className="hidden h-10 shrink-0 items-center justify-center gap-2 rounded-full border border-[#102b43] px-4 text-[13px] font-medium text-[#102b43] max-md:inline-flex"
                     >
-                        <path d="m21 21-4.34-4.34"></path>
-                        <circle cx="11" cy="11" r="8"></circle>
-                    </svg>
-                    <input
-                        type="search"
-                        placeholder="Rechercher une université, une école ou une formation"
-                        className="min-w-0 flex-1 bg-transparent py-2 text-[15px] text-[#102B43] outline-none placeholder:text-[#9aabba]"
-                        aria-label="Rechercher une université, une école ou une formation"
-                    />
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <path d="M4 6h16M7 12h10M10 18h4" />
+                        </svg>
+                        Filtres
+                    </button>
                     <button
                         type="button"
                         className="inline-flex h-10 shrink-0 items-center justify-center rounded-full bg-eef-navy px-4.5 text-[13.5px] font-medium text-white transition hover:bg-eef-ink"
@@ -249,7 +262,7 @@ const page = () => {
                 </div>
 
                 <div className="mt-10 grid gap-12 md:grid-cols-[minmax(0,260px)_1fr]">
-                    <div className="grid gap-6">
+                    <div className="grid gap-6 max-md:hidden">
                         {FILTER_GROUPS.map(([label, options]) => (
                             <div key={label}>
                                 <p className="m-0 mb-[7px] text-[11.5px] leading-[17.81px] font-bold uppercase tracking-[0.92px] text-[#5e7282]">
@@ -262,7 +275,7 @@ const page = () => {
                                             type="button"
                                             aria-pressed={selectedFilters[label] === option}
                                             onClick={() => toggleFilter(label, option)}
-                                            className={`cursor-pointer rounded-full border px-3.5 py-[7px] leading-[100%] text-[12.5px] font-semibold transition ${
+                                            className={`cursor-pointer rounded-full border px-3.5 py-[7px] leading-[100%] text-[12.5px] h-[35.38px] font-semibold transition ${
                                                 selectedFilters[label] === option
                                                     ? "border-[#102b43] bg-[#102b43] text-white"
                                                     : "border-[#c6d9e7] bg-white text-[#5e7282] hover:border-[#63a8d8] hover:text-[#63a8d8]"
@@ -284,6 +297,56 @@ const page = () => {
                         Recherche en cours...
                     </div>
                 </div>
+
+                {filtersOpen && (
+                    <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label="Filtres de recherche">
+                        <button
+                            type="button"
+                            aria-label="Fermer les filtres"
+                            onClick={() => setFiltersOpen(false)}
+                            className="eef-filter-backdrop absolute inset-0 h-full w-full cursor-default bg-[#102b43]/75"
+                        />
+                        <div className="eef-filter-sheet absolute inset-x-0 bottom-0 max-h-[86vh] overflow-y-auto rounded-t-[26px] bg-[#fdfcf8] px-6 pb-10 pt-6 shadow-[0_-12px_35px_rgba(16,43,67,0.16)]">
+                            <div className="relative mb-5 flex items-center justify-center">
+                                <h3 className="m-0 text-[20px] font-medium text-[#102b43]">Filtres</h3>
+                                <button
+                                    type="button"
+                                    aria-label="Fermer les filtres"
+                                    onClick={() => setFiltersOpen(false)}
+                                    className="absolute right-0 inline-flex size-6 items-center justify-center rounded-full border border-[#7fa9a3] text-[#5e928c]"
+                                >
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                                        <path d="m6 6 12 12M18 6 6 18" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div className="grid gap-6">
+                                {FILTER_GROUPS.map(([label, options]) => (
+                                    <div key={label}>
+                                        <p className="m-0 mb-2.5 text-[11.5px] font-bold uppercase tracking-[0.92px] text-[#5e7282]">{label}</p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {options.map((option) => (
+                                                <button
+                                                    key={option}
+                                                    type="button"
+                                                    aria-pressed={selectedFilters[label] === option}
+                                                    onClick={() => toggleFilter(label, option)}
+                                                    className={`cursor-pointer rounded-full border px-3.5 py-2 text-[12.5px] font-semibold transition ${
+                                                        selectedFilters[label] === option
+                                                            ? "border-[#102b43] bg-[#102b43] text-white"
+                                                            : "border-[#e2e5e5] bg-white text-[#5e7282] hover:border-[#63a8d8] hover:text-[#63a8d8]"
+                                                    }`}
+                                                >
+                                                    {option}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                )}
             </section>
         </MarketingShell>
     );
