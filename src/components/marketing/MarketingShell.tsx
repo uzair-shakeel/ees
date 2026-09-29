@@ -31,7 +31,7 @@ export const NAV_ITEMS = [
       { href: "/orientation", label: "Orientation" },
       { href: "/formations", label: "Formations" },
       { href: "/universites", label: "Universités" },
-      { href: "/parcours", label: "Bourses" },
+      { href: "/bourses", label: "Bourses" },
     ],
   },
   {
