@@ -7,6 +7,7 @@ import {
   ASSETS,
   wrap,
   btnPrimary,
+  marketingHeroH1,
 } from "@/components/marketing/MarketingShell";
 
 const JOB_TARGETS = [
@@ -78,7 +79,7 @@ export function MarketingCareer() {
     <MarketingShell>
       {/* Hero */}
       <section className={`${wrap} pt-10 pb-16 max-md:pb-12`}>
-        <nav className="mb-8 text-[12px] text-eef-secondary" aria-label="Fil d'Ariane">
+        <nav className="mb-6 text-[12px] text-eef-secondary md:mb-8" aria-label="Fil d'Ariane">
           <Link href="/" className="cursor-pointer transition hover:text-eef-navy">
             Accueil
           </Link>
@@ -90,45 +91,45 @@ export function MarketingCareer() {
           CARRIÈRE
         </p>
 
-        <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-16 lg:gap-24">
-          <h1 className="m-0 max-w-[9em] text-[clamp(2.5rem,7vw,78px)] font-medium leading-[1.05] tracking-[-0.03em] text-eef-ink">
+        <div className="grid min-w-0 items-start gap-5 md:gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16 xl:gap-24">
+          <h1 className={`m-0 max-w-none ${marketingHeroH1} md:max-w-[11em] lg:max-w-[9em]`}>
             Votre diplôme n&apos;est pas la ligne d&apos;arrivée.
           </h1>
-          <p className="m-0 max-w-[28rem] text-[16px] leading-[1.65] text-eef-secondary md:justify-self-end md:pt-2">
+          <p className="m-0 max-w-[28rem] text-[15px] leading-[1.65] text-eef-secondary md:text-[16px] lg:justify-self-end lg:pt-2">
             Analyseur de CV ATS, préparation d&apos;entretiens, suivi de candidatures de
             stage et d&apos;emploi : transformez vos études en France en carrière en France.
           </p>
         </div>
 
-        <div className="relative mt-12 overflow-hidden rounded-[28px] bg-eef-soft max-md:mt-8 max-md:rounded-[22px]">
+        <div className="relative mt-10 overflow-hidden rounded-[22px] bg-eef-soft md:mt-12 md:rounded-[28px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={ASSETS.student}
             alt="Étudiant travaillant sur un ordinateur"
-            className="aspect-[21/9] min-h-[240px] w-full object-cover max-md:aspect-[16/10] max-md:min-h-[200px]"
+            className="aspect-[4/3] min-h-[180px] w-full object-cover sm:aspect-[16/10] sm:min-h-[200px] md:aspect-[21/9] md:min-h-[240px]"
           />
-          <span className="absolute bottom-5 left-5 inline-flex items-center rounded-[10px] bg-white/95 px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-eef-navy shadow-[0_2px_12px_rgba(16,43,67,0.08)] backdrop-blur-sm max-md:bottom-3 max-md:left-3 max-md:px-3">
+          <span className="absolute bottom-3 left-3 inline-flex max-w-[calc(100%-1.5rem)] items-center rounded-[10px] bg-white/95 px-3 py-1.5 text-[8px] font-semibold uppercase tracking-[0.1em] text-eef-navy shadow-[0_2px_12px_rgba(16,43,67,0.08)] backdrop-blur-sm sm:bottom-4 sm:left-4 sm:px-3.5 sm:text-[9px] sm:tracking-[0.12em] md:bottom-5 md:left-5 md:px-4 md:py-2 md:tracking-[0.14em]">
             Comprendre. Choisir. Avancer.
           </span>
         </div>
       </section>
 
       {/* ATS Analyzer */}
-      <section className={`${wrap} py-20 max-md:py-14`}>
-        <p className="mb-10 text-center text-[10px] font-medium uppercase tracking-[0.2em] text-[#8aa4b8]">
+      <section className={`${wrap} py-14 md:py-20`}>
+        <p className="mb-8 text-center text-[10px] font-medium uppercase tracking-[0.2em] text-[#8aa4b8] md:mb-10">
           Comprendre · Choisir · Avancer
         </p>
 
-        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14">
+        <div className="grid min-w-0 items-start gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14">
           <form
             onSubmit={analyze}
-            className="rounded-[28px] border border-eef-border bg-white p-7 shadow-[0_12px_40px_rgba(16,43,67,0.06)] max-md:rounded-[22px] max-md:p-5"
+            className="min-w-0 rounded-[22px] border border-eef-border bg-white p-5 shadow-[0_12px_40px_rgba(16,43,67,0.06)] sm:p-6 md:rounded-[28px] md:p-7"
           >
             <p className="m-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-eef-navy">
               Analyseur de CV ATS
             </p>
 
-            <div className="mt-7">
+            <div className="mt-6 md:mt-7">
               <p className="m-0 mb-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-eef-secondary">
                 Poste cible
               </p>
@@ -140,7 +141,7 @@ export function MarketingCareer() {
                       key={job}
                       type="button"
                       onClick={() => setTarget(job)}
-                      className={`cursor-pointer rounded-full border px-3.5 py-2 text-[13px] font-medium transition ${
+                      className={`cursor-pointer rounded-full border px-3 py-1.5 text-[12px] font-medium transition sm:px-3.5 sm:py-2 sm:text-[13px] ${
                         active
                           ? "border-eef-navy bg-eef-navy text-white"
                           : "border-eef-border bg-white text-eef-ink hover:border-eef-navy hover:bg-eef-mist"
@@ -153,7 +154,7 @@ export function MarketingCareer() {
               </div>
             </div>
 
-            <div className="mt-7">
+            <div className="mt-6 md:mt-7">
               <label
                 htmlFor="cv-text"
                 className="mb-3 block text-[10px] font-semibold uppercase tracking-[0.14em] text-eef-secondary"
@@ -167,9 +168,9 @@ export function MarketingCareer() {
                   setCvText(e.target.value);
                   setStatus("idle");
                 }}
-                rows={9}
+                rows={8}
                 placeholder="Collez ici le contenu de votre CV (texte brut)…"
-                className="w-full resize-y rounded-2xl border border-eef-border bg-eef-mist/40 px-4 py-3.5 text-[14px] leading-relaxed text-eef-ink outline-none transition placeholder:text-eef-secondary/70 focus:border-eef-blue focus:bg-white"
+                className="min-h-[10rem] w-full resize-y rounded-2xl border border-eef-border bg-eef-mist/40 px-3.5 py-3 text-[14px] leading-relaxed text-eef-ink outline-none transition placeholder:text-eef-secondary/70 focus:border-eef-blue focus:bg-white sm:min-h-[12rem] sm:px-4 sm:py-3.5"
               />
             </div>
 
@@ -190,12 +191,14 @@ export function MarketingCareer() {
             )}
           </form>
 
-          <div className="lg:pt-6">
-            
-            <h2 className="mt-4 m-0 max-w-[16em] text-[27px] font-semibold leading-snug tracking-[-0.02em] text-eef-ink">
+          <div className="min-w-0 lg:pt-6">
+            <div className="text-eef-blue">
+              <IconSparkle />
+            </div>
+            <h2 className="mt-3 m-0 max-w-[16em] text-[clamp(1.35rem,4.5vw,27px)] font-semibold leading-snug tracking-[-0.02em] text-eef-ink md:mt-4">
               Compatibilité ATS, format, mots-clés, impact.
             </h2>
-            <p className="mt-4 m-0 max-w-[28rem] text-[15px] leading-[1.55] text-eef-secondary">
+            <p className="mt-3 m-0 max-w-[28rem] text-[14px] leading-[1.55] text-eef-secondary md:mt-4 md:text-[15px]">
               Analyse déterministe de structure et de couverture de mots-clés selon
               votre poste cible — avec des actions concrètes, pas des généralités.
             </p>
@@ -204,24 +207,24 @@ export function MarketingCareer() {
       </section>
 
       {/* Beyond CV */}
-      <section className={`${wrap} mt-[60px] pb-24 max-md:pb-16`}>
+      <section className={`${wrap} mt-12 pb-20 max-md:pb-14 md:mt-[60px] md:pb-24`}>
         <p className="m-0 mb-[10px] text-[11px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]">
           LA SUITE
         </p>
-        <h2 className="m-0 text-[60px] font-semibold leading-[1.2] tracking-[-0.02em] text-eef-ink">
+        <h2 className="m-0 text-[clamp(2rem,8vw,60px)] font-semibold leading-[1.15] tracking-[-0.02em] text-eef-ink">
           Au-delà du CV.
         </h2>
 
-        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+        <div className="mt-8 grid min-w-0 gap-x-8 gap-y-8 md:mt-10 md:grid-cols-2 md:gap-y-10 lg:grid-cols-4 lg:gap-10">
           {NEXT_TOOLS.map((item) => (
-            <article key={item.title} className="flex flex-col">
-              <h3 className="m-0 text-[27px] font-semibold tracking-[-0.02em] text-eef-ink">
+            <article key={item.title} className="flex min-w-0 flex-col">
+              <h3 className="m-0 text-[clamp(1.25rem,4vw,27px)] font-semibold tracking-[-0.02em] text-eef-ink">
                 {item.title}
               </h3>
-              <p className="mt-2.5 flex-1 m-0 text-[14px] leading-[1.55] text-eef-secondary">
+              <p className="mt-2 flex-1 m-0 text-[14px] leading-[1.55] text-eef-secondary md:mt-2.5">
                 {item.desc}
               </p>
-              <span className="mt-5 inline-flex w-fit rounded-full bg-[#e8eef4] px-3 py-1.5 text-[11px] font-medium text-eef-secondary">
+              <span className="mt-4 inline-flex w-fit rounded-full bg-[#e8eef4] px-3 py-1.5 text-[11px] font-medium text-eef-secondary md:mt-5">
                 Bientôt disponible
               </span>
             </article>
