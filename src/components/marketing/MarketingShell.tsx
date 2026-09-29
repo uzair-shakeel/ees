@@ -55,7 +55,7 @@ export const NAV_ITEMS = [
   {
     label: "Comprendre",
     links: [
-      { href: "/#parcours", label: "Ressources" },
+      { href: "/journal", label: "Ressources" },
       { href: "/methode", label: "Notre méthode" },
       { href: "/faq", label: "FAQ" },
       { href: "/communaute", label: "Communauté" },
@@ -280,7 +280,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                   title: "PROCÉDURE EEF",
                   links: [
                     ["/#parcours", "À propos"],
-                    ["/#parcours", "Ressources"],
+                    ["/journal", "Ressources"],
                     ["/faq", "FAQ"],
                     ["mailto:hello@eef.fr", "Contact"],
                   ],

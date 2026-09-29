@@ -12,6 +12,7 @@ const PUBLIC_PATHS = [
   "/communaute",
   "/faq",
   "/methode",
+  "/journal",
 ];
 const PUBLIC_API = ["/api/auth/login", "/api/auth/register", "/api/auth/logout"];
 
