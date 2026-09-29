@@ -130,7 +130,7 @@ const page = () => {
                                 className="inline-flex h-[50px] cursor-pointer items-center justify-center gap-2 rounded-full bg-eef-navy px-5 text-[15px] font-medium text-white transition hover:bg-eef-ink disabled:cursor-wait disabled:opacity-90"
                             >
                                 {isAnalyzing ? "Analyse..." : "Déterminer ma voie"}
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-route h-4 w-4" aria-hidden="true"><circle cx="6" cy="19" r="3"></circle><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path><circle cx="18" cy="5" r="3"></circle></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-route h-4 w-4" aria-hidden="true"><circle cx="6" cy="19" r="3"></circle><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path><circle cx="18" cy="5" r="3"></circle></svg>
                             </button>
                         </div>
                     </div>
@@ -153,7 +153,7 @@ const page = () => {
                         <ul className="mt-5 grid gap-2.5 p-0 text-[15px] text-[#102b43]">
                             {PUBLIC_SUPPORT.map((item) =>
                                 <li key={item} className="flex items-start gap-2.5">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#63a8d8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-circle-check mt-0.5 h-4.5 w-4.5 h-5 w-5 shrink-0" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#63a8d8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-circle-check mt-0.5 h-4.5 w-4.5 h-5 w-5 shrink-0" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
                                     {item}
                                 </li>)}
                         </ul>
@@ -165,7 +165,7 @@ const page = () => {
                         <ul className="mt-5 grid gap-2.5 p-0 text-[15px] text-[#f5fafd]">
                             {CLEAR_CHOICE.map((item) => 
                             <li key={item} className="flex items-start gap-2.5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#63a8d8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-circle-check mt-0.5 h-4.5 w-4.5 h-5 w-5 shrink-0" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#63a8d8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-circle-check mt-0.5 h-4.5 w-4.5 h-5 w-5 shrink-0" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
                                 {item}
                                 </li>)}
                         </ul>
