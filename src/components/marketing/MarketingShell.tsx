@@ -55,7 +55,7 @@ export const NAV_ITEMS = [
   {
     label: "Comprendre",
     links: [
-      { href: "/#parcours", label: "Ressources" },
+      { href: "/journal", label: "Ressources" },
       { href: "/methode", label: "Notre méthode" },
       { href: "/faq", label: "FAQ" },
       { href: "/communaute", label: "Communauté" },
@@ -402,6 +402,67 @@ export function MarketingShell({ children }: { children: ReactNode }) {
               </span>
             </a>
 
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+              {[
+                {
+                  title: "S'ORIENTER",
+                  links: [
+                    ["/#orientation", "Orientation"],
+                    ["/#parcours", "Formations"],
+                    ["/#methode", "Universités"],
+                  ],
+                },
+                {
+                  title: "CANDIDATER",
+                  links: [
+                    ["/#strategie", "Stratégie"],
+                    ["/#dossier", "Dossier"],
+                    ["/#dossier", "Procédure EEF"],
+                  ],
+                },
+                {
+                  title: "S'INSTALLER",
+                  links: [
+                    ["/#installation", "Logement"],
+                    ["/#installation", "Démarches"],
+                    ["/#installation", "Vie en France"],
+                  ],
+                },
+                {
+                  title: "PROCÉDURE EEF",
+                  links: [
+                    ["/#parcours", "À propos"],
+                    ["/journal", "Ressources"],
+                    ["/faq", "FAQ"],
+                    ["mailto:hello@eef.fr", "Contact"],
+                  ],
+                },
+              ].map((col) => (
+                <nav key={col.title} aria-label={col.title} className="flex flex-col gap-2">
+                  <p className="m-0 mb-1 text-[11px] font-semibold tracking-[0.08em] text-eef-ink">
+                    {col.title}
+                  </p>
+                  {col.links.map(([href, label]) =>
+                    href.startsWith("mailto:") ? (
+                      <a
+                        key={label}
+                        href={href}
+                        className="cursor-pointer text-[13px] text-eef-secondary hover:text-eef-navy"
+                      >
+                        {label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={label}
+                        href={href}
+                        className="cursor-pointer text-[13px] text-eef-secondary hover:text-eef-navy"
+                      >
+                        {label}
+                      </Link>
+                    ),
+                  )}
+                </nav>
+              ))}
             <div className="flex min-w-0 flex-wrap justify-end gap-x-[44px] gap-y-8 max-md:grid max-md:grid-cols-2 max-md:justify-end max-md:gap-x-[44px] max-md:gap-y-8 lg:col-span-2 lg:self-start xl:col-span-1">
               <nav
                 aria-label="S'orienter"
