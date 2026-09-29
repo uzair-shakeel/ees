@@ -158,28 +158,28 @@ const NAV_ITEMS = [
   {
     label: "S'orienter",
     links: [
-      { href: "#orientation", label: "Orientation" },
-      { href: "#parcours", label: "Formations" },
-      { href: "#methode", label: "Universités" },
-      { href: "#parcours", label: "Bourses" },
+      { href: "/orientation", label: "Orientation" },
+      { href: "/formations", label: "Formations" },
+      { href: "/universites", label: "Universités" },
+      { href: "/bourses", label: "Bourses" },
     ],
   },
   {
     label: "Candidater",
     links: [
-      { href: "#strategie", label: "Stratégie de candidature" },
-      { href: "#dossier", label: "Préparer son dossier" },
-      { href: "#dossier", label: "Procédure Études en France" },
-      { href: "#methode", label: "Voies d'admission" },
+      { href: "/strategie-de-candidature", label: "Stratégie de candidature" },
+      { href: "/accompagnement-dossier", label: "Préparer son dossier" },
+      { href: "/procedure-eef", label: "Procédure Études en France" },
+      { href: "/admissions", label: "Voies d'admission" },
     ],
   },
   {
     label: "S'installer",
     links: [
-      { href: "#installation", label: "Vie en France" },
-      { href: "#installation", label: "Logement" },
-      { href: "#installation", label: "Visa et démarches" },
-      { href: "#installation", label: "Budget étudiant" },
+      { href: "/vie-en-france", label: "Vie en France" },
+      { href: "/appartements", label: "Logement" },
+      { href: "/visa", label: "Visa et démarches" },
+      { href: "/budget-etudiant", label: "Budget étudiant" },
     ],
   },
   {
@@ -726,9 +726,9 @@ export function MarketingHome() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="lucide lucide-arrow-right"
                 aria-hidden="true"
               >
@@ -748,9 +748,9 @@ export function MarketingHome() {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="#5e7282"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       className="lucide lucide-arrow-right"
                       aria-hidden="true"
                     >
@@ -794,9 +794,9 @@ export function MarketingHome() {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="lucide lucide-arrow-right"
                   aria-hidden="true"
                 >
@@ -828,9 +828,9 @@ export function MarketingHome() {
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           className="lucide lucide-arrow-up-right"
                           aria-hidden="true"
                         >
@@ -869,9 +869,9 @@ export function MarketingHome() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="lucide lucide-arrow-right"
                 aria-hidden="true"
               >
@@ -906,9 +906,9 @@ export function MarketingHome() {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="lucide lucide-arrow-up-right"
                   aria-hidden="true"
                 >
@@ -941,9 +941,9 @@ export function MarketingHome() {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       className="lucide lucide-arrow-up-right"
                       aria-hidden="true"
                     >
@@ -978,9 +978,9 @@ export function MarketingHome() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="lucide lucide-arrow-right"
               aria-hidden="true"
             >
@@ -991,9 +991,9 @@ export function MarketingHome() {
         </section>
 
         <section className="mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-[60px] pb-16 md:w-[calc(100%-88px)]">
-          <div className="relative grid min-h-[300px] overflow-hidden rounded-[28px] bg-[#173b5d] px-8 py-10 text-white md:grid-cols-[1.2fr_0.8fr] md:items-center md:px-[60px] md:py-[56px]">
+          <div className="relative grid min-h-[300px] overflow-hidden rounded-[28px] bg-[#173b5d] px-[26px] py-[34px] text-white md:grid-cols-[1.2fr_0.8fr] md:items-center md:px-[60px] md:py-[56px]">
             <div className="relative z-10 max-w-[560px]">
-              <h2 className="max-w-[540px] text-[34px] leading-[1.15] tracking-[-1.3741px] font-medium md:text-[40px]">
+              <h2 className="max-w-[540px] text-[28px] leading-[1.15] tracking-[-1.3741px] font-medium md:text-[40px]">
                 Votre projet mérite plus qu&apos;une liste d&apos;universités.
               </h2>
               <p className="mt-4 text-[14px] leading-[1.6] text-[#ffffffb8]">
@@ -1013,9 +1013,9 @@ export function MarketingHome() {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       className="lucide lucide-arrow-right"
                       aria-hidden="true"
                     >
@@ -1037,9 +1037,9 @@ export function MarketingHome() {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       className="lucide lucide-arrow-right"
                       aria-hidden="true"
                     >
@@ -1051,7 +1051,7 @@ export function MarketingHome() {
               </div>
             </div>
             <div
-              className="pointer-events-none absolute -right-20 top-1/2 flex size-[360px] -translate-y-1/2 items-center justify-center sm:-right-8 md:size-[480px]"
+              className="pointer-events-none absolute -right-20 top-1/2 hidden lg:flex size-[360px] -translate-y-1/2 items-center justify-center sm:-right-8 md:size-[480px]"
               aria-hidden="true"
             >
               <div className="absolute size-full rounded-full border border-white/10" />
@@ -1093,9 +1093,9 @@ export function MarketingHome() {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="lucide lucide-arrow-up-right"
                   aria-hidden="true"
                 >
@@ -1118,9 +1118,9 @@ export function MarketingHome() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="lucide lucide-instagram"
                     aria-hidden="true"
                   >
@@ -1147,9 +1147,9 @@ export function MarketingHome() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="lucide lucide-linkedin"
                     aria-hidden="true"
                   >
@@ -1169,9 +1169,9 @@ export function MarketingHome() {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="lucide lucide-twitter"
                     aria-hidden="true"
                   >
@@ -1194,9 +1194,9 @@ export function MarketingHome() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="lucide lucide-arrow-up-right"
                 aria-hidden="true"
               >
@@ -1342,7 +1342,7 @@ export function MarketingHome() {
           </p>
         </div>
         <span
-          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 bottom-[2em] select-none font-display text-[min(40vw,580px)] leading-[0.8] font-semibold text-[#d5e5f1]/70 tracking-[-29px]"
+          className="pointer-events-none absolute left-1/2 bottom-[-40px] md:top-1/2 -translate-x-1/2 md:bottom-[2em] select-none font-display text-[min(40vw,580px)] leading-[0.8] font-semibold text-[#d5e5f1]/70 tracking-[-29px]"
           aria-hidden="true"
         >
           eef

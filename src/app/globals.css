@@ -218,9 +218,39 @@ body {
   }
 }
 
+@keyframes eef-filter-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes eef-filter-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eef-filter-backdrop {
+  animation: eef-filter-fade-in 180ms ease-out both;
+}
+
+.eef-filter-sheet {
+  animation: eef-filter-sheet-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .eef-step-panel,
-  .eef-ready-stage {
+  .eef-ready-stage,
+  .eef-filter-backdrop,
+  .eef-filter-sheet {
     animation: none;
   }
 }
