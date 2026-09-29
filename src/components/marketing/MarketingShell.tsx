@@ -98,6 +98,14 @@ function IconMenu() {
   );
 }
 
+function IconClose() {
+  return (
+    <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+      <path d="m6 6 12 12M18 6 6 18" />
+    </svg>
+  );
+}
+
 function IconChevron() {
   return (
     <svg
@@ -189,57 +197,71 @@ export function MarketingShell({ children }: { children: ReactNode }) {
           <button
             type="button"
             className="ml-auto cursor-pointer border-0 bg-transparent p-1.5 text-eef-ink lg:hidden"
-            aria-label="Ouvrir le menu"
+            aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
           >
-            <IconMenu />
+            {menuOpen ? <IconClose /> : <IconMenu />}
           </button>
         </div>
 
-        <div
-          className={`grid gap-2 border-t border-eef-border bg-eef-mist px-5 pb-5 pt-3 lg:hidden ${
-            menuOpen ? "" : "hidden"
-          }`}
-        >
-          {NAV_ITEMS.map((item) => (
-            <div key={item.label} className="border-b border-eef-soft pb-2">
-              <p className="px-3.5 py-2 text-[12px] font-semibold text-eef-ink">
-                {item.label}
-              </p>
-              {item.links.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="block cursor-pointer rounded-[10px] px-3.5 py-2.5 text-[14px] text-eef-secondary hover:bg-eef-soft hover:text-eef-navy"
-                >
-                  {link.label}
-                </Link>
-              ))}
+        {menuOpen && (
+          <div className="fixed inset-0 z-[60] min-h-dvh overflow-y-auto bg-eef-mist px-7 pb-10 pt-8 lg:hidden">
+            <div className="flex items-center justify-between">
+              <Link href="/" onClick={() => setMenuOpen(false)} aria-label="Procédure EEF — Accueil">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={ASSETS.logo} alt="eef" className="h-10 w-[71px] object-contain" />
+              </Link>
+              <button
+                type="button"
+                onClick={() => setMenuOpen(false)}
+                aria-label="Fermer le menu"
+                className="inline-flex size-10 cursor-pointer items-center justify-center border-0 bg-transparent text-eef-ink"
+              >
+                <IconClose />
+              </button>
             </div>
-          ))}
-          <Link
-            href="/login"
-            onClick={() => setMenuOpen(false)}
-            className="cursor-pointer rounded-[10px] px-3.5 py-3 text-[15px] text-eef-ink hover:bg-eef-soft"
-          >
-            Espace étudiant
-          </Link>
-          <Link
-            href="/register"
-            onClick={() => setMenuOpen(false)}
-            className="cursor-pointer rounded-[10px] px-3.5 py-3 text-[15px] text-eef-ink hover:bg-eef-soft"
-          >
-            Commencer
-          </Link>
-          <a
-            href="mailto:hello@eef.fr"
-            className="cursor-pointer rounded-[10px] px-3.5 py-3 text-[15px] text-eef-ink hover:bg-eef-soft"
-          >
-            Parler à un conseiller
-          </a>
-        </div>
+
+            <nav className="mt-8 grid grid-cols-2 gap-x-5 gap-y-9" aria-label="Navigation mobile">
+              {NAV_ITEMS.map((item) => (
+                <div key={item.label}>
+                  <p className="m-0 mb-5 text-[9px] font-medium uppercase tracking-[0.16em] text-eef-ink">
+                    {item.label}
+                  </p>
+                  <div className="grid gap-4">
+                    {item.links.map((link) => (
+                      <Link
+                        key={link.label}
+                        href={link.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="block text-[14px] leading-[1.45] text-eef-ink"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </nav>
+
+            <div className="mt-10 flex flex-col items-start gap-5 border-t border-eef-border pt-7">
+              <Link
+                href="/login"
+                onClick={() => setMenuOpen(false)}
+                className="inline-flex min-h-8 items-center gap-2 text-[12px] font-medium text-eef-ink"
+              >
+                Espace étudiant <IconArrow />
+              </Link>
+              <a
+                href="mailto:hello@eef.fr"
+                onClick={() => setMenuOpen(false)}
+                className={`${btnPrimary} min-h-[52px] w-fit px-7`}
+              >
+                Parler à un conseiller <IconArrow />
+              </a>
+            </div>
+          </div>
+        )}
       </header>
 
       <main>{children}</main>

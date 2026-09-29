@@ -145,7 +145,7 @@ const wrap = "mx-auto w-[calc(100%-2.5rem)] max-w-[1360px] lg:w-[calc(100%-8rem)
 const eyebrow =
   "m-0 mb-[1.15rem] text-[10px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]";
 const sectionH2 =
-  "m-0 font-medium text-eef-ink tracking-[-0.03em] leading-[1.14] text-[60px]";
+  "m-0 font-medium text-eef-ink tracking-[-0.03em] leading-[1.14] text-[32px] sm:text-[40px] lg:text-[60px]";
 const bodyMuted = "m-0 text-[15px] leading-[1.65] text-eef-secondary";
 const pillBase =
   "inline-flex min-h-[52px] cursor-pointer items-center justify-center gap-[11px] whitespace-nowrap rounded-full border border-[#173b5d] px-6 text-[14px] font-medium transition hover:-translate-y-0.5";
@@ -233,6 +233,14 @@ function IconMenu() {
   );
 }
 
+function IconClose() {
+  return (
+    <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+      <path d="m6 6 12 12M18 6 6 18" />
+    </svg>
+  );
+}
+
 function IconChevron() {
   return (
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -306,66 +314,60 @@ export function MarketingHome() {
           <button
             type="button"
             className="ml-auto cursor-pointer border-0 bg-transparent p-1.5 text-eef-ink lg:hidden"
-            aria-label="Ouvrir le menu"
+            aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
           >
-            <IconMenu />
+            {menuOpen ? <IconClose /> : <IconMenu />}
           </button>
         </div>
 
-        <div
-          className={`grid gap-2 border-t border-eef-border bg-eef-mist px-5 pb-5 pt-3 lg:hidden ${
-            menuOpen ? "" : "hidden"
-          }`}
-        >
-          {NAV_ITEMS.map((item) => (
-            <div key={item.label} className="border-b border-eef-soft pb-2">
-              <p className="px-3.5 py-2 text-[12px] font-semibold text-eef-ink">{item.label}</p>
-              {item.links.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="block rounded-[10px] px-3.5 py-2.5 text-[14px] text-eef-secondary hover:bg-eef-soft hover:text-eef-navy"
-                >
-                  {link.label}
-                </a>
-              ))}
+        {menuOpen && (
+          <div className="fixed inset-0 z-[60] min-h-dvh overflow-y-auto bg-eef-mist px-7 pb-10 pt-8 lg:hidden">
+            <div className="flex items-center justify-between">
+              <Link href="/" onClick={() => setMenuOpen(false)} aria-label="Procédure EEF — Accueil">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={ASSETS.logo} alt="eef" className="h-10 w-[71px] object-contain" />
+              </Link>
+              <button type="button" onClick={() => setMenuOpen(false)} aria-label="Fermer le menu" className="inline-flex size-10 cursor-pointer items-center justify-center border-0 bg-transparent text-eef-ink">
+                <IconClose />
+              </button>
             </div>
-          ))}
-          <Link
-            href="/login"
-            onClick={() => setMenuOpen(false)}
-            className="rounded-[10px] px-3.5 py-3 text-[15px] text-eef-ink hover:bg-eef-soft"
-          >
-            Espace étudiant
-          </Link>
-          <Link
-            href="/register"
-            onClick={() => setMenuOpen(false)}
-            className="rounded-[10px] px-3.5 py-3 text-[15px] text-eef-ink hover:bg-eef-soft"
-          >
-            Commencer
-          </Link>
-          <a
-            href="mailto:hello@eef.fr"
-            className="rounded-[10px] px-3.5 py-3 text-[15px] text-eef-ink hover:bg-eef-soft"
-          >
-            Parler à un conseiller
-          </a>
-        </div>
+            <nav className="mt-8 grid grid-cols-2 gap-x-5 gap-y-9" aria-label="Navigation mobile">
+              {NAV_ITEMS.map((item) => (
+                <div key={item.label}>
+                  <p className="m-0 mb-5 text-[9px] font-medium uppercase tracking-[0.16em] text-eef-ink">{item.label}</p>
+                  <div className="grid gap-4">
+                    {item.links.map((link) => (
+                      <a key={link.label} href={link.href} onClick={() => setMenuOpen(false)} className="block text-[14px] leading-[1.45] text-eef-ink">
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </nav>
+            <div className="mt-10 flex flex-col items-start gap-5 border-t border-eef-border pt-7">
+              <Link href="/login" onClick={() => setMenuOpen(false)} className="inline-flex min-h-8 items-center gap-2 text-[12px] font-medium text-eef-ink">
+                Espace étudiant <IconArrow />
+              </Link>
+              <a href="mailto:hello@eef.fr" onClick={() => setMenuOpen(false)} className={`${btnPrimary} min-h-[52px] w-fit px-7`}>
+                Parler à un conseiller <IconArrow />
+              </a>
+            </div>
+          </div>
+        )}
       </header>
 
       <main>
         {/* Hero */}
         <section className={`${wrap} flex flex-col items-center px-0 pb-[92px] pt-16 text-center max-md:pb-[60px] max-md:pt-10`}>
-          <h1 className="mx-auto max-w-[1120px] text-[clamp(33px,5.2vw,74px)] font-medium leading-[1.1] tracking-[-0.03em] text-eef-ink">
+          <h1 className="mx-auto max-w-[1120px] font-medium leading-[1.14] tracking-[-0.84px] sm:tracking-[-2.22px] text-[#102b43] text-[clamp(28px,4.3vw,74px)]">
             {"Construisez votre projet d'études"}
-            <br />
+            <br className="sm:block hidden" />
             <Link
               href="/register"
-              className="mx-2.5 inline-flex -translate-y-[7px] items-center gap-2 rounded-full border border-eef-border bg-white px-[18px] py-2 align-middle text-[clamp(13px,1.25vw,16px)] font-medium tracking-normal text-eef-secondary shadow-[0_2px_12px_rgba(16,43,67,0.05)] transition hover:border-eef-blue hover:text-eef-ink hover:shadow-[0_4px_18px_rgba(99,168,216,0.15)] [&_svg]:text-eef-blue"
+              className="mx-1.5 mt-2 inline-flex -translate-y-[7px] items-center gap-2 rounded-full border border-eef-border bg-white px-[13px] py-1.5 align-middle text-[clamp(13px,1.25vw,16px)] font-medium tracking-normal text-eef-secondary shadow-[0_2px_12px_rgba(16,43,67,0.05)] transition hover:border-eef-blue hover:text-eef-ink hover:shadow-[0_4px_18px_rgba(99,168,216,0.15)] sm:mx-2.5 sm:px-[18px] sm:py-2 [&_svg]:text-eef-blue"
             >
               <IconSearch />
               Trouver ma voie
@@ -373,7 +375,7 @@ export function MarketingHome() {
             {" en France avec "}
             <a
               href="mailto:hello@eef.fr"
-              className="mx-3 inline-flex size-[clamp(50px,5.6vw,80px)] -translate-y-[5px] overflow-hidden rounded-full border-[3px] border-white align-middle shadow-[0_6px_20px_rgba(16,43,67,0.12)] transition hover:-translate-y-[9px]"
+              className="mx-[7px] inline-flex size-[clamp(50px,5.6vw,80px)] -translate-y-[5px] overflow-hidden rounded-full border-[3px] border-white align-middle shadow-[0_6px_20px_rgba(16,43,67,0.12)] transition hover:-translate-y-[9px] sm:mx-3"
               aria-label="Parler à un conseiller"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -450,9 +452,9 @@ export function MarketingHome() {
         {/* 01 Journey */}
         <section
           id="parcours"
-          className={`${wrap} grid items-stretch gap-12 py-[5.5rem] max-md:py-14 lg:grid-cols-[minmax(260px,0.4fr)_minmax(0,0.6fr)] lg:gap-[clamp(3rem,6vw,5.5rem)]`}
+          className={`${wrap} grid items-stretch gap-8 py-14 sm:gap-12 sm:py-[5.5rem] lg:grid-cols-[minmax(260px,0.4fr)_minmax(0,0.6fr)] lg:gap-[clamp(3rem,6vw,5.5rem)]`}
         >
-          <div className="relative flex h-full min-h-full flex-col self-stretch pb-[5.5rem]">
+          <div className="relative flex h-full min-h-full flex-col self-stretch pb-0 lg:pb-[5.5rem]">
             <p className={eyebrow}>01 — DE A À Z</p>
             <h2 className={`${sectionH2} max-w-[12em]`}>
               Votre parcours,
@@ -483,7 +485,7 @@ export function MarketingHome() {
                 </span>
                 <div className="min-w-0">
                   <div className="flex items-start justify-between gap-4">
-                    <h3 className="m-0 text-[23px] font-[500] leading-tight tracking-[-0.02em] text-eef-ink transition group-hover:text-eef-navy">
+                    <h3 className="m-0 text-[clamp(18px,2.5vw,23px)] font-medium leading-tight tracking-[-0.02em] text-eef-ink transition group-hover:text-eef-navy">
                       {step.title}
                     </h3>
                     <span className="mt-0.5 shrink-0 text-eef-ink opacity-75 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-eef-navy">
@@ -500,7 +502,7 @@ export function MarketingHome() {
         </section>
 
         {/* 02 Start */}
-        <section id="orientation" className={`${wrap} py-[5.5rem] max-md:py-14`}>
+        <section id="orientation" className={`${wrap} py-14 sm:py-[5.5rem]`}>
           <p className={eyebrow}>02 — TOUT COMMENCE PAR VOUS</p>
           <h2 className={`${sectionH2} max-w-[min(13.5em,100%)]`}>
             <span className="text-eef-ink">
@@ -509,8 +511,8 @@ export function MarketingHome() {
             <span className="text-eef-blue">C&apos;est là que tout commence.</span>
           </h2>
 
-          <div className="mt-11 grid items-stretch gap-9 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-[clamp(2.5rem,5vw,4.5rem)]">
-            <div className="aspect-[5/5] max-h-[560px] overflow-hidden rounded-[16px_7.5rem_16px_16px] bg-eef-soft max-md:aspect-[5/4] max-md:max-h-none max-md:rounded-[14px_4.5rem_14px_14px]">
+          <div className="mt-8 grid min-w-0 items-stretch gap-7 sm:mt-11 sm:gap-9 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-[clamp(2.5rem,5vw,4.5rem)]">
+            <div className="aspect-[5/4] min-w-0 overflow-hidden rounded-[14px_4.5rem_14px_14px] bg-eef-soft sm:aspect-square sm:max-h-[560px] sm:rounded-[16px_7.5rem_16px_16px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={ASSETS.library}
@@ -558,9 +560,9 @@ export function MarketingHome() {
         {/* 03 Human */}
         <section
           id="accompagnement"
-          className={`${wrap} grid items-start gap-10 py-[5.5rem] max-md:py-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-[clamp(2.75rem,5vw,4.75rem)]`}
+          className={`${wrap} grid min-w-0 items-start gap-8 py-14 sm:gap-10 sm:py-[5.5rem] lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-[clamp(2.75rem,5vw,4.75rem)]`}
         >
-          <div className="relative aspect-[1/1] max-h-[580px] overflow-hidden rounded-[28px] bg-eef-soft max-md:aspect-[5/4] max-md:max-h-none">
+          <div className="relative aspect-[5/4] min-w-0 overflow-hidden rounded-[22px] bg-eef-soft sm:aspect-square sm:max-h-[580px] sm:rounded-[28px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={ASSETS.conversation}
@@ -599,7 +601,7 @@ export function MarketingHome() {
         </section>
 
         {/* 04 Method */}
-        <section id="methode" className={`${wrap} py-[5.5rem] max-md:py-14`}>
+        <section id="methode" className={`${wrap} py-14 sm:py-[5.5rem]`}>
           <p className={eyebrow}>04 — CHOISIR AVEC MÉTHODE</p>
 
           <div className="grid items-start gap-6 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-[clamp(2rem,4vw,4rem)]">
@@ -613,12 +615,12 @@ export function MarketingHome() {
             </p>
           </div>
 
-          <div className="relative mt-10 min-w-[980px] min-h-[260px] max-h-[420px] overflow-hidden rounded-[28px] bg-eef-soft max-md:min-h-[200px] max-md:max-h-none">
+          <div className="relative mt-8 h-[330px] w-full min-w-0 overflow-hidden rounded-[22px] bg-eef-soft sm:mt-10 sm:h-[400px] sm:rounded-[28px] lg:h-[515px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={ASSETS.campus}
               alt="Entrée d'un établissement universitaire"
-              className="size-full object-contain"
+              className="size-full object-cover object-center"
             />
             <span className="absolute bottom-[1.15rem] left-[1.15rem] inline-flex items-center rounded-full bg-white px-3.5 py-2 text-[9px] font-semibold uppercase leading-tight tracking-[0.12em] text-eef-navy shadow-[0_2px_10px_rgba(16,43,67,0.08)]">
               Comparer moins. Comparer mieux.
@@ -652,7 +654,7 @@ export function MarketingHome() {
         </section>
 
         {/* 05 Strategy */}
-        <section id="strategie" className={`${wrap} py-20 max-md:py-14`}>
+        <section id="strategie" className={`${wrap} py-14 sm:py-20`}>
           <p className="m-0 mb-5 text-[10px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]">
             05 — LA STRATÉGIE
           </p>
@@ -667,13 +669,13 @@ export function MarketingHome() {
             </p>
           </div>
 
-          <div className="mt-16 grid gap-10 md:mt-20 md:grid-cols-3 md:gap-12 lg:gap-16">
+          <div className="mt-10 grid gap-8 sm:mt-16 sm:gap-10 md:mt-20 md:grid-cols-3 md:gap-12 lg:gap-16">
             {STRATEGY.map((item) => (
               <article key={item.n} className="border-t border-eef-border pt-6">
-                <span className="mb-5 block text-[70px] font-medium leading-none tracking-[-0.04em] text-[#9ec4df]">
+                <span className="mb-5 block text-[clamp(48px,9vw,70px)] font-medium leading-none tracking-[-0.04em] text-[#9ec4df]">
                   {item.n}
                 </span>
-                <h3 className="m-0 text-[33px] font-semibold leading-tight tracking-[-0.02em] text-eef-ink">
+                <h3 className="m-0 text-[clamp(25px,4vw,33px)] font-semibold leading-tight tracking-[-0.02em] text-eef-ink">
                   {item.title}
                 </h3>
                 <p className="mt-3 max-w-[14rem] text-[14px] leading-[1.55] text-eef-secondary">
