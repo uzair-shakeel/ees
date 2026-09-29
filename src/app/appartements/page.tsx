@@ -140,7 +140,7 @@ const page = () => {
 
                 <div className="mt-10 flex min-h-[389px] flex-col items-center justify-center rounded-[28px] border border-dashed border-[#2527252e] bg-white/60 px-8 py-16 text-center">
                     <div className="flex size-14 items-center justify-center rounded-[16px] bg-[#e4eff6] text-[#63a8d8]" aria-hidden>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-house h-6 w-6" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-house h-6 w-6" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
                     </div>
                     <h2 className="mt-5 m-0 text-[27px] leading-[1.2] font-medium tracking-[-0.945px] text-[#102B43]">Aucune annonce vérifiée pour l&apos;instant</h2>
                     <p className="mt-2 m-0 max-w-[512px] text-[15px] font-normal leading-[1.75] text-[#5e7282]">
@@ -159,7 +159,7 @@ const page = () => {
                 <div className="mt-12 grid gap-5 md:grid-cols-3">
                     {TRUST_POINTS.map(([title, description]) => (
                         <article key={title} className="p-[28px]">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#63a8d8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-shield-check h-6 w-6" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#63a8d8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shield-check h-6 w-6" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
                             <h3 className="m-0 mt-3 text-[18px] leading-[28px] tracking-[-0.63px] font-medium text-[#102B43]">{title}</h3>
                             <p className="mt-2 m-0 text-[14px] leading-[1.75] text-[#5e7282]">{description}</p>
                         </article>
