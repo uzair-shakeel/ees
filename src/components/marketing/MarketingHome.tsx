@@ -700,9 +700,9 @@ export function MarketingHome() {
           className="mx-auto w-[calc(100%-48px)] max-w-[1360px] pb-8 pt-[64px] md:w-[calc(100%-128px)] md:py-[88px]"
           id="dossier"
         >
-              <p className="text-[10px] leading-[15px] mb-[23px] tracking-[1.6px] font-medium text-[#173b5d]">
-                06 — VOTRE DOSSIER
-              </p>
+          <p className="text-[10px] leading-[15px] mb-[23px] tracking-[1.6px] font-medium text-[#173b5d]">
+            06 — VOTRE DOSSIER
+          </p>
           <div className="flex md:flex-row flex-col items-start justify-between gap-12  lg:items-start lg:gap-[80px]">
             <div className="max-w-[720px]">
               <h2 className="text-[40px] leading-[1.1] font-medium tracking-[-1.8px] md:text-[64px] md:tracking-[-2.88px]">
@@ -778,15 +778,17 @@ export function MarketingHome() {
           <h2 className="max-w-[650px] text-[40px] leading-[1.1] font-medium tracking-[-1.8px] md:text-[64px] md:tracking-[-2.88px]">
             L&apos;admission n&apos;est pas la dernière étape.
           </h2>
-          <div className="mt-8 grid gap-8 lg:mt-[50px] lg:grid-cols-[1.2fr_1fr] lg:gap-[65px]">
-            <figure className="">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={ASSETS.city}
-                alt="Vie en France"
-                className="h-full w-full rounded-t-[28px] rounded-bl-[28px] rounded-br-[100px]"
-              />
-              <div className="mt-[20px] h-[44px] text-[13px] text-[#102b43] font-medium gap-[15px] flex items-center underline decoration-[#c6d9e7] underline-offset-6">
+          <div className="mt-8 grid gap-8 lg:mt-[50px] lg:grid-cols-[1.2fr_1fr] lg:items-stretch lg:gap-[65px]">
+            <figure className="flex min-h-0 flex-col">
+              <div className="relative overflow-hidden rounded-t-[28px] rounded-[28px] lg:aspect-auto min-h-[360px] md:min-h-[460px] lg:flex-1">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={ASSETS.city}
+                  alt="Vie en France"
+                  className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
+                />
+              </div>
+              <div className="mt-[20px] flex h-[44px] shrink-0 items-center gap-[15px] text-[13px] font-medium text-[#102b43] underline decoration-[#c6d9e7] underline-offset-6">
                 <span>Préparer mon arrivée</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -806,7 +808,7 @@ export function MarketingHome() {
                 </svg>
               </div>
             </figure>
-            <div className="">
+            <div className="min-h-0">
               {AFTER.map((item) => (
                 <a
                   href="#"
@@ -816,9 +818,9 @@ export function MarketingHome() {
                   <span className="w-[25px] pt-[5px] text-[10px] text-[#63a8d8]">
                     {item.n}
                   </span>
-                  <div className="w-full flex flex-col">
-                    <div className="w-full flex items-center justify-between gap-4">
-                      <h3 className="text-[26px] leading-[31.19px] tracking-[-0.91px] font-medium text-[#102b43]">
+                  <div className="flex w-full flex-col">
+                    <div className="flex w-full items-center justify-between gap-4">
+                      <h3 className="text-[26px] leading-[31.19px] font-medium tracking-[-0.91px] text-[#102b43]">
                         {item.title}
                       </h3>
                       <span className="text-[#173b5d]" aria-hidden="true">
