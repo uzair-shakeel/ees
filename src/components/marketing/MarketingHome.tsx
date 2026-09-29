@@ -178,7 +178,7 @@ const NAV_ITEMS = [
     links: [
       { href: "/vie-en-france", label: "Vie en France" },
       { href: "/appartements", label: "Logement" },
-      { href: "#installation", label: "Visa et démarches" },
+      { href: "/visa", label: "Visa et démarches" },
       { href: "#installation", label: "Budget étudiant" },
     ],
   },
