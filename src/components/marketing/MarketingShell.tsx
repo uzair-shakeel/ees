@@ -40,7 +40,7 @@ export const NAV_ITEMS = [
       { href: "/strategie-de-candidature", label: "Stratégie de candidature" },
       { href: "/accompagnement-dossier", label: "Préparer son dossier" },
       { href: "/procedure-eef", label: "Procédure Études en France" },
-      { href: "/#methode", label: "Voies d'admission" },
+      { href: "/admissions", label: "Voies d'admission" },
     ],
   },
   {
