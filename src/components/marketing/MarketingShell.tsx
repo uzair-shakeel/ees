@@ -463,6 +463,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                   )}
                 </nav>
               ))}
+            </div>
             <div className="flex min-w-0 flex-wrap justify-end gap-x-[44px] gap-y-8 max-md:grid max-md:grid-cols-2 max-md:justify-end max-md:gap-x-[44px] max-md:gap-y-8 lg:col-span-2 lg:self-start xl:col-span-1">
               <nav
                 aria-label="S'orienter"
