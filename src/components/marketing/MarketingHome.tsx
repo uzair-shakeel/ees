@@ -697,49 +697,51 @@ export function MarketingHome() {
 
         {/* 06 Dossier */}
         <section
-          className="mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-[64px] md:w-[calc(100%-128px)] md:pt-[88px]"
+          className="mx-auto w-[calc(100%-48px)] max-w-[1360px] pb-8 pt-[64px] md:w-[calc(100%-128px)] md:py-[88px]"
           id="dossier"
         >
-          <div className="max-w-[720px]">
-            <p className="text-[10px] leading-[15px] mb-[23px] tracking-[1.6px] font-medium text-[#173b5d]">
-              06 — VOTRE DOSSIER
-            </p>
-            <h2 className="text-[40px] leading-[1.1] font-medium tracking-[-1.8px] md:text-[64px] md:tracking-[-2.88px]">
-              Votre parcours doit être compris, pas simplement envoyé.
-            </h2>
-            <p className="mt-5 text-[14px] leading-[1.75] text-[#5e7282] md:mt-[26px]">
-              Un bon dossier relie votre parcours passé, votre choix de
-              formation et votre projet futur de manière cohérente.
-            </p>
-            <p className="mt-5 text-[14px] leading-[1.75] text-[#5e7282] md:mt-[26px]">
-              Nous vous aidons à structurer, relire et améliorer votre
-              présentation. Les informations et motivations restent toujours les
-              vôtres.
-            </p>
-            <div className="mb-12 mt-6 flex h-[44px] items-center gap-[15px] text-[13px] font-medium text-[#102b43] underline decoration-[#c6d9e7] underline-offset-6 md:mb-[88px] md:mt-[30px]">
-              <span>Comprendre l&apos;accompagnement dossier</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="17"
-                height="17"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-arrow-right"
-                aria-hidden="true"
-              >
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
+              <p className="text-[10px] leading-[15px] mb-[23px] tracking-[1.6px] font-medium text-[#173b5d]">
+                06 — VOTRE DOSSIER
+              </p>
+          <div className="flex md:flex-row flex-col items-start justify-between gap-12  lg:items-start lg:gap-[80px]">
+            <div className="max-w-[720px]">
+              <h2 className="text-[40px] leading-[1.1] font-medium tracking-[-1.8px] md:text-[64px] md:tracking-[-2.88px]">
+                Votre parcours doit être compris, pas simplement envoyé.
+              </h2>
+              <p className="mt-5 text-[14px] leading-[1.75] text-[#5e7282] md:mt-[26px]">
+                Un bon dossier relie votre parcours passé, votre choix de
+                formation et votre projet futur de manière cohérente.
+              </p>
+              <p className="mt-5 text-[14px] leading-[1.75] text-[#5e7282] md:mt-[26px]">
+                Nous vous aidons à structurer, relire et améliorer votre
+                présentation. Les informations et motivations restent toujours les
+                vôtres.
+              </p>
+              <div className="mt-6 flex h-[44px] items-center gap-[15px] text-[13px] font-medium text-[#102b43] underline decoration-[#c6d9e7] underline-offset-6 md:mt-[30px]">
+                <span>Comprendre l&apos;accompagnement dossier</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-arrow-right"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </div>
             </div>
 
-            <ul className="space-y-5 py-12 md:space-y-[26px] md:py-[88px]">
+            <ul className="space-y-5 md:space-y-[26px]">
               {DOSSIER_STEPS.map((step) => (
                 <li key={step} className="flex items-center gap-[18px]">
-                  <span className="border border-[#c6d9e7] rounded-full w-[22px] h-[22px] flex items-center justify-center">
+                  <span className="border border-[#c6d9e7] rounded-full w-[22px] h-[22px] flex items-center justify-center shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="14"
