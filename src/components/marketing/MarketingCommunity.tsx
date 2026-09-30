@@ -6,6 +6,7 @@ import {
   ASSETS,
   wrap,
   btnPrimary,
+  marketingHeroH1,
 } from "@/components/marketing/MarketingShell";
 
 const FEATURES = [
@@ -124,7 +125,7 @@ export function MarketingCommunity() {
     <MarketingShell>
       {/* Hero */}
       <section className={`${wrap} pt-10 pb-16 max-md:pb-12`}>
-        <nav className="mb-8 text-[12px] text-eef-secondary" aria-label="Fil d'Ariane">
+        <nav className="mb-6 text-[12px] text-eef-secondary md:mb-8" aria-label="Fil d'Ariane">
           <Link href="/" className="cursor-pointer transition hover:text-eef-navy">
             Accueil
           </Link>
@@ -136,49 +137,49 @@ export function MarketingCommunity() {
           COMMUNAUTÉ
         </p>
 
-        <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-16 lg:gap-24">
-          <h1 className="m-0 max-w-[9em] text-[clamp(2.5rem,7vw,78px)] font-medium leading-[1.05] tracking-[-0.03em] text-eef-ink">
+        <div className="grid min-w-0 items-start gap-5 md:gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16 xl:gap-24">
+          <h1 className={`m-0 max-w-none lg:max-w-[9em] ${marketingHeroH1}`}>
             N&apos;arrivez pas en France en étranger.
           </h1>
-          <div className="md:justify-self-end md:pt-2">
-            <p className="m-0 max-w-[28rem] text-[16px] leading-[1.65] text-eef-secondary">
+          <div className="min-w-0 lg:justify-self-end lg:pt-2">
+            <p className="m-0 max-w-[28rem] text-[15px] leading-[1.65] text-eef-secondary md:text-[16px]">
               Un réseau d&apos;étudiants vérifiés, organisé par ville, école, programme et
               promotion. Fonctionnel et utile — pas un réseau social de plus.
             </p>
             <Link
               href="/register"
-              className={`${btnPrimary} mt-7 min-h-[48px] px-6 text-[14px]`}
+              className={`${btnPrimary} mt-6 min-h-[52px] w-full px-6 text-[14px] sm:mt-7 sm:w-auto`}
             >
               Rejoindre ma promotion
             </Link>
           </div>
         </div>
 
-        <div className="relative mt-12 overflow-hidden rounded-[28px] bg-eef-soft max-md:mt-8 max-md:rounded-[22px]">
+        <div className="relative mt-10 overflow-hidden rounded-[22px] bg-eef-soft md:mt-12 md:rounded-[28px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={ASSETS.conversation}
             alt="Étudiants de la communauté EEF"
-            className="aspect-[21/9] min-h-[240px] w-full object-cover max-md:aspect-[16/10] max-md:min-h-[200px]"
+            className="aspect-[4/3] min-h-[180px] w-full object-cover sm:aspect-[16/10] sm:min-h-[200px] md:aspect-[21/9] md:min-h-[240px]"
           />
-          <span className="absolute bottom-5 left-5 inline-flex items-center rounded-[10px] bg-white/95 px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-eef-navy shadow-[0_2px_12px_rgba(16,43,67,0.08)] backdrop-blur-sm max-md:bottom-3 max-md:left-3 max-md:px-3">
+          <span className="absolute bottom-3 left-3 inline-flex max-w-[calc(100%-1.5rem)] items-center rounded-[10px] bg-white/95 px-3 py-1.5 text-[8px] font-semibold uppercase tracking-[0.1em] text-eef-navy shadow-[0_2px_12px_rgba(16,43,67,0.08)] backdrop-blur-sm sm:bottom-4 sm:left-4 sm:px-3.5 sm:text-[9px] md:bottom-5 md:left-5 md:px-4 md:py-2 md:tracking-[0.14em]">
             Comprendre. Choisir. Avancer.
           </span>
         </div>
       </section>
 
       {/* Features */}
-      <section className={`${wrap} pb-8 pt-4`}>
-        <div className="grid gap-x-12 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-16">
+      <section className={`${wrap} pb-8 pt-2 md:pt-4`}>
+        <div className="grid min-w-0 gap-x-10 gap-y-10 md:grid-cols-2 md:gap-x-12 md:gap-y-14 lg:grid-cols-3 lg:gap-x-16 lg:gap-y-16">
           {FEATURES.map((item) => (
-            <article key={item.title} className="flex flex-col items-start">
-              <div className="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-[14px] border border-[#c6d9e7] bg-[#e8f2fa] text-eef-blue">
+            <article key={item.title} className="flex min-w-0 flex-col items-start">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-[#c6d9e7] bg-[#e8f2fa] text-eef-blue md:h-[48px] md:w-[48px]">
                 <FeatureIcon type={item.icon} />
               </div>
-              <h2 className="m-0 mt-5 text-[27px] font-semibold leading-[1.2] tracking-[-0.02em] text-eef-ink">
+              <h2 className="m-0 mt-4 text-[clamp(1.35rem,5vw,27px)] font-semibold leading-[1.2] tracking-[-0.02em] text-eef-ink md:mt-5">
                 {item.title}
               </h2>
-              <p className="mt-2.5 m-0 max-w-[24rem] text-[15px] leading-[1.55] text-eef-secondary">
+              <p className="mt-2 m-0 max-w-[24rem] text-[14px] leading-[1.55] text-eef-secondary md:mt-2.5 md:text-[15px]">
                 {item.desc}
               </p>
               {"tag" in item && item.tag ? (
@@ -192,26 +193,26 @@ export function MarketingCommunity() {
       </section>
 
       {/* Empty state */}
-      <section className={`${wrap} mt-[60px] pb-24 max-md:pb-16`}>
-        <h2 className="m-0 max-w-[12em] text-[clamp(1.85rem,3.5vw,46px)] font-medium leading-[1.15] tracking-[-0.03em] text-eef-ink">
+      <section className={`${wrap} mt-12 pb-20 max-md:pb-14 md:mt-[60px] md:pb-24`}>
+        <h2 className="m-0 max-w-[12em] text-[clamp(1.6rem,5vw,46px)] font-medium leading-[1.15] tracking-[-0.03em] text-eef-ink">
           Les membres arrivent bientôt.
         </h2>
 
-        <div className="mt-10 rounded-[28px] border border-dashed border-eef-border bg-white px-8 py-[60px] text-center max-md:mt-8 max-md:rounded-[22px] max-md:px-5 max-md:py-12">
-          <div className="mx-auto flex h-[48px] w-[48px] items-center justify-center rounded-[14px] border border-[#c6d9e7] bg-[#e8f2fa] text-eef-blue">
+        <div className="mt-8 rounded-[22px] border border-dashed border-eef-border bg-white px-5 py-10 text-center md:mt-10 md:rounded-[28px] md:px-8 md:py-[60px]">
+          <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-[14px] border border-[#c6d9e7] bg-[#e8f2fa] text-eef-blue md:h-[48px] md:w-[48px]">
             <IconUsers />
           </div>
-          <h3 className="mt-6 m-0 text-[27px] font-semibold leading-[1.25] tracking-[-0.02em] text-eef-ink">
+          <h3 className="mt-5 m-0 text-[clamp(1.25rem,4.5vw,27px)] font-semibold leading-[1.25] tracking-[-0.02em] text-eef-ink md:mt-6">
             Aucun profil affiché pour l&apos;instant
           </h3>
-          <p className="mx-auto mt-3 m-0 max-w-[36rem] text-[15px] leading-[1.55] text-eef-secondary">
+          <p className="mx-auto mt-3 m-0 max-w-[36rem] text-[14px] leading-[1.55] text-eef-secondary md:text-[15px]">
             Seuls des profils d&apos;étudiants réels et vérifiés apparaîtront ici — jamais
             de profils fictifs. Rejoignez la liste : vous serez connecté(e) à votre
             promotion dès l&apos;ouverture.
           </p>
           <Link
             href="/register"
-            className={`${btnPrimary} mt-8 min-h-[48px] px-6 text-[14px]`}
+            className={`${btnPrimary} mt-6 min-h-[52px] w-full px-6 text-[14px] sm:mt-8 sm:w-auto`}
           >
             M&apos;inscrire à ma promotion
           </Link>

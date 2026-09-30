@@ -20,6 +20,9 @@ export const eyebrow =
   "m-0 mb-[1.15rem] text-[10px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]";
 export const sectionH2 =
   "m-0 font-medium text-eef-ink tracking-[-0.03em] leading-[1.14] text-[clamp(2rem,4vw,46px)]";
+/** Marketing page hero titles — ~48px+ on phones, scales to desktop display size */
+export const marketingHeroH1 =
+  "font-medium leading-[1.06] tracking-[-0.03em] text-eef-ink text-[clamp(3rem,12.5vw,78px)]";
 export const bodyMuted = "m-0 text-[14px] leading-[1.65] text-eef-secondary";
 export const btnPrimary =
   "inline-flex min-h-[43px] cursor-pointer items-center justify-center gap-3.5 rounded-full bg-eef-navy px-[19px] text-[13px] font-medium text-white transition hover:bg-eef-ink [&_svg]:transition-transform hover:[&_svg]:translate-x-0.5 hover:[&_svg]:-translate-y-0.5";

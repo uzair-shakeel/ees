@@ -11,6 +11,7 @@ async function main() {
       port: 27018,
       dbPath,
       storageEngine: "wiredTiger",
+      launchTimeout: 120000,
     },
   });
 

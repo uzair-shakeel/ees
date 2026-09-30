@@ -6,6 +6,7 @@ import {
   MarketingShell,
   ASSETS,
   wrap,
+  marketingHeroH1,
 } from "@/components/marketing/MarketingShell";
 
 const FAQS = [
@@ -75,23 +76,23 @@ export function MarketingFaq() {
   return (
     <MarketingShell>
       {/* Hero */}
-      <section className={`${wrap} pt-10 pb-16 max-md:pb-12`}>
+      <section className={`${wrap} pt-10 pb-14 max-md:pb-10 md:pb-16`}>
         <p className="m-0 mb-[10px] text-[9px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]">
           Les réponses, simplement.
         </p>
 
-        <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-16 lg:gap-24">
-          <h1 className="m-0 max-w-[9em] text-[88px] font-medium leading-[1.05] tracking-[-0.03em] text-eef-ink">
+        <div className="grid min-w-0 items-start gap-5 md:gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16 xl:gap-24">
+          <h1 className={`m-0 max-w-none lg:max-w-[9em] ${marketingHeroH1}`}>
             Vos questions. Nos réponses.
           </h1>
-          <div className="md:justify-self-end md:pt-2">
-            <p className="m-0 max-w-[26rem] text-[16px] leading-[1.65] text-eef-secondary">
+          <div className="min-w-0 lg:justify-self-end lg:pt-2">
+            <p className="m-0 max-w-[26rem] text-[15px] leading-[1.65] text-eef-secondary md:text-[16px]">
               Comprendre l&apos;accompagnement avant de commencer. Et pouvoir en parler,
               tout simplement.
             </p>
             <a
               href="mailto:hello@eef.fr"
-              className="mt-6 inline-flex cursor-pointer items-center gap-2 text-[13px] font-medium text-eef-ink transition hover:text-eef-navy [&_svg]:transition-transform hover:[&_svg]:translate-x-0.5"
+              className="mt-5 inline-flex cursor-pointer items-center gap-2 text-[13px] font-medium text-eef-ink transition hover:text-eef-navy md:mt-6 [&_svg]:transition-transform hover:[&_svg]:translate-x-0.5"
             >
               Poser ma question <IconArrowRight />
             </a>
@@ -100,12 +101,13 @@ export function MarketingFaq() {
       </section>
 
       {/* Accordion */}
-      <section className={`${wrap} mt-[60px] grid gap-10 pb-16 md:grid-cols-[minmax(0,0.45fr)_minmax(0,1fr)] md:gap-14 lg:gap-20`}>
-        <p className="m-0 text-[10px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]">
-          L&apos;accompagnement EEF
-        </p>
+      <section className={`${wrap} mt-10 pb-14 md:mt-[60px] md:pb-16`}>
+        <div className="grid min-w-0 gap-6 lg:grid-cols-[minmax(0,0.45fr)_minmax(0,1fr)] lg:gap-14 xl:gap-20">
+          <p className="m-0 text-[10px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8] lg:sticky lg:top-24 lg:self-start">
+            L&apos;accompagnement EEF
+          </p>
 
-        <div className="border-t border-eef-border">
+          <div className="min-w-0 border-t border-eef-border">
           {FAQS.map((item, i) => {
             const isOpen = open === i;
             const panelId = `faq-panel-${i}`;
@@ -119,9 +121,9 @@ export function MarketingFaq() {
                   aria-expanded={isOpen}
                   aria-controls={panelId}
                   onClick={() => setOpen(isOpen ? -1 : i)}
-                  className="flex w-full cursor-pointer items-start justify-between gap-6 py-6 text-left"
+                  className="flex w-full min-w-0 cursor-pointer items-start justify-between gap-4 py-5 text-left md:gap-6 md:py-6"
                 >
-                  <span className="text-[18px] font-[500] leading-[1.4] tracking-[-0.01em] text-eef-ink md:text-[17px]">
+                  <span className="min-w-0 flex-1 text-[16px] font-medium leading-[1.4] tracking-[-0.01em] text-eef-ink md:text-[17px]">
                     {item.q}
                   </span>
                   <span className="mt-1 text-eef-navy">
@@ -145,20 +147,21 @@ export function MarketingFaq() {
               </div>
             );
           })}
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className={`${wrap} pb-24 pt-8 max-md:pb-16`}>
-        <div className="relative grid min-h-[300px] overflow-hidden rounded-[28px] bg-eef-navy px-8 py-10 text-white max-md:rounded-[22px] md:grid-cols-[1.2fr_0.8fr] md:items-center md:px-[60px] md:py-[56px]">
+      <section className={`${wrap} pb-20 pt-6 max-md:pb-14 md:pb-24 md:pt-8`}>
+        <div className="relative grid min-h-[280px] overflow-hidden rounded-[22px] bg-eef-navy px-6 py-9 text-white sm:px-8 sm:py-10 md:min-h-[300px] md:grid-cols-[1.2fr_0.8fr] md:items-center md:rounded-[28px] md:px-[60px] md:py-[56px]">
           <div className="relative z-10 max-w-[560px]">
-            <h2 className="m-0 max-w-[18em] text-[40px] font-medium leading-[1.2] tracking-[-0.02em] md:text-[40px]">
+            <h2 className="m-0 max-w-[18em] text-[clamp(1.5rem,5vw,40px)] font-medium leading-[1.2] tracking-[-0.02em]">
               Votre question mérite une vraie conversation.
             </h2>
-            <p className="mt-4 m-0 text-[15px] leading-[1.6] text-white/70">
+            <p className="mt-3 m-0 text-[14px] leading-[1.6] text-white/70 md:mt-4 md:text-[15px]">
               Commençons par comprendre où vous voulez aller.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3.5 max-md:flex-col max-md:items-stretch">
+            <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
               <a
                 href="mailto:hello@eef.fr"
                 className="inline-flex h-12 cursor-pointer items-center justify-center gap-2.5 rounded-full bg-white px-[22px] text-[13px] font-medium text-eef-navy transition hover:bg-eef-mist max-md:w-full"
