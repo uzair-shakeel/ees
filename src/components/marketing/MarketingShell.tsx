@@ -270,9 +270,9 @@ export function MarketingShell({ children }: { children: ReactNode }) {
       <main>{children}</main>
 
       <footer className="relative isolate overflow-hidden border-t border-[#c6d9e7] bg-[linear-gradient(180deg,#f5fafd,#f5fafd_32%,#e7f1fb_70%,#d8e8f7)]">
-        <div className="relative z-10 mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-[96px] pb-[200px] max-md:pt-[60px] max-md:pb-[120px] md:w-[calc(100%-88px)]">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-[60px] xl:grid-cols-[minmax(0,1.1fr)_auto_minmax(0,1.6fr)]">
-            <div>
+        <div className="relative z-10 mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-[96px] pb-[200px] max-md:pt-[60px] max-md:pb-[140px] md:w-[calc(100%-88px)]">
+          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-[60px]">
+            <div className="shrink-0">
               <Link href="/" aria-label="Procédure EEF — Accueil">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={ASSETS.logo} alt="eef" className="h-[32px] w-auto" />
@@ -281,14 +281,14 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                 Votre projet d&apos;études en France, accompagné de A à Z.
               </p>
               <a
-                className="mt-5 inline-flex items-center gap-[7px] text-[14px] text-[#5e7282]"
+                className="mt-5 inline-flex min-h-[52px] w-full max-w-[280px] items-center justify-center gap-2.5 rounded-full bg-[#193e5f] px-7 text-[13px] font-medium text-white transition-colors hover:bg-[#25577f] sm:w-auto"
                 href="mailto:hello@eef.fr"
               >
-                Nous écrire
+                Parler à un conseiller
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
+                  width="16"
+                  height="16"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -306,8 +306,11 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                 className="mt-[26px] flex gap-[14px]"
                 aria-label="Réseaux sociaux"
               >
-                <span
-                  className="flex size-10 items-center justify-center rounded-full border border-[#c6d9e7] bg-white/50 text-[#102b43]"
+                <a
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex size-10 items-center justify-center rounded-full border border-[#c6d9e7] bg-white/50 text-[#102b43] transition-colors hover:border-[#102b43] hover:text-[#102b43]"
                   aria-label="Instagram"
                 >
                   <svg
@@ -334,9 +337,12 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
                   </svg>
-                </span>
-                <span
-                  className="flex size-10 items-center justify-center rounded-full border border-[#c6d9e7] bg-white/50 text-[#102b43]"
+                </a>
+                <a
+                  href="https://www.linkedin.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex size-10 items-center justify-center rounded-full border border-[#c6d9e7] bg-white/50 text-[#102b43] transition-colors hover:border-[#102b43] hover:text-[#102b43]"
                   aria-label="LinkedIn"
                 >
                   <svg
@@ -356,9 +362,12 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                     <rect width="4" height="12" x="2" y="9"></rect>
                     <circle cx="4" cy="4" r="2"></circle>
                   </svg>
-                </span>
-                <span
-                  className="flex size-10 items-center justify-center rounded-full border border-[#c6d9e7] bg-white/50 text-[#102b43]"
+                </a>
+                <a
+                  href="https://twitter.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex size-10 items-center justify-center rounded-full border border-[#c6d9e7] bg-white/50 text-[#102b43] transition-colors hover:border-[#102b43] hover:text-[#102b43]"
                   aria-label="Twitter"
                 >
                   <svg
@@ -376,117 +385,142 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                   >
                     <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
                   </svg>
-                </span>
+                </a>
               </div>
             </div>
 
-            <a
-              className="inline-flex min-h-[52px] items-center justify-center gap-2.5 justify-self-start rounded-full bg-[#193e5f] px-7 text-[13px] font-medium text-white transition-colors hover:bg-[#25577f] lg:justify-self-center"
-              href="mailto:hello@eef.fr"
-            >
-              <span className="text-white flex items-center gap-2.5">
-                Parler à un conseiller
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-arrow-up-right"
-                  aria-hidden="true"
+            <div className="grid w-full min-w-0 grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 sm:gap-x-8 lg:w-auto lg:justify-items-start lg:gap-x-[44px] lg:gap-y-8">
+              <nav
+                aria-label="S'orienter"
+                className="flex min-w-0 flex-col items-start"
+              >
+                <p className="mb-4 text-[11px] font-semibold leading-[1.75] uppercase tracking-[1.54px] text-[#173b5d]">
+                  S&apos;orienter
+                </p>
+                <a
+                  className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
+                  href="/orientation"
                 >
-                  <path d="M7 7h10v10"></path>
-                  <path d="M7 17 17 7"></path>
-                </svg>
-              </span>
-            </a>
-
-            <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-              {[
-                {
-                  title: "S'ORIENTER",
-                  links: [
-                    ["/#orientation", "Orientation"],
-                    ["/#parcours", "Formations"],
-                    ["/#methode", "Universités"],
-                  ],
-                },
-                {
-                  title: "CANDIDATER",
-                  links: [
-                    ["/#strategie", "Stratégie"],
-                    ["/#dossier", "Dossier"],
-                    ["/#dossier", "Procédure EEF"],
-                  ],
-                },
-                {
-                  title: "S'INSTALLER",
-                  links: [
-                    ["/#installation", "Logement"],
-                    ["/#installation", "Démarches"],
-                    ["/#installation", "Vie en France"],
-                  ],
-                },
-                {
-                  title: "PROCÉDURE EEF",
-                  links: [
-                    ["/#parcours", "À propos"],
-                    ["/journal", "Ressources"],
-                    ["/faq", "FAQ"],
-                    ["mailto:hello@eef.fr", "Contact"],
-                  ],
-                },
-              ].map((col) => (
-                <nav key={col.title} aria-label={col.title} className="flex flex-col gap-2">
-                  <p className="m-0 mb-1 text-[11px] font-semibold tracking-[0.08em] text-eef-ink">
-                    {col.title}
-                  </p>
-                  {col.links.map(([href, label]) =>
-                    href.startsWith("mailto:") ? (
-                      <a
-                        key={label}
-                        href={href}
-                        className="cursor-pointer text-[13px] text-eef-secondary hover:text-eef-navy"
-                      >
-                        {label}
-                      </a>
-                    ) : (
-                      <Link
-                        key={label}
-                        href={href}
-                        className="cursor-pointer text-[13px] text-eef-secondary hover:text-eef-navy"
-                      >
-                        {label}
-                      </Link>
-                    ),
-                  )}
-                </nav>
-              ))}
+                  Orientation
+                </a>
+                <a
+                  className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
+                  href="/formations"
+                >
+                  Formations
+                </a>
+                <a
+                  className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
+                  href="/universites"
+                >
+                  Universités
+                </a>
+              </nav>
+              <nav
+                aria-label="Candidater"
+                className="flex min-w-0 flex-col items-start"
+              >
+                <p className="mb-4 text-[11px] font-semibold leading-[1.75] uppercase tracking-[1.54px] text-[#173b5d]">
+                  Candidater
+                </p>
+                <a
+                  className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
+                  href="/strategie-de-candidature"
+                >
+                  Stratégie
+                </a>
+                <a
+                  className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
+                  href="/accompagnement-dossier"
+                >
+                  Dossier
+                </a>
+                <Link
+                  className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
+                  href="/procedure-eef"
+                >
+                  Procédure EEF
+                </Link>
+              </nav>
+              <nav
+                aria-label="S'installer"
+                className="flex min-w-0 flex-col items-start"
+              >
+                <p className="mb-4 text-[11px] font-semibold leading-[1.75] uppercase tracking-[1.54px] text-[#173b5d]">
+                  S&apos;installer
+                </p>
+                <a
+                  className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
+                  href="/appartements"
+                >
+                  Logement
+                </a>
+                <a
+                  className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
+                  href="/visa"
+                >
+                  Démarches
+                </a>
+                <a
+                  className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
+                  href="/vie-en-france"
+                >
+                  Vie en France
+                </a>
+              </nav>
+              <nav
+                aria-label="Procédure EEF"
+                className="flex min-w-0 flex-col items-start"
+              >
+                <p className="mb-4 text-[11px] font-semibold leading-[1.75] uppercase tracking-[1.54px] text-[#173b5d]">
+                  Procédure EEF
+                </p>
+                <Link
+                  className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
+                  href="/methode"
+                >
+                  À propos
+                </Link>
+                <Link
+                  className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
+                  href="/journal"
+                >
+                  Ressources
+                </Link>
+                <Link
+                  className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
+                  href="/faq"
+                >
+                  FAQ
+                </Link>
+                <a
+                  className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
+                  href="mailto:hello@eef.fr"
+                >
+                  Contact
+                </a>
+              </nav>
             </div>
           </div>
 
-          <div className="mt-20 flex flex-col gap-4 border-t border-[#c6d9e7] pt-[26px] md:flex-row md:items-center md:justify-between">
+          <div className="mt-14 flex flex-col gap-4 border-t border-[#c6d9e7] pt-[26px] max-md:mt-12 md:mt-20 md:flex-row md:items-center md:justify-between">
             <p className="text-[11px] leading-[19.25px] text-[#5e7282]">
               © 2026 Procédure EEF
             </p>
             <nav
               aria-label="Informations légales"
-              className="flex flex-wrap gap-x-6 gap-y-2 text-[#5e7282] text-[11px] leading-[19.25px] max-md:gap-x-5"
+              className="flex flex-wrap gap-x-6 gap-y-2 text-[11px] leading-[19.25px] text-[#5e7282]"
             >
-              <a href="#" className="hover:text-[#102b43]">
+              <a href="mailto:hello@eef.fr?subject=Mentions%20l%C3%A9gales" className="hover:text-[#102b43]">
                 Mentions légales
               </a>
-              <a href="#" className="hover:text-[#102b43]">
+              <a href="mailto:hello@eef.fr?subject=Politique%20de%20confidentialit%C3%A9" className="hover:text-[#102b43]">
                 Politique de confidentialité
               </a>
-              <a href="#" className="hover:text-[#102b43]">
+              <a href="mailto:hello@eef.fr?subject=Conditions%20g%C3%A9n%C3%A9rales" className="hover:text-[#102b43]">
                 Conditions
               </a>
-              <a href="#" className="hover:text-[#102b43]">
+              <a href="mailto:hello@eef.fr?subject=Politique%20cookies" className="hover:text-[#102b43]">
                 Cookies
               </a>
             </nav>
@@ -497,7 +531,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
           </p>
         </div>
         <span
-          className="pointer-events-none absolute left-1/2 bottom-[-40px] md:top-1/2 -translate-x-1/2 md:bottom-[2em] select-none font-display text-[min(40vw,580px)] leading-[0.8] font-semibold text-[#d5e5f1]/70 tracking-[-29px]"
+          className="pointer-events-none absolute bottom-[-40px] left-1/2 -translate-x-1/2 select-none font-display text-[min(55vw,580px)] leading-[0.8] font-semibold tracking-[-29px] text-[#173b5d]/10 sm:text-[#d5e5f1]/70 md:bottom-[-100px]"
           aria-hidden="true"
         >
           eef
