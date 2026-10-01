@@ -510,8 +510,8 @@ export function MarketingHome() {
             <span className="text-eef-blue">C&apos;est là que tout commence.</span>
           </h2>
 
-          <div className="mt-8 grid min-w-0 items-stretch gap-7 sm:mt-11 sm:gap-9 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-[clamp(2.5rem,5vw,4.5rem)]">
-            <div className="aspect-[5/4] min-w-0 overflow-hidden rounded-[14px_4.5rem_14px_14px] bg-eef-soft sm:aspect-square sm:max-h-[560px] sm:rounded-[16px_7.5rem_16px_16px]">
+          <div className="mt-8 grid min-w-0 items-stretch gap-7 sm:mt-11 sm:gap-9 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-[clamp(2.5rem,5vw,4.5rem)]">
+            <div className="aspect-[5/4] w-full min-w-0 overflow-hidden rounded-[14px_4.5rem_14px_14px] bg-eef-soft sm:aspect-square sm:max-h-[580px] sm:rounded-[16px_7.5rem_16px_16px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={ASSETS.library}
@@ -561,7 +561,7 @@ export function MarketingHome() {
           id="accompagnement"
           className={`${wrap} grid min-w-0 items-start gap-8 py-14 sm:gap-10 sm:py-[5.5rem] lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-[clamp(2.75rem,5vw,4.75rem)]`}
         >
-          <div className="relative aspect-[5/4] min-w-0 overflow-hidden rounded-[22px] bg-eef-soft sm:aspect-square sm:max-h-[580px] sm:rounded-[28px]">
+          <div className="relative aspect-[5/4] w-full min-w-0 overflow-hidden rounded-[22px] bg-eef-soft sm:aspect-square sm:max-h-[580px] sm:rounded-[28px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={ASSETS.conversation}
@@ -657,10 +657,10 @@ export function MarketingHome() {
           </p>
 
           <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-16 lg:gap-24">
-            <h2 className="m-0 max-w-[9em] text-[clamp(1.85rem,4vw,46px)] font-medium leading-[1.15] tracking-[-0.03em] text-eef-ink">
+            <h2 className="m-0 max-w-[9em] self-start text-[clamp(1.85rem,4vw,46px)] font-medium leading-[1.15] tracking-[-0.03em] text-eef-ink">
               Ne pas candidater au hasard.
             </h2>
-            <p className="m-0 max-w-[26rem] text-[14px] leading-[1.65] text-eef-secondary md:justify-self-end md:pt-1">
+            <p className="m-0 max-w-[26rem] self-start text-[14px] leading-[1.55] text-eef-secondary md:-mt-1 md:justify-self-end">
               Une bonne stratégie ne consiste pas à multiplier les candidatures. Elle
               consiste à construire une sélection cohérente.
             </p>
@@ -682,16 +682,18 @@ export function MarketingHome() {
             ))}
           </div>
 
-          <div className="mt-16 flex flex-wrap items-end justify-between gap-4 gap-x-8 md:mt-20">
-            <p className="m-0 max-w-[28rem] text-[12px] leading-snug text-[#9aafbf]">
-              Une candidature prudente ne signifie jamais qu&apos;une admission est garantie.
-            </p>
-            <a
-              href="#parcours"
-              className="inline-flex items-center gap-1 text-[13px] font-medium text-eef-ink underline decoration-eef-border underline-offset-[5px] transition hover:text-eef-navy hover:decoration-eef-navy [&_span]:no-underline [&_span]:transition-transform hover:[&_span]:translate-x-[3px]"
-            >
-              Construire ma stratégie <span aria-hidden>→</span>
-            </a>
+          <div className="mt-16 border-b border-eef-border md:mt-20">
+            <div className="flex items-baseline justify-between gap-x-8 pb-4">
+              <p className="m-0 max-w-[28rem] text-[12px] leading-snug text-[#9aafbf]">
+                Une candidature prudente ne signifie jamais qu&apos;une admission est garantie.
+              </p>
+              <a
+                href="#parcours"
+                className="inline-flex shrink-0 items-center gap-1 text-[13px] font-medium text-eef-ink transition hover:text-eef-navy [&_span]:transition-transform hover:[&_span]:translate-x-[3px]"
+              >
+                Construire ma stratégie <span aria-hidden>→</span>
+              </a>
+            </div>
           </div>
         </section>
 
@@ -778,77 +780,79 @@ export function MarketingHome() {
           <h2 className="max-w-[650px] text-[40px] leading-[1.1] font-medium tracking-[-1.8px] md:text-[64px] md:tracking-[-2.88px]">
             L&apos;admission n&apos;est pas la dernière étape.
           </h2>
-          <div className="mt-8 grid gap-8 lg:mt-[50px] lg:grid-cols-[1.2fr_1fr] lg:items-stretch lg:gap-[65px]">
-            <figure className="flex min-h-0 flex-col">
-              <div className="relative overflow-hidden rounded-t-[28px] rounded-[28px] lg:aspect-auto min-h-[360px] md:min-h-[460px] lg:flex-1">
+          <div className="mt-8 lg:mt-[50px]">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-stretch lg:gap-[65px]">
+              <div className="relative h-[260px] overflow-hidden rounded-[28px] sm:h-[320px] lg:h-auto">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={ASSETS.city}
                   alt="Vie en France"
-                  className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
+                  className="absolute inset-0 h-full w-full object-cover object-[center_35%]"
                 />
               </div>
-              <div className="mt-[20px] flex h-[44px] shrink-0 items-center gap-[15px] text-[13px] font-medium text-[#102b43] underline decoration-[#c6d9e7] underline-offset-6">
-                <span>Préparer mon arrivée</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="17"
-                  height="17"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-arrow-right"
-                  aria-hidden="true"
-                >
-                  <path d="M5 12h14"></path>
-                  <path d="m12 5 7 7-7 7"></path>
-                </svg>
-              </div>
-            </figure>
-            <div className="min-h-0">
-              {AFTER.map((item) => (
-                <a
-                  href="#"
-                  className="flex items-start gap-[22px] border-t border-[#c6d9e7] py-[28px]"
-                  key={item.n}
-                >
-                  <span className="w-[25px] pt-[5px] text-[10px] text-[#63a8d8]">
-                    {item.n}
-                  </span>
-                  <div className="flex w-full flex-col">
-                    <div className="flex w-full items-center justify-between gap-4">
-                      <h3 className="text-[26px] leading-[31.19px] font-medium tracking-[-0.91px] text-[#102b43]">
-                        {item.title}
-                      </h3>
-                      <span className="text-[#173b5d]" aria-hidden="true">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="22"
-                          height="22"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="lucide lucide-arrow-up-right"
-                          aria-hidden="true"
-                        >
-                          <path d="M7 7h10v10"></path>
-                          <path d="M7 17 17 7"></path>
-                        </svg>
-                      </span>
+              <div className="min-h-0">
+                {AFTER.map((item) => (
+                  <a
+                    href="#"
+                    className="flex items-start gap-[22px] border-t border-[#c6d9e7] py-[28px]"
+                    key={item.n}
+                  >
+                    <span className="w-[25px] pt-[5px] text-[10px] text-[#63a8d8]">
+                      {item.n}
+                    </span>
+                    <div className="flex w-full flex-col">
+                      <div className="flex w-full items-center justify-between gap-4">
+                        <h3 className="text-[26px] leading-[31.19px] font-medium tracking-[-0.91px] text-[#102b43]">
+                          {item.title}
+                        </h3>
+                        <span className="text-[#173b5d]" aria-hidden="true">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="22"
+                            height="22"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="lucide lucide-arrow-up-right"
+                            aria-hidden="true"
+                          >
+                            <path d="M7 7h10v10"></path>
+                            <path d="M7 17 17 7"></path>
+                          </svg>
+                        </span>
+                      </div>
+                      <p className="mt-2.5 text-[13px] leading-[1.75] text-[#5e7282]">
+                        {item.desc}
+                      </p>
                     </div>
-                    <p className="mt-2.5 text-[13px] leading-[1.75] text-[#5e7282]">
-                      {item.desc}
-                    </p>
-                  </div>
-                </a>
-              ))}
+                  </a>
+                ))}
+              </div>
             </div>
+            <a
+              href="#installation"
+              className="mt-5 inline-flex h-11 items-center gap-[15px] text-[13px] font-medium text-[#102b43] underline decoration-[#c6d9e7] underline-offset-6"
+            >
+              <span>Préparer mon arrivée</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
           </div>
         </section>
 

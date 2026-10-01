@@ -98,12 +98,9 @@ const page = () => {
                     </span>
                     <IconArrowRight />
                 </Link>
-                <div className="mt-[28px] sm:mt-11 grid border-t border-[#c6d9e7] md:grid-cols-3">
+                <div className="eef-rule-grid mt-[28px] sm:mt-11">
                     {PROFILE_ITEMS.map(([title, description], index) => (
-                        <article
-                            key={title}
-                            className="border-b border-eef-border py-5 pl-0 md:border-r md:px-[36px] md:py-[26px] md:first:pl-0 md:nth-[4n]:pl-0  md:nth-[3n]:border-r-0 md:nth-[n+4]:border-b-0 md:nth-[3n]:border-b-0 md:nth-[2n]:border-b-0 md:nth-[4n]:border-r-0 last:border-b-0"
-                        >
+                        <article key={title}>
                             <div className="flex items-start gap-4">
                                 <span className="pt-[7px] text-[11px] font-medium tabular-nums text-[#63a8d8] w-[34px]">
                                     {String(index + 1).padStart(2, "0")}

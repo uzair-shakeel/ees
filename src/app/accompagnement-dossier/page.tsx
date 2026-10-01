@@ -121,12 +121,9 @@ const page = () => {
                 <h2 className="m-0 max-w-[12em] text-[clamp(35px,5vw,58px)] font-medium leading-[1.1] tracking-[-2.565px] text-[#102b43]">
                     Des documents qui se répondent.
                 </h2>
-                <div className="mt-[28px] sm:mt-11 grid border-t border-[#c6d9e7] md:grid-cols-3">
+                <div className="eef-rule-grid mt-[28px] sm:mt-11">
                     {PROFILE_ITEMS.map(([title, description], index) => (
-                        <article
-                            key={title}
-                            className="border-b border-eef-border py-5 md:border-r nth-[4n]:pl-0 pl-0 md:px-[36px] first:pl-0 md:py-[26px] md:nth-[3n]:border-r-0 md:nth-[3n]:border-b-0 md:nth-[5n]:border-r-0 nth-[4n]:border-b-0 nth-[5n]:border-b-0 last:border-b-0"
-                        >
+                        <article key={title}>
                             <div className="flex items-start gap-4">
                                 <span className="pt-[7px] text-[11px] font-medium tabular-nums text-[#63a8d8] w-[34px]">
                                     {String(index + 1).padStart(2, "0")}
