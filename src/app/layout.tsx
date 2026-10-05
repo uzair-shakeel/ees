@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import "./globals.css";
 
 const inter = Inter({
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className={`${inter.className} flex min-h-full flex-col bg-eef-mist text-eef-navy`}>
         {children}
+        <WhatsAppFloat />
       </body>
     </html>
   );
