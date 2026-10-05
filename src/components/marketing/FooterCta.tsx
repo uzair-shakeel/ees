@@ -1,10 +1,51 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { getCountries, getCountryCallingCode, type CountryCode } from "libphonenumber-js/min";
+import * as FlagIcons from "country-flag-icons/react/3x2";
+import { ComponentType, FormEvent, SVGProps, useEffect, useRef, useState } from "react";
 
 const PHONE_DISPLAY = "+33 6 12 34 56 78";
 const PHONE_E164 = "33612345678";
 const CONTACT_EMAIL = "info@etudesenfrance.org";
+const WAVE_BG = "/assets/abstract-navy-wave-cover.png";
+
+const FLAGS = FlagIcons as unknown as Record<string, ComponentType<SVGProps<SVGSVGElement>>>;
+
+const regionNames = new Intl.DisplayNames(["fr"], { type: "region" });
+
+function fold(value: string) {
+  return value.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+}
+
+const COUNTRIES = getCountries()
+  .map((id) => ({
+    id,
+    name: regionNames.of(id) ?? id,
+    dial: `+${getCountryCallingCode(id)}`,
+  }))
+  .sort((a, b) => {
+    if (a.id === "FR") return -1;
+    if (b.id === "FR") return 1;
+    return a.name.localeCompare(b.name, "fr");
+  });
+
+function Flag({ code }: { code: string }) {
+  const Icon = FLAGS[code];
+  if (!Icon) {
+    return (
+      <span className="inline-flex h-3.5 min-w-5 items-center justify-center rounded-[2px] bg-white px-1 text-[9px] font-semibold text-[#173b5d] ring-1 ring-black/10" aria-hidden>
+        {code}
+      </span>
+    );
+  }
+  return (
+    <Icon
+      title=""
+      aria-hidden
+      className="h-3.5 w-5 shrink-0 overflow-hidden rounded-[2px] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]"
+    />
+  );
+}
 
 function isInternationalPhone(value: string) {
   const trimmed = value.trim();
@@ -58,14 +99,44 @@ export function FooterCta({
 }: {
   title?: string;
 }) {
+  const [countryId, setCountryId] = useState<CountryCode>("FR");
+  const [countryOpen, setCountryOpen] = useState(false);
+  const [countryQuery, setCountryQuery] = useState("");
+  const countryRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const query = fold(countryQuery.trim());
+  const visibleCountries = query
+    ? COUNTRIES.filter((country) => fold(country.name).includes(query) || country.dial.includes(query) || country.id.toLowerCase().includes(query))
+    : COUNTRIES;
+  const dial = COUNTRIES.find((country) => country.id === countryId)?.dial ?? "+33";
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [sent, setSent] = useState(false);
 
+  useEffect(() => {
+    if (!countryOpen) return;
+    searchRef.current?.focus();
+    function onPointerDown(event: PointerEvent) {
+      if (!countryRef.current?.contains(event.target as Node)) setCountryOpen(false);
+    }
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setCountryOpen(false);
+    }
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+      setCountryQuery("");
+    };
+  }, [countryOpen]);
+
+  const fullPhone = phone.trim().startsWith("+") ? phone.trim() : `${dial} ${phone.trim()}`.trim();
+
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const input = event.currentTarget.elements.namedItem("phone");
-    if (input instanceof HTMLInputElement && !isInternationalPhone(phone)) {
+    if (input instanceof HTMLInputElement && !isInternationalPhone(fullPhone)) {
       const message = "Indiquez un numéro avec l'indicatif de votre pays, par exemple +33, +212 ou +1.";
       input.setCustomValidity(message);
       input.reportValidity();
@@ -79,7 +150,7 @@ export function FooterCta({
       `Prénom: ${data.get("firstName")}`,
       `Nom: ${data.get("lastName")}`,
       `Email: ${data.get("email")}`,
-      `Téléphone: ${phone.trim()}`,
+      `Téléphone: ${fullPhone}`,
       "",
       String(data.get("message") ?? ""),
     ].join("\n");
@@ -88,13 +159,22 @@ export function FooterCta({
   }
 
   return (
-    <div className="grid items-center gap-8 rounded-[22px] bg-[#173b5d] px-5 py-8 text-white sm:px-8 sm:py-10 md:gap-10 md:rounded-[28px] md:px-10 md:py-12 lg:grid-cols-[minmax(0,1fr)_minmax(320px,460px)] lg:px-14 lg:py-14">
+    <div className="relative isolate rounded-[28px] bg-[#0d3f73] text-white">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[28px]" aria-hidden>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={WAVE_BG}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+      </div>
+      <div className="relative grid items-center gap-8 px-5 py-8 sm:px-8 sm:py-10 md:gap-10 md:px-10 md:py-12 lg:grid-cols-[minmax(0,1fr)_minmax(320px,440px)] lg:px-12 lg:py-12">
       <div className="min-w-0">
         <h2 className="m-0 max-w-[12em] text-[clamp(1.7rem,4vw,40px)] font-medium leading-[1.15] tracking-[-0.03em]">
           {title}
         </h2>
-        <p className="mt-4 m-0 text-[15px] leading-[1.6] text-white/75">
-          Commençons par comprendre où vous voulez aller.
+        <p className="mt-4 m-0 max-w-[28rem] text-[15px] leading-[1.6] text-white/80">
+          Commencez par une conversation où vous voulez aller.
         </p>
         <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <a
@@ -107,10 +187,10 @@ export function FooterCta({
             href={`https://wa.me/${PHONE_E164}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-white/45 px-5 text-[13px] font-medium text-white transition hover:bg-white/10"
+            className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-white/70 bg-transparent px-5 text-[13px] font-medium text-white transition hover:bg-white/10"
           >
             <IconWhatsApp />
-            Chat on WhatsApp
+            Chat sur WhatsApp
           </a>
         </div>
         <ul className="mt-7 m-0 flex list-none flex-col gap-2.5 p-0 text-[14px] text-white/80">
@@ -131,7 +211,7 @@ export function FooterCta({
 
       <form
         onSubmit={onSubmit}
-        className="rounded-[20px] border border-white/10 bg-[#1c4668] p-5 sm:p-6"
+        className="rounded-[22px] border border-white/15 bg-[#123e66]/80 p-5 shadow-[0_10px_30px_rgba(4,20,40,0.18)] backdrop-blur-[2px] sm:p-6"
       >
         {sent ? (
           <p className="m-0 py-10 text-center text-[15px] leading-[1.6] text-white">
@@ -152,27 +232,83 @@ export function FooterCta({
                 Email
                 <input name="email" type="email" required autoComplete="email" placeholder="votre@email.com" className={`${fieldClass} mt-1.5`} />
               </label>
-              <label className="block text-[13px] text-white">
+              <div className="block text-[13px] text-white">
                 Téléphone
-                <input
-                  name="phone"
-                  type="tel"
-                  inputMode="tel"
-                  autoComplete="tel"
-                  required
-                  value={phone}
-                  placeholder="+33 6 12 34 56 78"
-                  aria-invalid={phoneError ? true : undefined}
-                  aria-describedby={phoneError ? "cta-phone-error" : undefined}
-                  onChange={(event) => {
-                    const next = event.target.value.replace(/[^\d+\s().-]/g, "").replace(/(?!^)\+/g, "");
-                    setPhone(next);
-                    event.target.setCustomValidity("");
-                    if (phoneError) setPhoneError("");
-                  }}
-                  className={`${fieldClass} mt-1.5`}
-                />
-              </label>
+                <div className={`${fieldClass} mt-1.5 flex items-center gap-2 px-2.5`}>
+                  <div ref={countryRef} className="relative shrink-0">
+                    <button
+                      type="button"
+                      aria-label="Indicatif du pays"
+                      aria-haspopup="listbox"
+                      aria-expanded={countryOpen}
+                      onClick={() => setCountryOpen((open) => !open)}
+                      className="flex cursor-pointer items-center gap-1"
+                    >
+                      <Flag code={countryId} />
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white/70" aria-hidden>
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+                    {countryOpen ? (
+                      <div className="absolute left-0 top-[calc(100%+10px)] z-30 w-72 overflow-hidden rounded-xl bg-white text-[#173b5d] shadow-[0_12px_32px_rgba(8,24,48,0.28)]">
+                        <input
+                          ref={searchRef}
+                          value={countryQuery}
+                          onChange={(event) => setCountryQuery(event.target.value)}
+                          placeholder="Rechercher un pays"
+                          aria-label="Rechercher un pays"
+                          className="h-10 w-full border-b border-[#e4edf4] bg-white px-3 text-[13px] text-[#173b5d] outline-none placeholder:text-[#8aa0b3]"
+                        />
+                        <ul role="listbox" aria-label="Indicatif du pays" className="m-0 max-h-56 list-none overflow-auto p-1.5">
+                          {visibleCountries.length === 0 ? (
+                            <li className="px-2.5 py-2 text-[13px] text-[#5c7388]">Aucun pays</li>
+                          ) : (
+                            visibleCountries.map((country) => {
+                              const selected = country.id === countryId;
+                              return (
+                                <li key={country.id} role="option" aria-selected={selected}>
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setCountryId(country.id);
+                                      setCountryOpen(false);
+                                    }}
+                                    className={`flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg px-2.5 py-2 text-left text-[13px] text-[#173b5d] ${selected ? "bg-[#e7f0f7]" : "hover:bg-[#f3f7fb]"}`}
+                                  >
+                                    <span className="inline-flex min-w-0 items-center gap-2">
+                                      <Flag code={country.id} />
+                                      <span className="truncate">{country.name}</span>
+                                    </span>
+                                    <span className="shrink-0 text-[#5c7388]">{country.dial}</span>
+                                  </button>
+                                </li>
+                              );
+                            })
+                          )}
+                        </ul>
+                      </div>
+                    ) : null}
+                  </div>
+                  <input
+                    name="phone"
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    required
+                    value={phone}
+                    placeholder={`${dial} 6 12 34 56 78`}
+                    aria-invalid={phoneError ? true : undefined}
+                    aria-describedby={phoneError ? "cta-phone-error" : undefined}
+                    onChange={(event) => {
+                      const next = event.target.value.replace(/[^\d+\s().-]/g, "").replace(/(?!^)\+/g, "");
+                      setPhone(next);
+                      event.target.setCustomValidity("");
+                      if (phoneError) setPhoneError("");
+                    }}
+                    className="h-full min-w-0 flex-1 bg-transparent text-[14px] text-white outline-none placeholder:text-white/35"
+                  />
+                </div>
+              </div>
             </div>
             {phoneError ? (
               <p id="cta-phone-error" className="mt-2 m-0 text-[12px] leading-snug text-[#ffd0d0]">
@@ -208,6 +344,7 @@ export function FooterCta({
           </>
         )}
       </form>
+      </div>
     </div>
   );
 }
