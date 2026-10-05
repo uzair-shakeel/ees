@@ -1,4 +1,6 @@
+import { BoursesExplorer } from "@/components/marketing/BoursesExplorer";
 import { MarketingShell } from "@/components/marketing/MarketingShell";
+import { getBourses, todayISO } from "@/lib/bourses";
 import Link from "next/link";
 
 const ASSETS = {
@@ -61,7 +63,9 @@ const ORIENTATION_RESULTS = [
 const orientationWrap =
     "mx-auto w-[calc(100%-2.5rem)] max-w-[1350px] lg:w-[calc(100%-8rem)]";
 
-const page = () => {
+const page = async () => {
+    const bourses = await getBourses();
+
     return (
         <MarketingShell>
             {/* Hero */}
@@ -108,83 +112,7 @@ const page = () => {
 
             {/* Scholarship explorer */}
             <section className={`${orientationWrap} pt-[45px] md:pt-[70px]`}>
-                <div className="flex h-[58px] items-center gap-2 rounded-full border border-[#c6d9e7] bg-white py-2 pl-5 pr-2 shadow-[rgba(37,39,37,0.08)_0px_10px_30px_-12px]">
-                    <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        className="shrink-0 text-[#5e7282]"
-                        aria-hidden
-                    >
-                        <circle cx="11" cy="11" r="8" />
-                        <path d="m21 21-4.34-4.34" />
-                    </svg>
-                    <input
-                        type="search"
-                        placeholder="Rechercher une bourse, un organisme..."
-                        className="min-w-0 flex-1 bg-transparent leading-0 py-2 text-[15px] text-[#102B43] outline-none placeholder:text-[#9aabba]"
-                        aria-label="Rechercher une bourse ou un organisme"
-                    />
-                    <button
-                        type="button"
-                        className="inline-flex cursor-pointer h-10 shrink-0 items-center justify-center rounded-full bg-eef-navy px-5 text-[12px] font-medium text-white transition hover:bg-eef-ink"
-                    >
-                        Rechercher
-                    </button>
-                </div>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                    {["Licence", "Master", "Doctorat"].map((level) => (
-                        <button
-                            key={level}
-                            type="button"
-                            className="cursor-pointer rounded-full border font-semibold border-[#c6d9e7] bg-white px-3.5 py-2 text-[12px] text-[#5e7282] transition hover:border-[#63a8d8] hover:text-[#63a8d8]"
-                        >
-                            {level}
-                        </button>
-                    ))}
-                </div>
-
-                <div className="mt-10 flex min-h-[389px] py-10 flex-col items-center justify-center rounded-[25px] border border-dashed border-[#2527252e] bg-white/60 px-6 text-center">
-                    <div className="flex size-14 items-center justify-center rounded-[13px] bg-[#e4eff6] text-[#63a8d8]">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="lucide lucide-coins h-6 w-6"
-                            aria-hidden="true"
-                        //   style="color: var(--teal);"
-                        >
-                            <circle cx="8" cy="8" r="6"></circle>
-                            <path d="M18.09 10.37A6 6 0 1 1 10.34 18"></path>
-                            <path d="M7 6h1v4"></path>
-                            <path d="m16.71 13.88.7.71-2.82 2.82"></path>
-                        </svg>
-                    </div>
-                    <h2 className="mt-5 m-0 text-[27px] font-medium leading-[1.2] tracking-[-0.945px] text-[#102B43]">
-                        Base de bourses en cours de vérification
-                    </h2>
-                    <p className="mt-2 m-0 max-w-[512px] text-[15px] leading-[1.75] text-[#5e7282]">
-                        Chaque bourse est vérifiée à la source officielle (éligibilité,
-                        montant, date limite, pièces) avant d&apos;apparaître ici. Aucun
-                        dispositif non confirmé n&apos;est affiché.
-                    </p>
-                    <button
-                        type="button"
-                        className="mt-6 inline-flex h-10 cursor-pointer items-center justify-center rounded-full bg-[#173B5D] px-4.5 text-[13.5px] font-medium text-white transition hover:bg-eef-ink"
-                    >
-                        Lire : bâtir une stratégie de financement
-                    </button>
-                </div>
+                <BoursesExplorer bourses={bourses} initialToday={todayISO()} />
 
                 <p className="mt-6 m-0 text-[12px] leading-[1.75] text-[#5e7282]">
                     Procédure EEF n&apos;affiche que des informations vérifiées à la

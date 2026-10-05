@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   MarketingShell,
-  ASSETS,
   wrap,
   marketingHeroH1,
 } from "@/components/marketing/MarketingShell";
+import { JOURNAL_ARTICLES } from "@/content/journal-articles";
 
 const CATEGORIES = [
   "Tout",
@@ -24,6 +24,7 @@ type Category = (typeof CATEGORIES)[number];
 
 type Article = {
   id: string;
+  slug: string;
   category: Exclude<Category, "Tout">;
   title: string;
   desc: string;
@@ -32,68 +33,16 @@ type Article = {
   badge?: string;
 };
 
-const ARTICLES: Article[] = [
-  {
-    id: "domaines",
-    category: "Orientation",
-    badge: "Orientation · À la une",
-    title: "Comment choisir sa formation quand plusieurs domaines vous intéressent ?",
-    desc: "Clarifier vos centres d'intérêt, comparer des parcours proches et construire un choix cohérent — sans vous disperser.",
-    image: ASSETS.library,
-    featured: "main",
-  },
-  {
-    id: "publique-privee",
-    category: "Formations",
-    title: "Université publique ou école privée : quelles différences regarder ?",
-    desc: "Programme, sélectivité, frais et débouchés : ce qu'il faut comparer avant de choisir.",
-    image: ASSETS.campus,
-    featured: "side",
-  },
-  {
-    id: "shortlist",
-    category: "Universités",
-    title: "Construire une shortlist d'universités : la méthode",
-    desc: "Une sélection équilibrée, ambitieuse et réaliste, fondée sur votre profil.",
-    image: ASSETS.campus,
-    featured: "side",
-  },
-  {
-    id: "projet",
-    category: "Dossier",
-    title: "Comment structurer un projet d'études cohérent ?",
-    desc: "Relier parcours, formation et ambition dans un récit clair pour les jurys.",
-    image: ASSETS.student,
-  },
-  {
-    id: "erreurs",
-    category: "Dossier",
-    title: "Les erreurs qui rendent une candidature difficile à comprendre",
-    desc: "Les formulations floues, les incohérences et les pièces mal préparées à éviter.",
-    image: ASSETS.conversation,
-  },
-  {
-    id: "checklist",
-    category: "Vie en France",
-    title: "Préparer son départ en France : la checklist",
-    desc: "Les étapes concrètes avant l'arrivée : documents, budget, premiers jours.",
-    image: ASSETS.city,
-  },
-  {
-    id: "logement",
-    category: "Logement",
-    title: "Trouver un logement étudiant : quels documents préparer ?",
-    desc: "Dossier locatif, garanties et pièces utiles pour candidater plus vite.",
-    image: ASSETS.city,
-  },
-  {
-    id: "eef-procedure",
-    category: "Études en France",
-    title: "Comprendre la procédure Études en France",
-    desc: "Calendrier, étapes et pièces : les repères essentiels pour avancer sereinement.",
-    image: ASSETS.library,
-  },
-];
+const ARTICLES: Article[] = JOURNAL_ARTICLES.map((article) => ({
+  id: article.id,
+  slug: article.slug,
+  category: article.category,
+  title: article.title,
+  desc: article.metaDescription,
+  image: article.image,
+  featured: article.featured,
+  badge: article.badge,
+}));
 
 function IconSearch() {
   return (
@@ -201,7 +150,7 @@ export function MarketingJournal() {
         <section className={`${wrap} pb-14 pt-6 max-md:pb-12`}>
           <div className="grid min-w-0 gap-10 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,0.9fr)] lg:gap-12">
             <article className="min-w-0">
-              <Link href="#guides" className="group block cursor-pointer">
+              <Link href={`/journal/${main.slug}`} className="group block cursor-pointer">
                 <div className="overflow-hidden rounded-[18px] bg-eef-soft md:rounded-[22px]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -230,7 +179,7 @@ export function MarketingJournal() {
               {sideArticles.map((article) => (
                 <article key={article.id} className="min-w-0">
                   <Link
-                    href="#guides"
+                    href={`/journal/${article.slug}`}
                     className="group grid cursor-pointer grid-cols-[5.5rem_minmax(0,1fr)] items-start gap-4 sm:grid-cols-1 sm:gap-0"
                   >
                     <div className="overflow-hidden rounded-[14px] bg-eef-soft sm:rounded-[18px]">
@@ -279,7 +228,7 @@ export function MarketingJournal() {
             {list.map((article) => (
               <Link
                 key={article.id}
-                href="#guides"
+                href={`/journal/${article.slug}`}
                 className="group grid cursor-pointer grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-4 border-b border-eef-border py-5 sm:grid-cols-[5.5rem_minmax(0,1fr)_auto] sm:gap-5 sm:py-6 md:gap-7"
               >
                 <div className="overflow-hidden rounded-[12px] bg-eef-soft">

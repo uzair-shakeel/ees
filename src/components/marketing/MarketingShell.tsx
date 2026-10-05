@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
+import { FooterCta } from "@/components/marketing/FooterCta";
 
 export const ASSETS = {
   logo: "/marketing/assets/img-001.png",
@@ -256,7 +257,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                 Espace étudiant <IconArrow />
               </Link>
               <a
-                href="mailto:hello@eef.fr"
+                href="mailto:info@etudesenfrance.org"
                 onClick={() => setMenuOpen(false)}
                 className={`${btnPrimary} min-h-[52px] w-fit px-7`}
               >
@@ -270,8 +271,9 @@ export function MarketingShell({ children }: { children: ReactNode }) {
       <main>{children}</main>
 
       <footer className="relative isolate overflow-hidden border-t border-[#c6d9e7] bg-[linear-gradient(180deg,#f5fafd,#f5fafd_32%,#e7f1fb_70%,#d8e8f7)]">
-        <div className="relative z-10 mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-[96px] pb-[200px] max-md:pt-[60px] max-md:pb-[140px] md:w-[calc(100%-88px)]">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-[60px]">
+        <div className="relative z-10 mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-16 pb-[200px] max-md:pt-12 max-md:pb-[140px] md:w-[calc(100%-88px)]">
+          <FooterCta />
+          <div className="mt-16 flex flex-col gap-12 lg:mt-20 lg:flex-row lg:items-start lg:justify-between lg:gap-[60px]">
             <div className="shrink-0">
               <Link href="/" aria-label="Procédure EEF — Accueil">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -282,7 +284,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
               </p>
               <a
                 className="mt-5 inline-flex min-h-[52px] w-full max-w-[280px] items-center justify-center gap-2.5 rounded-full bg-[#193e5f] px-7 text-[13px] font-medium text-white transition-colors hover:bg-[#25577f] sm:w-auto"
-                href="mailto:hello@eef.fr"
+                href="mailto:info@etudesenfrance.org"
               >
                 Parler à un conseiller
                 <svg
@@ -495,7 +497,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                 </Link>
                 <a
                   className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
-                  href="mailto:hello@eef.fr"
+                  href="mailto:info@etudesenfrance.org"
                 >
                   Contact
                 </a>

@@ -1,10 +1,6 @@
 import { MarketingShell } from "@/components/marketing/MarketingShell";
 import Link from "next/link";
 
-const ASSETS = {
-    logoMark: "/marketing/assets/img-008.png",
-};
-
 function IconArrowRight() {
     return (
         <svg
@@ -183,50 +179,6 @@ const page = () => {
                 </div>
             </section>
 
-            {/* CTA */}
-            <section className={`${orientationWrap} py-[60px]`}>
-                <div className="relative grid min-h-[300px] overflow-hidden rounded-[28px] bg-eef-navy px-[26px] py-[34px] text-white max-md:rounded-[22px] md:grid-cols-[1.2fr_0.8fr] md:items-center md:px-[60px] md:py-[56px]">
-                    <div className="relative z-10 max-w-[560px]">
-                        <h2 className="m-0 max-w-[18em] text-[28px] md:text-[40px] font-medium leading-[1.2] tracking-[-0.02em]">
-                            Votre question mérite une vraie conversation.
-                        </h2>
-                        <p className="mt-4 m-0 text-[15px] leading-[1.6] text-white/70">
-                            Commençons par comprendre où vous voulez aller.
-                        </p>
-                        <div className="mt-8 flex flex-wrap gap-3.5 max-md:flex-col max-md:items-stretch">
-                            <a
-                                href="mailto:hello@eef.fr"
-                                className="inline-flex h-12 cursor-pointer items-center justify-center gap-2.5 rounded-full bg-white px-[22px] text-[13px] font-medium text-eef-navy transition hover:bg-eef-mist max-md:w-full"
-                            >
-                                Parler à un conseiller <IconArrowRight />
-                            </a>
-                            <Link
-                                href="/"
-                                className="inline-flex h-12 cursor-pointer items-center justify-center gap-2.5 rounded-full border border-white/50 px-[22px] text-[13px] font-medium text-white transition hover:bg-white/10 max-md:w-full"
-                            >
-                                Découvrir Procédure EEF <IconArrowRight />
-                            </Link>
-                        </div>
-                    </div>
-
-                    <div
-                        className="pointer-events-none absolute -right-20 top-1/2 hidden lg:flex size-[360px] -translate-y-1/2 items-center justify-center sm:-right-8 md:size-[480px]"
-                        aria-hidden
-                    >
-                        <div className="absolute size-full rounded-full border border-white/10" />
-                        <div className="absolute size-[78%] rounded-full border border-white/10" />
-                        <div className="absolute size-[49%] rounded-full border border-white/10" />
-                        <div className="relative flex size-[100px] items-center justify-center rounded-full border border-white/15 bg-white/[0.07]">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                                src={ASSETS.logoMark}
-                                alt=""
-                                className="absolute left-1/2 top-1/2 w-[80px] -translate-x-1/2 -translate-y-1/2 object-contain opacity-90 brightness-0 invert"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </section>
         </MarketingShell>
     );
 };

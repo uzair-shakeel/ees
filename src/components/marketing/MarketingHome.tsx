@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { FooterCta } from "@/components/marketing/FooterCta";
 
 const ASSETS = {
   logo: "/marketing/assets/img-001.png",
@@ -11,7 +12,7 @@ const ASSETS = {
   library: "/marketing/assets/img-005.webp",
   campus: "/marketing/assets/img-006.PNG",
   city: "/marketing/assets/img-007.webp",
-  logoMark: "/marketing/assets/img-008.png",
+  heroSkyline: "/assets/Serene%20Paris%20Skyline%20in%20Misty%20Blue.png",
 };
 
 const JOURNEY = [
@@ -361,7 +362,14 @@ export function MarketingHome() {
 
       <main>
         {/* Hero */}
-        <section className={`${wrap} flex flex-col items-center px-0 pb-[92px] pt-16 text-center max-md:pb-[60px] max-md:pt-10`}>
+        <section className="relative overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={ASSETS.heroSkyline}
+            alt=""
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_72%]"
+          />
+          <div className={`${wrap} relative z-10 flex flex-col items-center px-0 pb-[92px] pt-16 text-center max-md:pb-[60px] max-md:pt-10`}>
           <h1 className="mx-auto max-w-[1120px] font-medium leading-[1.14] tracking-[-0.84px] sm:tracking-[-2.22px] text-[#102b43] text-[clamp(28px,4.3vw,74px)]">
             {"Construisez votre projet d'études"}
             <br className="sm:block hidden" />
@@ -381,7 +389,7 @@ export function MarketingHome() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={ASSETS.advisor} alt="" className="size-full object-cover object-center" />
             </a>
-            {" un\u00A0conseiller humain."}
+            {" un\u00A0professionnel."}
           </h1>
 
           <p className="mx-auto mt-6 max-w-[600px] text-[clamp(15px,1.5vw,19px)] font-medium leading-normal text-eef-ink">
@@ -445,6 +453,7 @@ export function MarketingHome() {
             <p className="m-0 text-[13px] text-eef-secondary">
               Un accompagnement humain, pas un algorithme.
             </p>
+          </div>
           </div>
         </section>
 
@@ -576,7 +585,9 @@ export function MarketingHome() {
           <div className="flex min-w-0 flex-col items-start pt-0.5">
             <p className={`${eyebrow} text-eef-navy`}>03 — UN ACCOMPAGNEMENT HUMAIN</p>
             <h2 className={`${sectionH2} max-w-[11.5em]`}>
-              Une vraie personne qui connaît votre dossier.
+              Un vrai guide
+              <br />
+              qui connaît votre dossier.
             </h2>
             <p className={`${bodyMuted} mt-[1.15rem] max-w-[26rem]`}>
               Votre conseiller apprend à connaître votre parcours, vos hésitations et vos
@@ -997,89 +1008,12 @@ export function MarketingHome() {
           </Link>
         </section>
 
-        <section className="mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-[60px] pb-16 md:w-[calc(100%-88px)]">
-          <div className="relative grid min-h-[300px] overflow-hidden rounded-[28px] bg-[#173b5d] px-[26px] py-[34px] text-white md:grid-cols-[1.2fr_0.8fr] md:items-center md:px-[60px] md:py-[56px]">
-            <div className="relative z-10 max-w-[560px]">
-              <h2 className="max-w-[540px] text-[28px] leading-[1.15] tracking-[-1.3741px] font-medium md:text-[40px]">
-                Votre projet mérite plus qu&apos;une liste d&apos;universités.
-              </h2>
-              <p className="mt-4 text-[14px] leading-[1.6] text-[#ffffffb8]">
-                Commençons par comprendre où vous voulez aller.
-              </p>
-              <div className="mt-[30px] flex flex-wrap gap-[14px] max-md:flex-col max-md:items-stretch">
-                <a
-                  href="mailto:hello@eef.fr"
-                  className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full bg-[#ffffff] px-[22px] transition-colors hover:bg-[#eaf2f7] max-md:w-full"
-                >
-                  <span className="flex items-center gap-2.5 text-[13px] font-medium text-[#193e5f]">
-                    Parler à un conseiller
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-arrow-right"
-                      aria-hidden="true"
-                    >
-                      <path d="M5 12h14"></path>
-                      <path d="m12 5 7 7-7 7"></path>
-                    </svg>
-                  </span>
-                </a>
-                <Link
-                  href="/register"
-                  className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-white/50 px-[22px] transition-colors hover:bg-white/10 max-md:w-full"
-                >
-                  <span className="flex items-center gap-2.5 text-[13px] font-medium text-[#ffffff]">
-                    Découvrir Procédure EEF
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-arrow-right"
-                      aria-hidden="true"
-                    >
-                      <path d="M5 12h14"></path>
-                      <path d="m12 5 7 7-7 7"></path>
-                    </svg>
-                  </span>
-                </Link>
-              </div>
-            </div>
-            <div
-              className="pointer-events-none absolute -right-20 top-1/2 hidden lg:flex size-[360px] -translate-y-1/2 items-center justify-center sm:-right-8 md:size-[480px]"
-              aria-hidden="true"
-            >
-              <div className="absolute size-full rounded-full border border-white/10" />
-              <div className="absolute size-[78%] rounded-full border border-white/10" />
-              <div className="absolute size-[49%] rounded-full border border-white/10" />
-              <div className="relative flex size-[100px] items-center justify-center rounded-full border border-white/15 bg-white/[0.07]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={ASSETS.logoMark}
-                  alt=""
-                  className="absolute left-1/2 top-1/2 w-[80px] -translate-x-1/2 -translate-y-1/2 transform object-contain opacity-90 brightness-0 invert"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       <footer className="relative isolate overflow-hidden border-t border-[#c6d9e7] bg-[linear-gradient(180deg,#f5fafd,#f5fafd_32%,#e7f1fb_70%,#d8e8f7)]">
-        <div className="relative z-10 mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-[96px] pb-[200px] max-md:pt-[60px] max-md:pb-[140px] md:w-[calc(100%-88px)]">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-[60px]">
+        <div className="relative z-10 mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-16 pb-[200px] max-md:pt-12 max-md:pb-[140px] md:w-[calc(100%-88px)]">
+          <FooterCta />
+          <div className="mt-16 flex flex-col gap-12 lg:mt-20 lg:flex-row lg:items-start lg:justify-between lg:gap-[60px]">
             <div className="shrink-0">
               <Link href="/" aria-label="Procédure EEF — Accueil">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -1090,7 +1024,7 @@ export function MarketingHome() {
               </p>
               <a
                 className="mt-5 inline-flex min-h-[52px] w-full max-w-[280px] items-center justify-center gap-2.5 rounded-full bg-[#193e5f] px-7 text-[13px] font-medium text-white transition-colors hover:bg-[#25577f] sm:w-auto"
-                href="mailto:hello@eef.fr"
+                href="mailto:info@etudesenfrance.org"
               >
                 Parler à un conseiller
                 <svg
@@ -1303,7 +1237,7 @@ export function MarketingHome() {
                 </Link>
                 <a
                   className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
-                  href="mailto:hello@eef.fr"
+                  href="mailto:info@etudesenfrance.org"
                 >
                   Contact
                 </a>
