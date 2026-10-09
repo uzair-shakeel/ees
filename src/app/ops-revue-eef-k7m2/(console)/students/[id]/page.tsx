@@ -4,6 +4,9 @@ import { ADMIN_APP_PATH } from "@/lib/admin-path";
 import { getStudentDetail } from "@/lib/admin-students";
 import { StatusBadge } from "@/components/StatusBadge";
 
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
+
 type Props = { params: Promise<{ id: string }> };
 
 export default async function StudentDetailPage({ params }: Props) {

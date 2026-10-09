@@ -2,6 +2,9 @@ import { notFound } from "next/navigation";
 import { getStudentServiceDocs } from "@/lib/admin-students";
 import { AdminServiceDocs } from "@/components/AdminServiceDocs";
 
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
+
 type Props = { params: Promise<{ id: string; slug: string }> };
 
 export default async function StudentServiceDocsPage({ params }: Props) {

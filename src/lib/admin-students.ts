@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { connectDB } from "@/lib/mongodb";
 import { progressPercent } from "@/lib/application-status";
 import { User } from "@/models/User";
@@ -91,6 +92,8 @@ export async function getStudentsOverview(): Promise<StudentListItem[]> {
 }
 
 export async function getStudentDetail(studentId: string) {
+  if (!mongoose.isValidObjectId(studentId)) return null;
+
   await connectDB();
 
   const student = await User.findOne({ _id: studentId, role: "CLIENT" }).lean();
@@ -146,6 +149,8 @@ export async function getStudentDetail(studentId: string) {
 }
 
 export async function getStudentServiceDocs(studentId: string, slug: string) {
+  if (!mongoose.isValidObjectId(studentId)) return null;
+
   await connectDB();
 
   const student = await User.findOne({ _id: studentId, role: "CLIENT" }).lean();
