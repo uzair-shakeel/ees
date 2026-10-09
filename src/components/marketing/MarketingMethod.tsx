@@ -63,12 +63,12 @@ export function MarketingMethod() {
               Choisir ses études à l&apos;étranger demande plus qu&apos;une liste
               d&apos;établissements et une checklist administrative.
             </p>
-            <a
-              href="mailto:hello@eef.fr"
+            <Link
+              href="/login"
               className={`${btnPrimary} mt-6 min-h-[52px] w-full px-6 text-[14px] sm:mt-7 sm:w-auto`}
             >
               Parler à un conseiller
-            </a>
+            </Link>
           </div>
         </div>
 

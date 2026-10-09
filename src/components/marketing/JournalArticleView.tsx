@@ -139,9 +139,9 @@ export function JournalArticleView({ article }: { article: JournalArticle }) {
               <p className="m-0 max-w-[36rem] text-[16px] leading-[1.6] text-eef-ink">
                 {article.cta}
               </p>
-              <a href="mailto:hello@eef.fr" className={`${btnPrimary} mt-5`}>
+              <Link href="/login" className={`${btnPrimary} mt-5`}>
                 Parler à un conseiller
-              </a>
+              </Link>
             </div>
 
             <p className="mt-8 m-0 text-[13px] leading-[1.6] text-[#8aa4b8]">

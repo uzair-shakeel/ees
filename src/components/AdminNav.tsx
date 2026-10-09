@@ -20,6 +20,11 @@ export function AdminNav() {
       label: "File d'attente",
       active: pathname.startsWith(`${ADMIN_APP_PATH}/file-attente`),
     },
+    {
+      href: `${ADMIN_APP_PATH}/sections`,
+      label: "Sections",
+      active: pathname.startsWith(`${ADMIN_APP_PATH}/sections`),
+    },
   ];
 
   return (

@@ -178,7 +178,7 @@ export function FooterCta({
         </p>
         <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <a
-            href={`mailto:${CONTACT_EMAIL}`}
+            href="/login"
             className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full bg-white px-5 text-[13px] font-medium text-[#173b5d] transition hover:bg-[#eaf2f7]"
           >
             Parler à un conseiller <IconArrowRight />

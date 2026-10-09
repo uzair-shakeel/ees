@@ -93,7 +93,7 @@ const DEFAULT_SERVICES = [
   },
 ];
 
-/** Ensure catalog services exist without wiping user data. */
+/** Ensure catalog services exist. Document lists are kept once an admin has edited them. */
 export async function ensureServicesCatalog() {
   for (const service of DEFAULT_SERVICES) {
     await Service.updateOne(
@@ -102,9 +102,11 @@ export async function ensureServicesCatalog() {
         $set: {
           title: service.title,
           description: service.description,
+        },
+        $setOnInsert: {
+          slug: service.slug,
           requirements: service.requirements,
         },
-        $setOnInsert: { slug: service.slug },
       },
       { upsert: true },
     );

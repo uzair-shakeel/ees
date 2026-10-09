@@ -193,9 +193,9 @@ export function MarketingShell({ children }: { children: ReactNode }) {
             >
               Espace étudiant <IconArrow />
             </Link>
-            <a href="mailto:hello@eef.fr" className={btnPrimary}>
+            <Link href="/login" className={btnPrimary}>
               Parler à un conseiller <IconArrow />
-            </a>
+            </Link>
           </div>
 
           <button
@@ -256,13 +256,13 @@ export function MarketingShell({ children }: { children: ReactNode }) {
               >
                 Espace étudiant <IconArrow />
               </Link>
-              <a
-                href="mailto:info@etudesenfrance.org"
+              <Link
+                href="/login"
                 onClick={() => setMenuOpen(false)}
                 className={`${btnPrimary} min-h-[52px] w-fit px-7`}
               >
                 Parler à un conseiller <IconArrow />
-              </a>
+              </Link>
             </div>
           </div>
         )}
@@ -282,9 +282,9 @@ export function MarketingShell({ children }: { children: ReactNode }) {
               <p className="mt-[22px] max-w-[270px] text-[15px] font-medium leading-[1.75] text-[#102b43]">
                 Votre projet d&apos;études en France, accompagné de A à Z.
               </p>
-              <a
+              <Link
                 className="mt-5 inline-flex min-h-[52px] w-full max-w-[280px] items-center justify-center gap-2.5 rounded-full bg-[#193e5f] px-7 text-[13px] font-medium text-white transition-colors hover:bg-[#25577f] sm:w-auto"
-                href="mailto:info@etudesenfrance.org"
+                href="/login"
               >
                 Parler à un conseiller
                 <svg
@@ -303,7 +303,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                   <path d="M7 7h10v10"></path>
                   <path d="M7 17 17 7"></path>
                 </svg>
-              </a>
+              </Link>
               <div
                 className="mt-[26px] flex gap-[14px]"
                 aria-label="Réseaux sociaux"

@@ -13,6 +13,7 @@ export default async function StudentServiceDocsPage({ params }: Props) {
     <AdminServiceDocs
       studentId={data.student.id}
       studentName={data.student.name}
+      serviceSlug={data.service.slug}
       serviceTitle={data.service.title}
       progress={data.progress}
       status={data.status}

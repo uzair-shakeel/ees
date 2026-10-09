@@ -10,7 +10,7 @@ export default async function AdminLayout({
   children: React.ReactNode;
 }) {
   const session = await getSession();
-  if (!session) redirect("/login");
+  if (!session) redirect(`${ADMIN_APP_PATH}/login`);
   if (session.role !== "ADMIN") redirect("/mon-dossier");
 
   return (
@@ -50,7 +50,7 @@ function LogoutButton() {
         const { clearSession } = await import("@/lib/auth");
         const { redirect: redir } = await import("next/navigation");
         await clearSession();
-        redir("/login");
+        redir(`${ADMIN_APP_PATH}/login`);
       }}
     >
       <button type="submit" className="eef-btn-ghost px-3 py-1.5 text-sm">

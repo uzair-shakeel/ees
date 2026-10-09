@@ -307,9 +307,9 @@ export function MarketingHome() {
             >
               Espace étudiant <IconArrow />
             </Link>
-            <a href="mailto:hello@eef.fr" className={btnPrimary}>
+            <Link href="/login" className={btnPrimary}>
               Parler à un conseiller <IconArrow />
-            </a>
+            </Link>
           </div>
 
           <button
@@ -352,9 +352,9 @@ export function MarketingHome() {
               <Link href="/login" onClick={() => setMenuOpen(false)} className="inline-flex min-h-8 items-center gap-2 text-[12px] font-medium text-eef-ink">
                 Espace étudiant <IconArrow />
               </Link>
-              <a href="mailto:hello@eef.fr" onClick={() => setMenuOpen(false)} className={`${btnPrimary} min-h-[52px] w-fit px-7`}>
+              <Link href="/login" onClick={() => setMenuOpen(false)} className={`${btnPrimary} min-h-[52px] w-fit px-7`}>
                 Parler à un conseiller <IconArrow />
-              </a>
+              </Link>
             </div>
           </div>
         )}
@@ -381,14 +381,14 @@ export function MarketingHome() {
               Trouver ma voie
             </Link>
             {" en France avec "}
-            <a
-              href="mailto:hello@eef.fr"
+            <Link
+              href="/login"
               className="mx-[7px] inline-flex size-[clamp(50px,5.6vw,80px)] -translate-y-[5px] overflow-hidden rounded-full border-[3px] border-white align-middle shadow-[0_6px_20px_rgba(16,43,67,0.12)] transition hover:-translate-y-[9px] sm:mx-3"
               aria-label="Parler à un conseiller"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={ASSETS.advisor} alt="" className="size-full object-cover object-center" />
-            </a>
+            </Link>
             {" un\u00A0professionnel."}
           </h1>
 
@@ -426,13 +426,13 @@ export function MarketingHome() {
             <Link href="/login" className={`${pillBase} bg-[#173b5d] text-white hover:border-[#122f4b] hover:bg-[#122f4b]`}>
               Espace étudiant
             </Link>
-            <a
-              href="mailto:hello@eef.fr"
+            <Link
+              href="/login"
               className={`${pillBase} bg-[#173b5d] text-white hover:border-[#122f4b] hover:bg-[#122f4b]`}
             >
               Parler à un conseiller
               <IconArrow />
-            </a>
+            </Link>
           </div>
 
           <div className="mt-16 flex flex-col items-center gap-4">
@@ -601,12 +601,12 @@ export function MarketingHome() {
             <p className="mt-[22px] max-w-[24rem] text-[18px] font-medium leading-normal text-eef-ink">
               Votre projet n&apos;est pas généré automatiquement. Il est construit avec vous.
             </p>
-            <a
-              href="mailto:hello@eef.fr"
+            <Link
+              href="/login"
               className={`${btnPrimary} mt-[1.85rem] min-h-12 px-[1.35rem] text-[13px]`}
             >
               Parler à un conseiller <IconArrow />
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -1022,9 +1022,9 @@ export function MarketingHome() {
               <p className="mt-[22px] max-w-[270px] text-[15px] font-medium leading-[1.75] text-[#102b43]">
                 Votre projet d&apos;études en France, accompagné de A à Z.
               </p>
-              <a
+              <Link
                 className="mt-5 inline-flex min-h-[52px] w-full max-w-[280px] items-center justify-center gap-2.5 rounded-full bg-[#193e5f] px-7 text-[13px] font-medium text-white transition-colors hover:bg-[#25577f] sm:w-auto"
-                href="mailto:info@etudesenfrance.org"
+                href="/login"
               >
                 Parler à un conseiller
                 <svg
@@ -1043,7 +1043,7 @@ export function MarketingHome() {
                   <path d="M7 7h10v10"></path>
                   <path d="M7 17 17 7"></path>
                 </svg>
-              </a>
+              </Link>
               <div
                 className="mt-[26px] flex gap-[14px]"
                 aria-label="Réseaux sociaux"

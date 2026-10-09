@@ -22,6 +22,7 @@ type Slot = {
 type Props = {
   studentId: string;
   studentName: string;
+  serviceSlug: string;
   serviceTitle: string;
   progress: number;
   status: "in_progress" | "ready" | "proceeded";
@@ -31,6 +32,7 @@ type Props = {
 export function AdminServiceDocs({
   studentId,
   studentName,
+  serviceSlug,
   serviceTitle,
   progress,
   status,
@@ -55,6 +57,12 @@ export function AdminServiceDocs({
             <p className="mt-2 text-eef-secondary">{studentName}</p>
           </div>
           <div className="flex items-center gap-4">
+            <Link
+              href={`${ADMIN_APP_PATH}/sections`}
+              className="text-sm text-eef-blue hover:text-eef-navy"
+            >
+              Modifier les pièces
+            </Link>
             <StatusBadge status={status} />
             <p className="font-display text-3xl text-eef-navy">{progress}%</p>
           </div>
@@ -66,34 +74,57 @@ export function AdminServiceDocs({
 
       <div className="eef-panel overflow-hidden">
         {slots.map((slot, i) => (
-          <AdminDocRow key={slot.key} slot={slot} index={i + 1} />
+          <AdminDocRow
+            key={slot.key}
+            slot={slot}
+            index={i + 1}
+            studentId={studentId}
+            serviceSlug={serviceSlug}
+          />
         ))}
       </div>
     </div>
   );
 }
 
-function AdminDocRow({ slot, index }: { slot: Slot; index: number }) {
+function AdminDocRow({
+  slot,
+  index,
+  studentId,
+  serviceSlug,
+}: {
+  slot: Slot;
+  index: number;
+  studentId: string;
+  serviceSlug: string;
+}) {
   const router = useRouter();
   const [comment, setComment] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [openReject, setOpenReject] = useState(false);
 
-  async function review(decision: "approve" | "reject") {
-    if (!slot.submissionId) return;
+  async function review(decision: "pending" | "approve" | "reject") {
     if (decision === "reject" && !comment.trim()) {
+      setOpenReject(true);
       setError("Commentaire obligatoire pour un refus.");
       return;
     }
     setBusy(true);
     setError(null);
     try {
-      const res = await fetch(`/api/admin/submissions/${slot.submissionId}/review`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ decision, comment }),
-      });
+      const res = await fetch(
+        `/api/admin/students/${studentId}/services/${serviceSlug}/review`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            requirementKey: slot.key,
+            decision,
+            comment,
+          }),
+        },
+      );
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || "Échec");
       setOpenReject(false);
@@ -105,6 +136,8 @@ function AdminDocRow({ slot, index }: { slot: Slot; index: number }) {
       setBusy(false);
     }
   }
+
+  const waiting = slot.status === "missing" || slot.status === "pending";
 
   return (
     <article className="eef-row px-5 py-5 sm:px-6">
@@ -164,8 +197,8 @@ function AdminDocRow({ slot, index }: { slot: Slot; index: number }) {
           )}
         </div>
 
-        <div className="flex shrink-0 flex-wrap gap-2">
-          {slot.submissionId && (
+        <div className="flex shrink-0 flex-wrap items-center gap-2">
+          {slot.submissionId && slot.cloudinaryUrl && (
             <Link
               href={`${ADMIN_APP_PATH}/submissions/${slot.submissionId}`}
               className="eef-btn-ghost px-3 py-2 text-sm"
@@ -173,29 +206,41 @@ function AdminDocRow({ slot, index }: { slot: Slot; index: number }) {
               Aperçu
             </Link>
           )}
-          {slot.status === "pending" && slot.submissionId && !openReject && (
-            <>
-              <button
-                type="button"
-                disabled={busy}
-                onClick={() => review("approve")}
-                className="eef-btn-primary px-4 py-2 text-sm disabled:opacity-50"
-              >
-                Approuver
-              </button>
-              <button
-                type="button"
-                disabled={busy}
-                onClick={() => setOpenReject(true)}
-                className="eef-btn-navy px-4 py-2 text-sm disabled:opacity-50"
-              >
-                Refuser
-              </button>
-            </>
-          )}
-          {slot.status === "missing" && (
-            <span className="self-center text-sm text-eef-secondary">Pas envoyé</span>
-          )}
+          <div className="flex rounded-full border border-eef-border bg-white p-1">
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => review("pending")}
+              className={`rounded-full px-3 py-1.5 text-sm disabled:opacity-50 ${
+                waiting ? "bg-eef-navy text-white" : "text-eef-secondary hover:text-eef-navy"
+              }`}
+            >
+              En attente
+            </button>
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => review("approve")}
+              className={`rounded-full px-3 py-1.5 text-sm disabled:opacity-50 ${
+                slot.status === "approved" ? "bg-eef-navy text-white" : "text-eef-secondary hover:text-eef-navy"
+              }`}
+            >
+              Approuvé
+            </button>
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => {
+                setOpenReject(true);
+                if (comment.trim()) review("reject");
+              }}
+              className={`rounded-full px-3 py-1.5 text-sm disabled:opacity-50 ${
+                slot.status === "rejected" ? "bg-eef-navy text-white" : "text-eef-secondary hover:text-eef-navy"
+              }`}
+            >
+              Refusé
+            </button>
+          </div>
         </div>
       </div>
     </article>

@@ -38,6 +38,7 @@ export async function middleware(request: NextRequest) {
   );
   const isPublicApi = PUBLIC_API.some((p) => pathname === p);
   const isApi = pathname.startsWith("/api/");
+  const isAdminLogin = pathname === `${ADMIN_APP_PATH}/login`;
   const isAdminApp =
     pathname === ADMIN_APP_PATH || pathname.startsWith(`${ADMIN_APP_PATH}/`);
 
@@ -53,6 +54,22 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (pathname === "/login") {
+    const next = request.nextUrl.searchParams.get("next") || "";
+    if (next === ADMIN_APP_PATH || next.startsWith(`${ADMIN_APP_PATH}/`)) {
+      const adminLogin = new URL(`${ADMIN_APP_PATH}/login`, request.url);
+      adminLogin.searchParams.set("next", next);
+      return NextResponse.redirect(adminLogin);
+    }
+  }
+
+  if (isAdminLogin) {
+    if (session?.role === "ADMIN") {
+      return NextResponse.redirect(new URL(ADMIN_APP_PATH, request.url));
+    }
+    return NextResponse.next();
+  }
+
   if (isPublicPage) {
     if (session) {
       const dest = session.role === "ADMIN" ? ADMIN_APP_PATH : "/mon-dossier";
@@ -65,7 +82,7 @@ export async function middleware(request: NextRequest) {
     if (isApi) {
       return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
     }
-    const login = new URL("/login", request.url);
+    const login = new URL(isAdminApp ? `${ADMIN_APP_PATH}/login` : "/login", request.url);
     login.searchParams.set("next", pathname);
     return NextResponse.redirect(login);
   }
