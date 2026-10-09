@@ -270,10 +270,16 @@ export function MarketingShell({ children }: { children: ReactNode }) {
 
       <main>{children}</main>
 
-      <footer className="relative isolate overflow-hidden border-t border-[#c6d9e7] bg-[linear-gradient(180deg,#f5fafd,#f5fafd_32%,#e7f1fb_70%,#d8e8f7)]">
-        <div className="relative z-10 mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-16 pb-[200px] max-md:pt-12 max-md:pb-[140px] md:w-[calc(100%-88px)]">
+      <footer className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#f5fafd,#f5fafd_32%,#e7f1fb_70%,#d8e8f7)]">
+        <div className="relative z-10 mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-16 max-md:pt-12 md:w-[calc(100%-88px)]">
           <FooterCta />
-          <div className="mt-16 flex flex-col gap-12 lg:mt-20 lg:flex-row lg:items-start lg:justify-between lg:gap-[60px]">
+        </div>
+        <div
+          className="relative z-10 mt-16 w-full border-t border-[#c6d9e7] lg:mt-20"
+          aria-hidden="true"
+        />
+        <div className="relative z-10 mx-auto w-[calc(100%-48px)] max-w-[1360px] pt-16 pb-[200px] max-md:pt-12 max-md:pb-[140px] md:w-[calc(100%-88px)] lg:pt-20">
+          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-[60px]">
             <div className="shrink-0">
               <Link href="/" aria-label="Procédure eef — Accueil">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
