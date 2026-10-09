@@ -162,7 +162,7 @@ export async function ensureServicesCatalog() {
     if (version < CATALOG_VERSION) {
       existing.title = service.title;
       existing.description = service.description;
-      existing.requirements = service.requirements;
+      existing.set("requirements", service.requirements);
       existing.set("catalogVersion", CATALOG_VERSION);
       existing.markModified("requirements");
       await existing.save();

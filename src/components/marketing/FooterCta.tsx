@@ -43,7 +43,6 @@ function Flag({ code }: { code: string }) {
   }
   return (
     <Icon
-      title=""
       aria-hidden
       className="h-3.5 w-5 shrink-0 overflow-hidden rounded-[2px] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.15)]"
     />
