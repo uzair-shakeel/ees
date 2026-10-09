@@ -94,7 +94,7 @@ function IconWhatsApp() {
 }
 
 const fieldClass =
-  "h-11 w-full rounded-[12px] border border-white/10 bg-[#10283d] px-3.5 text-[14px] text-white outline-none placeholder:text-white/35 focus:border-white/35";
+  "h-10 w-full rounded-[10px] border border-white/15 bg-white/[0.06] px-3 text-[13px] text-white outline-none placeholder:text-white/35 focus:border-white/35";
 
 export function FooterCta({
   title = "Votre projet mérite plus qu'une liste d'universités.",
@@ -161,8 +161,8 @@ export function FooterCta({
   }
 
   return (
-    <div className="relative isolate rounded-[28px] bg-[#0d3f73] text-white">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[28px]" aria-hidden>
+    <div className="relative isolate rounded-[24px] bg-[#0d3f73] text-white">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[24px]" aria-hidden>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={WAVE_BG}
@@ -170,18 +170,18 @@ export function FooterCta({
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
       </div>
-      <div className="relative grid items-center gap-8 px-5 py-8 sm:px-8 sm:py-10 md:gap-10 md:px-10 md:py-12 lg:grid-cols-[minmax(0,1fr)_minmax(320px,440px)] lg:px-12 lg:py-12">
+      <div className="relative grid items-center gap-6 px-5 py-6 sm:px-7 sm:py-7 md:gap-8 md:px-9 md:py-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(380px,1.15fr)] lg:gap-10 lg:px-10 lg:py-8">
       <div className="min-w-0">
-        <h2 className="m-0 max-w-[12em] text-[clamp(1.7rem,4vw,40px)] font-medium leading-[1.15] tracking-[-0.03em]">
+        <h2 className="m-0 max-w-[12em] text-[clamp(1.5rem,3.4vw,34px)] font-medium leading-[1.15] tracking-[-0.03em]">
           {title}
         </h2>
-        <p className="mt-4 m-0 max-w-[28rem] text-[15px] leading-[1.6] text-white/80">
+        <p className="mt-3 m-0 max-w-[26rem] text-[14px] leading-[1.55] text-white/80">
           Commencez par une conversation où vous voulez aller.
         </p>
-        <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <div className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
           <a
             href="/login"
-            className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full bg-white px-5 text-[13px] font-medium text-[#173b5d] transition hover:bg-[#eaf2f7]"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-white px-4.5 text-[13px] font-medium text-[#173b5d] transition hover:bg-[#eaf2f7]"
           >
             Parler à un conseiller <IconArrowRight />
           </a>
@@ -189,13 +189,13 @@ export function FooterCta({
             href={CONTACT_WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-white/70 bg-transparent px-5 text-[13px] font-medium text-white transition hover:bg-white/10"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-white/70 bg-transparent px-4.5 text-[13px] font-medium text-white transition hover:bg-white/10"
           >
             <IconWhatsApp />
             Chat sur WhatsApp
           </a>
         </div>
-        <ul className="mt-7 m-0 flex list-none flex-col gap-2.5 p-0 text-[14px] text-white/80">
+        <ul className="mt-5 m-0 flex list-none flex-col gap-2 p-0 text-[13px] text-white/80">
           <li>
             <a href={CONTACT_TEL_URL} className="inline-flex items-center gap-2.5 transition hover:text-white">
               <IconPhone />
@@ -213,7 +213,7 @@ export function FooterCta({
 
       <form
         onSubmit={onSubmit}
-        className="rounded-[22px] border border-white/15 bg-[#123e66]/80 p-5 shadow-[0_10px_30px_rgba(4,20,40,0.18)] backdrop-blur-[2px] sm:p-6"
+        className="rounded-[18px] border border-white/15 bg-transparent p-4 sm:p-5"
       >
         {sent ? (
           <p className="m-0 py-10 text-center text-[15px] leading-[1.6] text-white">
@@ -221,22 +221,22 @@ export function FooterCta({
           </p>
         ) : (
           <>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="block text-[13px] text-white">
+            <div className="grid gap-3 sm:grid-cols-2">
+              <label className="block text-[12px] text-white">
                 Prénom
-                <input name="firstName" required autoComplete="given-name" placeholder="Votre prénom" className={`${fieldClass} mt-1.5`} />
+                <input name="firstName" required autoComplete="given-name" placeholder="Votre prénom" className={`${fieldClass} mt-1`} />
               </label>
-              <label className="block text-[13px] text-white">
+              <label className="block text-[12px] text-white">
                 Nom de famille
-                <input name="lastName" required autoComplete="family-name" placeholder="Votre nom" className={`${fieldClass} mt-1.5`} />
+                <input name="lastName" required autoComplete="family-name" placeholder="Votre nom" className={`${fieldClass} mt-1`} />
               </label>
-              <label className="block text-[13px] text-white">
+              <label className="block text-[12px] text-white">
                 Email
-                <input name="email" type="email" required autoComplete="email" placeholder="votre@email.com" className={`${fieldClass} mt-1.5`} />
+                <input name="email" type="email" required autoComplete="email" placeholder="votre@email.com" className={`${fieldClass} mt-1`} />
               </label>
-              <div className="block text-[13px] text-white">
+              <div className="block text-[12px] text-white">
                 Téléphone
-                <div className={`${fieldClass} mt-1.5 flex items-center gap-2 px-2.5`}>
+                <div className={`${fieldClass} mt-1 flex items-center gap-2 px-2.5`}>
                   <div ref={countryRef} className="relative shrink-0">
                     <button
                       type="button"
@@ -317,18 +317,18 @@ export function FooterCta({
                 {phoneError}
               </p>
             ) : null}
-            <label className="mt-4 block text-[13px] text-white">
+            <label className="mt-3 block text-[12px] text-white">
               Votre message
               <textarea
                 name="message"
                 required
-                rows={3}
+                rows={2}
                 placeholder="Parlez-nous de votre projet..."
-                className={`${fieldClass} mt-1.5 h-auto resize-y py-3`}
+                className={`${fieldClass} mt-1 h-auto min-h-[4.5rem] resize-y py-2.5`}
               />
             </label>
-            <label className="mt-4 flex items-start gap-2.5 text-[13px] leading-snug text-white/85">
-              <input type="checkbox" name="privacy" required className="mt-0.5 size-4 shrink-0 accent-white" />
+            <label className="mt-3 flex items-start gap-2 text-[12px] leading-snug text-white/85">
+              <input type="checkbox" name="privacy" required className="mt-0.5 size-3.5 shrink-0 accent-white" />
               <span>
                 J&apos;accepte notre{" "}
                 <a href={`mailto:${CONTACT_EMAIL}?subject=Politique%20de%20confidentialit%C3%A9`} className="underline underline-offset-2">
@@ -339,7 +339,7 @@ export function FooterCta({
             </label>
             <button
               type="submit"
-              className="mt-5 inline-flex h-12 w-full cursor-pointer items-center justify-center gap-2.5 rounded-full bg-white text-[13px] font-medium text-[#173b5d] transition hover:bg-[#eaf2f7]"
+              className="mt-4 inline-flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-white text-[13px] font-medium text-[#173b5d] transition hover:bg-[#eaf2f7]"
             >
               Envoyer la demande <IconArrowRight />
             </button>

@@ -223,35 +223,35 @@ export function FormationsExplorer() {
         </button>
       </form>
 
-      <div className="mt-8 grid items-start gap-10 md:grid-cols-[minmax(0,240px)_1fr] md:gap-12">
-        <div className="hidden min-w-0 md:grid md:gap-5 md:sticky md:top-24 md:max-h-[calc(100vh-7rem)] md:overflow-y-auto md:pr-1">
-          {filterList}
-        </div>
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
+        <p className="m-0 text-[14px] text-[#5e7282]">
+          <strong className="font-semibold text-[#15263d]">{results.length}</strong>{" "}
+          {results.length === 1 ? "formation" : "formations"}
+        </p>
+        <label className="inline-flex items-center gap-2 text-[13px] text-[#33445c]">
+          Trier par
+          <select
+            value={sort}
+            onChange={(event) => {
+              setSort(event.target.value as SortKey);
+              setPage(1);
+            }}
+            className="cursor-pointer rounded-full border border-[#d8e0ea] bg-white px-3 py-1.5 text-[13px] text-[#15263d]"
+          >
+            <option value="relevance">Pertinence</option>
+            <option value="formation">Formation A–Z</option>
+            <option value="institution">Établissement A–Z</option>
+            <option value="ville">Ville A–Z</option>
+          </select>
+        </label>
+      </div>
 
-        <div className="min-w-0">
-          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-            <p className="m-0 text-[14px] text-[#5e7282]">
-              <strong className="font-semibold text-[#15263d]">{results.length}</strong>{" "}
-              {results.length === 1 ? "formation" : "formations"}
-            </p>
-            <label className="inline-flex items-center gap-2 text-[13px] text-[#33445c]">
-              Trier par
-              <select
-                value={sort}
-                onChange={(event) => {
-                  setSort(event.target.value as SortKey);
-                  setPage(1);
-                }}
-                className="cursor-pointer rounded-full border border-[#d8e0ea] bg-white px-3 py-1.5 text-[13px] text-[#15263d]"
-              >
-                <option value="relevance">Pertinence</option>
-                <option value="formation">Formation A–Z</option>
-                <option value="institution">Établissement A–Z</option>
-                <option value="ville">Ville A–Z</option>
-              </select>
-            </label>
-          </div>
+      <div className="mt-4 grid items-stretch gap-6 md:grid-cols-[minmax(0,240px)_minmax(0,1fr)] md:gap-8">
+        <aside className="hidden min-w-0 md:block md:h-[min(28rem,60vh)] md:overflow-y-auto md:overscroll-contain md:pr-2">
+          <div className="grid gap-5">{filterList}</div>
+        </aside>
 
+        <div className="min-w-0 md:h-[min(28rem,60vh)] md:overflow-y-auto md:overscroll-contain md:pr-2">
           {visible.length ? (
             <div className="grid gap-3">
               {visible.map((item) => (
@@ -286,37 +286,39 @@ export function FormationsExplorer() {
               ))}
             </div>
           ) : (
-            <div className="rounded-[20px] border border-dashed border-[#c6d9e7] bg-white/70 px-6 py-16 text-center">
-              <h3 className="m-0 text-[22px] font-medium text-[#102B43]">Aucun résultat</h3>
-              <p className="m-0 mt-2 text-[14px] text-[#5e7282]">Retirez un filtre ou élargissez la recherche.</p>
-            </div>
-          )}
-
-          {results.length > PAGE_SIZE && (
-            <div className="mt-5 flex items-center justify-between gap-3">
-              <button
-                type="button"
-                disabled={safePage <= 1}
-                onClick={() => setPage((current) => Math.max(1, current - 1))}
-                className="h-10 cursor-pointer rounded-full border border-[#c6d9e7] bg-white px-4 text-[13px] font-medium text-[#173b5d] disabled:cursor-default disabled:opacity-40"
-              >
-                Précédent
-              </button>
-              <p className="m-0 text-[13px] text-[#5e7282]">
-                Page {safePage} / {pageCount}
-              </p>
-              <button
-                type="button"
-                disabled={safePage >= pageCount}
-                onClick={() => setPage((current) => current + 1)}
-                className="h-10 cursor-pointer rounded-full border border-[#c6d9e7] bg-white px-4 text-[13px] font-medium text-[#173b5d] disabled:cursor-default disabled:opacity-40"
-              >
-                Suivant
-              </button>
+            <div className="flex h-full min-h-[12rem] items-center justify-center rounded-[20px] border border-dashed border-[#c6d9e7] bg-white/70 px-6 py-16 text-center">
+              <div>
+                <h3 className="m-0 text-[22px] font-medium text-[#102B43]">Aucun résultat</h3>
+                <p className="m-0 mt-2 text-[14px] text-[#5e7282]">Retirez un filtre ou élargissez la recherche.</p>
+              </div>
             </div>
           )}
         </div>
       </div>
+
+      {results.length > PAGE_SIZE && (
+        <div className="mt-5 flex items-center justify-between gap-3">
+          <button
+            type="button"
+            disabled={safePage <= 1}
+            onClick={() => setPage((current) => Math.max(1, current - 1))}
+            className="h-10 cursor-pointer rounded-full border border-[#c6d9e7] bg-white px-4 text-[13px] font-medium text-[#173b5d] disabled:cursor-default disabled:opacity-40"
+          >
+            Précédent
+          </button>
+          <p className="m-0 text-[13px] text-[#5e7282]">
+            Page {safePage} / {pageCount}
+          </p>
+          <button
+            type="button"
+            disabled={safePage >= pageCount}
+            onClick={() => setPage((current) => current + 1)}
+            className="h-10 cursor-pointer rounded-full border border-[#c6d9e7] bg-white px-4 text-[13px] font-medium text-[#173b5d] disabled:cursor-default disabled:opacity-40"
+          >
+            Suivant
+          </button>
+        </div>
+      )}
 
       {filtersOpen && (
         <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label="Filtres de recherche">

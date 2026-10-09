@@ -329,7 +329,8 @@ export function BoursesExplorer({
       </div>
 
       {list.length > 0 ? (
-        <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-4 max-h-[min(35.25rem,78vh)] overflow-y-auto overscroll-contain pr-1 [scrollbar-gutter:stable]">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {list.map((it) => {
             const open = expanded.has(it.slug);
             const panelId = `bourse-${it.slug}-details`;
@@ -433,6 +434,7 @@ export function BoursesExplorer({
               </article>
             );
           })}
+        </div>
         </div>
       ) : (
         <div className="mt-4 flex min-h-[280px] flex-col items-center justify-center rounded-[25px] border border-dashed border-[#2527252e] bg-white/60 px-6 py-10 text-center">
