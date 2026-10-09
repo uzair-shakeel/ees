@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
 import { connectDB } from "@/lib/mongodb";
 import { uploadDocument } from "@/lib/cloudinary";
-import { refreshApplicationStatus } from "@/lib/application-status";
+import { syncRequirementAcrossUser } from "@/lib/document-vault";
 import { Service } from "@/models/Service";
 import { ServiceApplication } from "@/models/ServiceApplication";
 import { DocumentSubmission } from "@/models/DocumentSubmission";
@@ -16,10 +16,10 @@ export async function POST(request: Request) {
 
     const form = await request.formData();
     const file = form.get("file");
-    const applicationId = String(form.get("applicationId") || "");
+    let applicationId = String(form.get("applicationId") || "");
     const requirementKey = String(form.get("requirementKey") || "");
 
-    if (!(file instanceof File) || !applicationId || !requirementKey) {
+    if (!(file instanceof File) || !requirementKey) {
       return NextResponse.json({ error: "Fichier et champs requis manquants." }, { status: 400 });
     }
 
@@ -29,10 +29,28 @@ export async function POST(request: Request) {
 
     await connectDB();
 
-    const application = await ServiceApplication.findOne({
-      _id: applicationId,
-      userId: session.userId,
-    });
+    let application = applicationId
+      ? await ServiceApplication.findOne({
+          _id: applicationId,
+          userId: session.userId,
+        })
+      : null;
+
+    if (!application) {
+      const apps = await ServiceApplication.find({ userId: session.userId }).lean();
+      const services = await Service.find({
+        _id: { $in: apps.map((a) => a.serviceId) },
+      }).lean();
+      for (const app of apps) {
+        const service = services.find((s) => String(s._id) === String(app.serviceId));
+        if (service?.requirements.some((r) => r.key === requirementKey)) {
+          application = await ServiceApplication.findById(app._id);
+          applicationId = String(app._id);
+          break;
+        }
+      }
+    }
+
     if (!application) {
       return NextResponse.json({ error: "Dossier introuvable." }, { status: 404 });
     }
@@ -50,30 +68,29 @@ export async function POST(request: Request) {
     const buffer = Buffer.from(await file.arrayBuffer());
     const uploaded = await uploadDocument(buffer, file.name, file.type || "application/octet-stream");
 
-    const submission = await DocumentSubmission.findOneAndUpdate(
-      { applicationId: application._id, requirementKey },
-      {
-        status: "pending",
-        cloudinaryUrl: uploaded.url,
-        cloudinaryPublicId: uploaded.publicId,
-        originalFilename: file.name,
-        adminComment: null,
-        reviewedAt: null,
-        reviewedBy: null,
-      },
-      { upsert: true, new: true },
-    );
+    await syncRequirementAcrossUser(session.userId, requirementKey, {
+      status: "pending",
+      cloudinaryUrl: uploaded.url,
+      cloudinaryPublicId: uploaded.publicId,
+      originalFilename: file.name,
+      adminComment: null,
+      reviewedAt: null,
+      reviewedBy: null,
+    });
 
-    await refreshApplicationStatus(String(application._id), service.requirements);
+    const submission = await DocumentSubmission.findOne({
+      applicationId: application._id,
+      requirementKey,
+    });
 
     return NextResponse.json({
       submission: {
-        id: String(submission._id),
-        requirementKey: submission.requirementKey,
-        status: submission.status,
-        cloudinaryUrl: submission.cloudinaryUrl,
-        originalFilename: submission.originalFilename,
-        adminComment: submission.adminComment,
+        id: submission ? String(submission._id) : null,
+        requirementKey,
+        status: "pending",
+        cloudinaryUrl: uploaded.url,
+        originalFilename: file.name,
+        adminComment: null,
       },
     });
   } catch (error) {

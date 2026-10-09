@@ -2,13 +2,14 @@ import { NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
 import { connectDB } from "@/lib/mongodb";
 import { isApplicationReady } from "@/lib/application-status";
+import { PORTAL_SERVICE_ORDER } from "@/lib/services-catalog";
 import { Service } from "@/models/Service";
 import { ServiceApplication } from "@/models/ServiceApplication";
 import { DocumentSubmission } from "@/models/DocumentSubmission";
 
 type Params = { params: Promise<{ slug: string }> };
 
-const SERVICE_ORDER = ["visa", "university"] as const;
+const SERVICE_ORDER = PORTAL_SERVICE_ORDER;
 
 export async function POST(_request: Request, { params }: Params) {
   try {

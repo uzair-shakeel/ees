@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 import { requireSession } from "@/lib/auth";
 import { connectDB } from "@/lib/mongodb";
-import { refreshApplicationStatus } from "@/lib/application-status";
+import { syncRequirementAcrossUser } from "@/lib/document-vault";
 import { User } from "@/models/User";
 import { Service } from "@/models/Service";
 import { ServiceApplication } from "@/models/ServiceApplication";
@@ -51,7 +51,10 @@ export async function POST(request: Request, { params }: Params) {
 
     const requirement = service.requirements.find((req) => req.key === requirementKey);
     if (!requirement) {
-      return NextResponse.json({ error: "Ce document ne fait pas partie de la section." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Ce document ne fait pas partie de la section." },
+        { status: 400 },
+      );
     }
 
     let application = await ServiceApplication.findOne({
@@ -76,39 +79,46 @@ export async function POST(request: Request, { params }: Params) {
         requirementKey,
         status: "missing",
       });
+      await submission.save();
     }
 
     const hasFile = Boolean(submission.cloudinaryUrl);
+    const reviewedBy = new mongoose.Types.ObjectId(session.userId);
+    const reviewedAt = new Date();
+
+    let status: "missing" | "pending" | "approved" | "rejected";
+    let adminComment: string | null = null;
+
     if (decision === "pending") {
-      submission.status = hasFile ? "pending" : "missing";
-      submission.adminComment = null;
-      submission.reviewedAt = null;
-      submission.reviewedBy = null;
+      status = hasFile ? "pending" : "missing";
     } else if (decision === "approve") {
-      submission.status = "approved";
-      submission.adminComment = null;
-      submission.reviewedAt = new Date();
-      submission.reviewedBy = new mongoose.Types.ObjectId(session.userId);
+      status = "approved";
     } else {
-      submission.status = "rejected";
-      submission.adminComment = comment;
-      submission.reviewedAt = new Date();
-      submission.reviewedBy = new mongoose.Types.ObjectId(session.userId);
+      status = "rejected";
+      adminComment = comment;
     }
 
-    await submission.save();
-    const applicationStatus = await refreshApplicationStatus(
-      String(application._id),
-      service.requirements,
-    );
+    await syncRequirementAcrossUser(student._id, requirementKey, {
+      status,
+      cloudinaryUrl: submission.cloudinaryUrl,
+      cloudinaryPublicId: submission.cloudinaryPublicId,
+      originalFilename: submission.originalFilename,
+      adminComment,
+      reviewedAt: decision === "pending" ? null : reviewedAt,
+      reviewedBy: decision === "pending" ? null : reviewedBy,
+    });
+
+    const updated = await DocumentSubmission.findOne({
+      applicationId: application._id,
+      requirementKey,
+    });
 
     return NextResponse.json({
       submission: {
-        id: String(submission._id),
-        status: submission.status,
-        adminComment: submission.adminComment,
+        id: updated ? String(updated._id) : String(submission._id),
+        status: updated?.status ?? status,
+        adminComment: updated?.adminComment ?? adminComment,
       },
-      applicationStatus,
     });
   } catch (error) {
     console.error(error);

@@ -1,21 +1,25 @@
 import { connectDB } from "@/lib/mongodb";
 import { progressPercent } from "@/lib/application-status";
+import { PORTAL_SERVICE_ORDER } from "@/lib/services-catalog";
 import { Service } from "@/models/Service";
 import { ServiceApplication } from "@/models/ServiceApplication";
 import { DocumentSubmission } from "@/models/DocumentSubmission";
 import type { JourneyStep } from "@/components/ProcedureSteps";
 
-const ORDER = ["visa", "university"] as const;
-
 const SHORT: Record<string, string> = {
+  "private-university": "Univ. privées",
+  "campus-france": "Campus France",
   visa: "Visa",
-  university: "Université",
+  "tourist-visa": "Visa tourisme",
+  installation: "Installation",
 };
 
 export async function getClientJourney(userId: string): Promise<JourneyStep[]> {
   await connectDB();
 
-  const services = await Service.find({ slug: { $in: [...ORDER] } }).lean();
+  const services = await Service.find({
+    slug: { $in: [...PORTAL_SERVICE_ORDER] },
+  }).lean();
   const bySlug = new Map(services.map((s) => [s.slug, s]));
 
   const applications = await ServiceApplication.find({ userId }).lean();
@@ -23,7 +27,7 @@ export async function getClientJourney(userId: string): Promise<JourneyStep[]> {
 
   const steps: JourneyStep[] = [];
 
-  for (const slug of ORDER) {
+  for (const slug of PORTAL_SERVICE_ORDER) {
     const service = bySlug.get(slug);
     if (!service) continue;
 

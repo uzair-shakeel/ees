@@ -56,10 +56,8 @@ export default async function StudentDetailPage({ params }: Props) {
             <div className="flex items-start justify-between gap-3">
               <div>
                 <h3 className="font-display text-2xl text-eef-navy">{svc.title}</h3>
-                <p className="mt-2 text-sm text-eef-secondary">
-                  {svc.slug === "visa"
-                    ? "Passeport, ressources, hébergement, admission…"
-                    : "Diplômes, notes, motivation, identité…"}
+                <p className="mt-2 text-sm text-eef-secondary line-clamp-2">
+                  {svc.description}
                 </p>
               </div>
               <StatusBadge status={svc.status} />

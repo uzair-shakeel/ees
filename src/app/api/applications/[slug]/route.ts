@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
 import { connectDB } from "@/lib/mongodb";
-import { progressPercent } from "@/lib/application-status";
+import { progressPercent, refreshApplicationStatus } from "@/lib/application-status";
+import { hydrateMissingFromVault } from "@/lib/document-vault";
 import { Service } from "@/models/Service";
 import { ServiceApplication } from "@/models/ServiceApplication";
 import { DocumentSubmission } from "@/models/DocumentSubmission";
@@ -42,6 +43,13 @@ export async function GET(_request: Request, { params }: Params) {
         })),
       );
     }
+
+    for (const req of service.requirements) {
+      await hydrateMissingFromVault(session.userId, application._id, req.key);
+    }
+
+    await refreshApplicationStatus(String(application._id), service.requirements);
+    application = (await ServiceApplication.findById(application._id))!;
 
     const submissions = await DocumentSubmission.find({
       applicationId: application._id,

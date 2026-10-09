@@ -16,6 +16,7 @@ const ServiceSchema = new Schema(
     title: { type: String, required: true },
     description: { type: String, required: true },
     requirements: { type: [DocumentRequirementSchema], default: [] },
+    catalogVersion: { type: Number, default: 0 },
   },
   { timestamps: true },
 );

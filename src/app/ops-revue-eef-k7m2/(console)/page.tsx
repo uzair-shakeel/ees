@@ -16,7 +16,7 @@ export default async function StudentsListPage() {
               Étudiants
             </h1>
             <p className="mt-3 max-w-lg text-eef-secondary">
-              Ouvrez une fiche pour accéder aux dossiers Visa ou Université.
+              Ouvrez une fiche pour accéder aux sections du dossier étudiant.
             </p>
           </div>
           <div className="flex gap-8 text-sm text-eef-secondary">
@@ -53,11 +53,7 @@ export default async function StudentsListPage() {
                   <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-eef-secondary">
                     {student.services.map((svc) => (
                       <span key={svc.slug}>
-                        {svc.slug === "visa"
-                          ? "Visa"
-                          : svc.slug === "university"
-                            ? "Université"
-                            : svc.title}{" "}
+                        {svc.title}{" "}
                         <span className="text-eef-navy">{svc.progress}%</span>
                       </span>
                     ))}

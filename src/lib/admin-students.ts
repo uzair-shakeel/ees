@@ -9,6 +9,7 @@ export type StudentServiceSummary = {
   applicationId: string;
   slug: string;
   title: string;
+  description: string;
   status: "in_progress" | "ready" | "proceeded";
   progress: number;
   pending: number;
@@ -58,6 +59,7 @@ export async function getStudentsOverview(): Promise<StudentListItem[]> {
         applicationId: String(app._id),
         slug: service?.slug ?? "unknown",
         title: service?.title ?? "Service",
+        description: service?.description ?? "",
         status: app.status as "in_progress" | "ready" | "proceeded",
         progress: progressPercent(requirements, subs),
         pending: subs.filter((s) => s.status === "pending").length,
@@ -114,6 +116,7 @@ export async function getStudentDetail(studentId: string) {
       applicationId: app ? String(app._id) : "",
       slug: service.slug,
       title: service.title,
+      description: service.description,
       status: (app?.status as "in_progress" | "ready" | "proceeded") ?? "in_progress",
       progress: progressPercent(service.requirements, subs),
       pending: subs.filter((s) => s.status === "pending").length,

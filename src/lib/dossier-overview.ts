@@ -1,35 +1,18 @@
 import { connectDB } from "@/lib/mongodb";
-import {
-  INSTALLATION_STEPS,
-  VISA_STEPS,
-  type ChecklistStatus,
-} from "@/lib/module-catalog";
 import { getClientJourney } from "@/lib/journey";
+import { PORTAL_SERVICE_META, PORTAL_SERVICE_ORDER } from "@/lib/services-catalog";
 import { Candidature } from "@/models/Candidature";
-import { ModuleChecklist } from "@/models/ModuleChecklist";
 import { SavedItem } from "@/models/SavedItem";
 import { DocumentSubmission } from "@/models/DocumentSubmission";
 import { ServiceApplication } from "@/models/ServiceApplication";
 
-export async function getChecklistMap(userId: string, module: "visa" | "installation") {
-  await connectDB();
-  const rows = await ModuleChecklist.find({ userId, module }).lean();
-  const map = new Map<string, ChecklistStatus>();
-  for (const row of rows) {
-    map.set(row.stepKey, row.status as ChecklistStatus);
-  }
-  return map;
-}
-
 export async function getModuleOverview(userId: string) {
   await connectDB();
 
-  const [journey, candidatures, saved, visaMap, installMap, apps] = await Promise.all([
+  const [journey, candidatures, saved, apps] = await Promise.all([
     getClientJourney(userId),
     Candidature.find({ userId }).lean(),
     SavedItem.countDocuments({ userId }),
-    getChecklistMap(userId, "visa"),
-    getChecklistMap(userId, "installation"),
     ServiceApplication.find({ userId }).lean(),
   ]);
 
@@ -41,26 +24,24 @@ export async function getModuleOverview(userId: string) {
   const docsApproved = submissions.filter((s) => s.status === "approved").length;
   const docsPending = submissions.filter((s) => s.status === "pending").length;
   const docsRejected = submissions.filter((s) => s.status === "rejected").length;
+  const docsUploaded = submissions.filter((s) => s.status !== "missing").length;
   const docsTotal = submissions.length;
-
-  const visaDone = VISA_STEPS.filter((s) => visaMap.get(s.key) === "done").length;
-  const installDone = INSTALLATION_STEPS.filter((s) => installMap.get(s.key) === "done").length;
 
   const journeyProgress =
     journey.length === 0
       ? 0
       : Math.round(journey.reduce((s, c) => s + c.progress, 0) / journey.length);
 
-  const visaProgress = Math.round((visaDone / VISA_STEPS.length) * 100);
-  const installProgress = Math.round((installDone / INSTALLATION_STEPS.length) * 100);
+  const visaStep = journey.find((j) => j.slug === "visa");
+  const installStep = journey.find((j) => j.slug === "installation");
+  const visaProgress = visaStep?.progress ?? 0;
+  const installProgress = installStep?.progress ?? 0;
   const candidatureScore = Math.min(100, candidatures.length * 20);
 
   const overall = Math.round(
-    journeyProgress * 0.35 +
-      visaProgress * 0.25 +
-      installProgress * 0.15 +
-      candidatureScore * 0.15 +
-      Math.min(100, docsApproved * 8) * 0.1,
+    journeyProgress * 0.55 +
+      candidatureScore * 0.2 +
+      Math.min(100, docsApproved * 5) * 0.25,
   );
 
   type NextTask = {
@@ -72,13 +53,14 @@ export async function getModuleOverview(userId: string) {
 
   let nextTask: NextTask | null = null;
 
-  const rejectedDoc = journey.find((j) => j.status === "in_progress" && j.progress < 100);
+  const incomplete = journey.find((j) => j.status === "in_progress" && j.progress < 100);
+
   if (docsRejected > 0) {
     nextTask = {
       title: "Corriger un document refusé",
       description: "Un conseiller a demandé une correction sur une pièce.",
       href: "/mon-dossier/documents",
-      cta: "Ouvrir les documents",
+      cta: "Ouvrir Mes documents",
     };
   } else if (docsPending === 0 && journey.some((j) => j.status === "ready")) {
     const ready = journey.find((j) => j.status === "ready")!;
@@ -88,11 +70,11 @@ export async function getModuleOverview(userId: string) {
       href: `/mon-dossier/services/${ready.slug}`,
       cta: "Continuer",
     };
-  } else if (rejectedDoc && rejectedDoc.progress < 100) {
+  } else if (incomplete) {
     nextTask = {
-      title: `Compléter — ${rejectedDoc.title}`,
+      title: `Compléter — ${incomplete.title}`,
       description: "Déposez ou finalisez les pièces manquantes.",
-      href: `/mon-dossier/services/${rejectedDoc.slug}`,
+      href: `/mon-dossier/services/${incomplete.slug}`,
       cta: "Compléter",
     };
   } else if (candidatures.length === 0) {
@@ -102,38 +84,46 @@ export async function getModuleOverview(userId: string) {
       href: "/mon-dossier/candidatures",
       cta: "Pipeline",
     };
-  } else if (visaDone < VISA_STEPS.length) {
-    nextTask = {
-      title: "Avancer le parcours visa",
-      description: `${visaDone}/${VISA_STEPS.length} étapes terminées.`,
-      href: "/mon-dossier/visa",
-      cta: "Centre visa",
-    };
-  } else if (installDone < INSTALLATION_STEPS.length) {
-    nextTask = {
-      title: "Préparer l’installation",
-      description: `${installDone}/${INSTALLATION_STEPS.length} tâches faites.`,
-      href: "/mon-dossier/installation",
-      cta: "Installation",
-    };
   }
+
+  const homeCards = [
+    ...PORTAL_SERVICE_ORDER.map((slug) => {
+      const step = journey.find((j) => j.slug === slug);
+      const meta = PORTAL_SERVICE_META[slug];
+      return {
+        slug,
+        eyebrow: meta.eyebrow,
+        title: step?.title ?? slug,
+        blurb: meta.homeBlurb,
+        href: meta.href,
+        progress: step?.progress ?? 0,
+      };
+    }),
+    {
+      slug: "documents",
+      eyebrow: "Coffre-fort",
+      title: "Mes documents",
+      blurb: "Centralisez les pièces communes à toutes vos démarches.",
+      href: "/mon-dossier/documents",
+      progress:
+        docsTotal === 0 ? 0 : Math.round((docsUploaded / docsTotal) * 100),
+    },
+  ];
 
   return {
     overall,
     stats: {
       candidatures: candidatures.length,
-      documents: docsTotal,
+      documents: docsUploaded,
       docsApproved,
       docsPending,
       docsRejected,
       visaProgress,
-      visaDone,
-      visaTotal: VISA_STEPS.length,
-      installDone,
-      installTotal: INSTALLATION_STEPS.length,
+      installProgress,
       saved,
     },
     journey,
+    homeCards,
     nextTask,
   };
 }
