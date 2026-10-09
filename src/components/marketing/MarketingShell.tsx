@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
@@ -18,7 +18,7 @@ export const ASSETS = {
 export const wrap =
   "mx-auto w-[calc(100%-2.5rem)] max-w-[1360px] lg:w-[calc(100%-8rem)]";
 export const eyebrow =
-  "m-0 mb-[1.15rem] text-[10px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]";
+  "m-0 mb-[1.15rem] text-[10px] font-medium tracking-[0.16em] text-[#8aa4b8]";
 export const sectionH2 =
   "m-0 font-medium text-eef-ink tracking-[-0.03em] leading-[1.14] text-[clamp(2rem,4vw,46px)]";
 /** Marketing page hero titles — ~48px+ on phones, scales to desktop display size */
@@ -61,7 +61,7 @@ export const NAV_ITEMS = [
     links: [
       { href: "/journal", label: "Ressources" },
       { href: "/methode", label: "Notre méthode" },
-      { href: "/faq", label: "FAQ" },
+      { href: "/faq", label: "Faq" },
       { href: "/communaute", label: "Communauté" },
       { href: "/carriere", label: "Carrière" },
       { href: "/parents", label: "Parents" },
@@ -137,7 +137,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
           <Link
             href="/"
             className="shrink-0 justify-self-start"
-            aria-label="Procédure EEF — Accueil"
+            aria-label="Procédure eef — Accueil"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -212,7 +212,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
         {menuOpen && (
           <div className="fixed inset-0 z-[60] min-h-dvh overflow-y-auto bg-eef-mist px-7 pb-10 pt-8 lg:hidden">
             <div className="flex items-center justify-between">
-              <Link href="/" onClick={() => setMenuOpen(false)} aria-label="Procédure EEF — Accueil">
+              <Link href="/" onClick={() => setMenuOpen(false)} aria-label="Procédure eef — Accueil">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={ASSETS.logo} alt="eef" className="h-10 w-[71px] object-contain" />
               </Link>
@@ -229,7 +229,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
             <nav className="mt-8 grid grid-cols-2 gap-x-5 gap-y-9" aria-label="Navigation mobile">
               {NAV_ITEMS.map((item) => (
                 <div key={item.label}>
-                  <p className="m-0 mb-5 text-[9px] font-medium uppercase tracking-[0.16em] text-eef-ink">
+                  <p className="m-0 mb-5 text-[9px] font-medium tracking-[0.16em] text-eef-ink">
                     {item.label}
                   </p>
                   <div className="grid gap-4">
@@ -275,7 +275,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
           <FooterCta />
           <div className="mt-16 flex flex-col gap-12 lg:mt-20 lg:flex-row lg:items-start lg:justify-between lg:gap-[60px]">
             <div className="shrink-0">
-              <Link href="/" aria-label="Procédure EEF — Accueil">
+              <Link href="/" aria-label="Procédure eef — Accueil">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={ASSETS.logo} alt="eef" className="h-[32px] w-auto" />
               </Link>
@@ -396,7 +396,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                 aria-label="S'orienter"
                 className="flex min-w-0 flex-col items-start"
               >
-                <p className="mb-4 text-[11px] font-semibold leading-[1.75] uppercase tracking-[1.54px] text-[#173b5d]">
+                <p className="mb-4 text-[11px] font-semibold leading-[1.75] tracking-[1.54px] text-[#173b5d]">
                   S&apos;orienter
                 </p>
                 <a
@@ -422,7 +422,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                 aria-label="Candidater"
                 className="flex min-w-0 flex-col items-start"
               >
-                <p className="mb-4 text-[11px] font-semibold leading-[1.75] uppercase tracking-[1.54px] text-[#173b5d]">
+                <p className="mb-4 text-[11px] font-semibold leading-[1.75] tracking-[1.54px] text-[#173b5d]">
                   Candidater
                 </p>
                 <a
@@ -441,14 +441,14 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                   className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
                   href="/procedure-eef"
                 >
-                  Procédure EEF
+                  Procédure eef
                 </Link>
               </nav>
               <nav
                 aria-label="S'installer"
                 className="flex min-w-0 flex-col items-start"
               >
-                <p className="mb-4 text-[11px] font-semibold leading-[1.75] uppercase tracking-[1.54px] text-[#173b5d]">
+                <p className="mb-4 text-[11px] font-semibold leading-[1.75] tracking-[1.54px] text-[#173b5d]">
                   S&apos;installer
                 </p>
                 <a
@@ -471,11 +471,11 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                 </a>
               </nav>
               <nav
-                aria-label="Procédure EEF"
+                aria-label="Procédure eef"
                 className="flex min-w-0 flex-col items-start"
               >
-                <p className="mb-4 text-[11px] font-semibold leading-[1.75] uppercase tracking-[1.54px] text-[#173b5d]">
-                  Procédure EEF
+                <p className="mb-4 text-[11px] font-semibold leading-[1.75] tracking-[1.54px] text-[#173b5d]">
+                  Procédure eef
                 </p>
                 <Link
                   className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
@@ -493,7 +493,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
                   className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
                   href="/faq"
                 >
-                  FAQ
+                  Faq
                 </Link>
                 <a
                   className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
@@ -507,7 +507,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
 
           <div className="mt-14 flex flex-col gap-4 border-t border-[#c6d9e7] pt-[26px] max-md:mt-12 md:mt-20 md:flex-row md:items-center md:justify-between">
             <p className="text-[11px] leading-[19.25px] text-[#5e7282]">
-              © 2026 Procédure EEF
+              © 2026 Procédure eef
             </p>
             <nav
               aria-label="Informations légales"
@@ -528,7 +528,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
             </nav>
           </div>
           <p className="relative z-10 mt-[18px] max-w-[700px] text-[11px] leading-[19.25px] text-[#5e7282]/85">
-            Procédure EEF est un service indépendant et n&apos;est pas affilié à
+            Procédure eef est un service indépendant et n&apos;est pas affilié à
             Campus France ou au gouvernement français.
           </p>
         </div>

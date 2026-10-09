@@ -1,4 +1,4 @@
-import { MarketingShell } from "@/components/marketing/MarketingShell";
+﻿import { MarketingShell } from "@/components/marketing/MarketingShell";
 import Link from "next/link";
 
 function IconArrowRight() {
@@ -57,7 +57,7 @@ const page = () => {
                     <span className="mx-3">/</span>
                     <span>Vie en France</span>
                 </nav>
-                <p className="m-0 mb-[23px] text-[10px] leading-[1.5] font-medium uppercase tracking-[1.6px] text-[#173b5d]">Vie en France</p>
+                <p className="m-0 mb-[23px] text-[10px] leading-[1.5] font-medium tracking-[1.6px] text-[#173b5d]">Vie en France</p>
                 <div className="flex flex-wrap items-end gap-[28px] md:gap-16 lg:flex-nowrap lg:gap-20">
                     <h1 className="max-w-[800px] text-[clamp(45px,6.7vw,78px)] font-medium leading-[1.055] tracking-[-3.4992px] text-[#102B43]">Préparer la France avant d&apos;y arriver.</h1>
                     <div className="max-w-[453px] md:justify-self-end">
@@ -70,13 +70,13 @@ const page = () => {
                 <div className="relative mt-[65px] overflow-hidden rounded-[28px] bg-eef-soft">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/assets/city.webp" alt="Immeuble parisien dans une rue de France" className="h-[435px] min-h-[321px] w-full object-[center_45%] object-cover max-md:min-h-50" />
-                    <span className="absolute bottom-5 left-5 inline-flex items-center rounded-[9px] bg-[#f5fafd] px-4.5 py-[13px] text-[9px] uppercase tracking-[1.17px] text-[#102B43]">COMPRENDRE. CHOISIR. AVANCER.</span>
+                    <span className="absolute bottom-5 left-5 inline-flex items-center rounded-[9px] bg-[#f5fafd] px-4.5 py-[13px] text-[9px] tracking-[1.17px] text-[#102B43]">Comprendre. Choisir. Avancer.</span>
                 </div>
             </section>
 
             {/* Profile */}
             <section className={`${orientationWrap} py-[76px] sm:py-[88px]`}>
-                <p className="m-0 mb-[23px] text-[10px] font-medium leading-[1.5] uppercase tracking-[1.6px] text-[#173b5d]">
+                <p className="m-0 mb-[23px] text-[10px] font-medium leading-[1.5] tracking-[1.6px] text-[#173b5d]">
                     Le logement
                 </p>
                 <h2 className="m-0 max-w-[12em] text-[clamp(35px,5vw,57px)] font-medium leading-[1.1] tracking-[-2.565px] text-[#102b43]">
@@ -119,7 +119,7 @@ const page = () => {
             <section className={`${orientationWrap} py-[72px]`}>
                 <div className="flex flex-col">
                     <div>
-                        <p className="m-0 mb-[21px] sm:mb-[23px] text-[10px] leading-[1.5] font-medium uppercase tracking-[1.6px] text-[#173b5d]">
+                        <p className="m-0 mb-[21px] sm:mb-[23px] text-[10px] leading-[1.5] font-medium tracking-[1.6px] text-[#173b5d]">
                             Les démarches
                         </p>
                         <h2 className="m-0 max-w-[12em] text-[clamp(40px,5.4vw,78px)] font-medium leading-[1.1] tracking-[-3.51px] text-[#102B43]">
@@ -147,7 +147,7 @@ const page = () => {
             <section className={`${orientationWrap} pt-[72px] pb-[88px]`}>
                 <div className="grid items-end gap-8 md:grid-cols-2 md:gap-16">
                     <div>
-                        <p className="m-0 mb-[22px] text-[10px] font-medium uppercase tracking-[1.6px] text-[#173b5d]">Le budget</p>
+                        <p className="m-0 mb-[22px] text-[10px] font-medium tracking-[1.6px] text-[#173b5d]">Le budget</p>
                         <h2 className="m-0 max-w-[12em] text-[clamp(35px,5vw,57px)] font-medium leading-[1.1] tracking-[-2.565px] text-[#102b43]">Comprendre le coût réel de votre projet.</h2>
                     </div>
                     <div className="pt-2 md:pt-8">
@@ -168,7 +168,7 @@ const page = () => {
 
             {/* Arrival calendar */}
             <section className={`${orientationWrap}`}>
-                <p className="m-0 mb-[22px] text-[10px] font-medium uppercase tracking-[1.6px] text-[#173b5d]">Le calendrier</p>
+                <p className="m-0 mb-[22px] text-[10px] font-medium tracking-[1.6px] text-[#173b5d]">Le calendrier</p>
                 <h2 className="m-0 text-[clamp(40px,5.4vw,60px)] font-medium leading-[1.08] tracking-[-3px] text-[#102B43]">De J-30 à J+30.</h2>
                 <p className="mt-4 m-0 max-w-[600px] text-[17px] leading-[1.7] text-[#5e7282]">Chaque élément devient une tâche cochable dans Mon Dossier, activée au bon moment.</p>
                 <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

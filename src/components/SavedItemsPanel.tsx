@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -165,7 +165,7 @@ export function SavedItemsPanel() {
           <article key={item.id} className="eef-panel px-5 py-4 sm:px-6">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
-                <p className="text-xs uppercase tracking-wider text-eef-secondary">
+                <p className="text-xs tracking-wider text-eef-secondary">
                   {SAVED_TYPES.find((t) => t.value === item.type)?.label ?? item.type}
                 </p>
                 <h3 className="mt-1 font-display text-xl text-eef-navy">{item.title}</h3>

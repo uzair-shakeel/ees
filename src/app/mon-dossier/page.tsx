@@ -20,7 +20,7 @@ export default async function AccueilPage({
       <DossierHeader
         name={session.name}
         progress={overview.overall}
-        modeLabel="MON DOSSIER"
+        modeLabel="Mon dossier"
         subtitle={`Bonjour ${firstName} — de la candidature à l’arrivée en France.`}
       />
 

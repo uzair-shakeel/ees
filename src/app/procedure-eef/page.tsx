@@ -1,4 +1,4 @@
-import { MarketingShell } from "@/components/marketing/MarketingShell";
+﻿import { MarketingShell } from "@/components/marketing/MarketingShell";
 import Link from "next/link";
 
 function IconArrowRight() {
@@ -68,7 +68,7 @@ const page = () => {
                     <span className="">Procédure EEF</span>
                 </nav>
 
-                <p className="m-0 mb-[23px] text-[10px] leading-[1.5] font-medium uppercase tracking-[1.6px] text-[#173b5d]">
+                <p className="m-0 mb-[23px] text-[10px] leading-[1.5] font-medium tracking-[1.6px] text-[#173b5d]">
                     Procédure EEF
                 </p>
                 <div className="flex flex-wrap lg:flex-nowrap items-end gap-[28px] md:gap-16 lg:gap-20">
@@ -111,15 +111,15 @@ const page = () => {
                         alt="Étudiante cherchant un livre dans une bibliothèque"
                         className="h-[435px] min-h-[321px] w-full object-[center_45%] object-cover max-md:min-h-50"
                     />
-                    <span className="absolute bottom-5 left-5 inline-flex items-center rounded-[9px] bg-[#f5fafd] px-4.5 py-[13px] text-[9px] uppercase tracking-[1.17px] text-[#102B43]">
-                        COMPRENDRE. CHOISIR. AVANCER.
+                    <span className="absolute bottom-5 left-5 inline-flex items-center rounded-[9px] bg-[#f5fafd] px-4.5 py-[13px] text-[9px] tracking-[1.17px] text-[#102B43]">
+                        Comprendre. Choisir. Avancer.
                     </span>
                 </div>
             </section>
 
             {/* Profile */}
             <section className={`${orientationWrap} py-[76px] sm:py-[88px]`}>
-                <p className="m-0 mb-[23px] text-[10px] font-medium leading-[1.5] uppercase tracking-[1.6px] text-[#173b5d]">
+                <p className="m-0 mb-[23px] text-[10px] font-medium leading-[1.5] tracking-[1.6px] text-[#173b5d]">
                     Comprendre avant de choisir
                 </p>
                 <h2 className="m-0 max-w-[12em] text-[clamp(35px,5vw,58px)] font-medium leading-[1.1] tracking-[-2.565px] text-[#102b43]">
@@ -150,7 +150,7 @@ const page = () => {
             <section className={`${orientationWrap} py-[72px]`}>
                 <div className="flex flex-col">
                     <div>
-                        <p className="m-0 mb-[21px] sm:mb-[23px] text-[10px] leading-[1.5] font-medium uppercase tracking-[1.6px] text-[#173b5d]">
+                        <p className="m-0 mb-[21px] sm:mb-[23px] text-[10px] leading-[1.5] font-medium tracking-[1.6px] text-[#173b5d]">
                             Notre approche
                         </p>
                         <h2 className="m-0 max-w-[12em] text-[clamp(40px,5.4vw,78px)] font-medium leading-[1.1] tracking-[-3.51px] text-[#102B43]">

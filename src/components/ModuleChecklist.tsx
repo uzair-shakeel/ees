@@ -174,11 +174,7 @@ function StepRow({
               type="button"
               disabled={busy}
               onClick={() => onStatus(step.key, status)}
-              className={`rounded-md px-2.5 py-1.5 text-xs font-medium transition ${
-                step.status === status
-                  ? "bg-eef-navy text-white"
-                  : "text-eef-secondary hover:text-eef-navy"
-              }`}
+              className={`rounded-md px-2.5 py-1.5 text-xs font-medium transition ${ step.status === status ? "bg-eef-navy text-white" : "text-eef-secondary hover:text-eef-navy" }`}
             >
               {LABELS[status]}
             </button>

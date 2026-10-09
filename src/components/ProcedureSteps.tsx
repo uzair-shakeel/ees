@@ -38,25 +38,13 @@ export function ProcedureSteps({ steps, activeSlug, compact }: Props) {
         const inner = (
           <>
             <span
-              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${
-                state === "done"
-                  ? "bg-eef-navy text-white"
-                  : state === "ready"
-                    ? "bg-eef-blue text-white"
-                    : active
-                      ? "bg-eef-blue/15 text-eef-navy ring-2 ring-eef-blue"
-                      : state === "locked"
-                        ? "bg-eef-soft text-eef-secondary"
-                        : "bg-white text-eef-navy ring-1 ring-eef-border"
-              }`}
+              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${ state === "done" ? "bg-eef-navy text-white" : state === "ready" ? "bg-eef-blue text-white" : active ? "bg-eef-blue/15 text-eef-navy ring-2 ring-eef-blue" : state === "locked" ? "bg-eef-soft text-eef-secondary" : "bg-white text-eef-navy ring-1 ring-eef-border" }`}
             >
               {state === "done" ? "✓" : String(i + 1).padStart(2, "0")}
             </span>
             <span className="min-w-0">
               <span
-                className={`block text-sm font-medium ${
-                  active ? "text-eef-navy" : "text-eef-secondary"
-                }`}
+                className={`block text-sm font-medium ${ active ? "text-eef-navy" : "text-eef-secondary" }`}
               >
                 {step.short}
               </span>

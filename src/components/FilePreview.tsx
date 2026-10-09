@@ -46,7 +46,7 @@ function FileGlyph({ kind }: { kind: "pdf" | "file" }) {
           fontWeight="700"
           fontFamily="ui-sans-serif, system-ui, sans-serif"
         >
-          PDF
+          Pdf
         </text>
       </svg>
     );

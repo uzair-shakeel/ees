@@ -178,24 +178,10 @@ export function ServiceChecklist({ slug }: { slug: string }) {
                 <button
                   type="button"
                   onClick={() => setStepIndex(i)}
-                  className={`flex w-full min-w-[10rem] items-center gap-3 rounded-lg px-2.5 py-2.5 text-left transition-colors lg:min-w-0 ${
-                    active
-                      ? "bg-eef-soft text-eef-navy"
-                      : "text-eef-secondary hover:bg-white/70 hover:text-eef-navy"
-                  }`}
+                  className={`flex w-full min-w-[10rem] items-center gap-3 rounded-lg px-2.5 py-2.5 text-left transition-colors lg:min-w-0 ${ active ? "bg-eef-soft text-eef-navy" : "text-eef-secondary hover:bg-white/70 hover:text-eef-navy" }`}
                 >
                   <span
-                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold ${
-                      s.status === "approved"
-                        ? "bg-eef-navy text-white"
-                        : s.status === "rejected"
-                          ? "bg-eef-ink text-white"
-                          : s.status === "pending"
-                            ? "bg-eef-blue text-white"
-                            : active
-                              ? "bg-white text-eef-navy ring-1 ring-eef-blue"
-                              : "bg-white text-eef-secondary ring-1 ring-eef-border"
-                    }`}
+                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-semibold ${ s.status === "approved" ? "bg-eef-navy text-white" : s.status === "rejected" ? "bg-eef-ink text-white" : s.status === "pending" ? "bg-eef-blue text-white" : active ? "bg-white text-eef-navy ring-1 ring-eef-blue" : "bg-white text-eef-secondary ring-1 ring-eef-border" }`}
                   >
                     {s.status === "approved" ? "✓" : String(i + 1).padStart(2, "0")}
                   </span>

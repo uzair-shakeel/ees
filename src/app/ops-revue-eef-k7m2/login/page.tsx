@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { FormEvent, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -46,7 +46,7 @@ function AdminLoginForm() {
       <div className="w-full max-w-[420px]">
         <div className="mb-8 text-center">
           <p className="font-display text-3xl text-eef-blue">eef</p>
-          <p className="mt-3 text-xs uppercase tracking-[0.16em] text-eef-secondary">Console</p>
+          <p className="mt-3 text-xs tracking-[0.16em] text-eef-secondary">Console</p>
           <h1 className="mt-3 font-display text-2xl text-eef-navy">Connexion admin</h1>
         </div>
 

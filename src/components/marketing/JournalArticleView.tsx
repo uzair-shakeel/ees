@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import {
@@ -33,7 +33,7 @@ export function JournalArticleView({ article }: { article: JournalArticle }) {
           </Link>
         </nav>
 
-        <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-eef-blue">
+        <p className="m-0 text-[11px] font-semibold tracking-[0.14em] text-eef-blue">
           {article.category}
         </p>
         <h1 className="mt-3 m-0 max-w-[18em] text-[clamp(2rem,5vw,52px)] font-medium leading-[1.12] tracking-[-0.03em] text-eef-ink">
@@ -54,7 +54,7 @@ export function JournalArticleView({ article }: { article: JournalArticle }) {
 
         <div className="mt-10 grid gap-10 lg:mt-14 lg:grid-cols-[minmax(0,220px)_minmax(0,1fr)] lg:gap-16">
           <nav aria-label="Sommaire" className="lg:sticky lg:top-28 lg:self-start">
-            <p className="m-0 text-[10px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]">
+            <p className="m-0 text-[10px] font-medium tracking-[0.16em] text-[#8aa4b8]">
               Sommaire
             </p>
             <ol className="mt-4 m-0 list-none space-y-2.5 p-0">
@@ -163,7 +163,7 @@ export function JournalArticleView({ article }: { article: JournalArticle }) {
                         href={`/journal/${item.slug}`}
                         className="group block py-4"
                       >
-                        <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-eef-blue">
+                        <p className="m-0 text-[11px] font-semibold tracking-[0.14em] text-eef-blue">
                           {item.category}
                         </p>
                         <p className="mt-1.5 m-0 text-[17px] font-medium leading-snug text-eef-ink transition group-hover:text-eef-navy">

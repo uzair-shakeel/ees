@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { ADMIN_APP_PATH } from "@/lib/admin-path";
@@ -23,7 +23,7 @@ export default async function AdminLayout({
             <Link href={ADMIN_APP_PATH} className="font-display text-[1.65rem] leading-none text-eef-blue">
               eef
             </Link>
-            <span className="text-xs uppercase tracking-[0.16em] text-eef-secondary">
+            <span className="text-xs tracking-[0.16em] text-eef-secondary">
               Ops
             </span>
           </div>

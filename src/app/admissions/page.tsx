@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { MarketingShell } from "@/components/marketing/MarketingShell";
 import Link from "next/link";
@@ -77,7 +77,7 @@ const page = () => {
                     <span className="">Admissions</span>
                 </nav>
 
-                <p className="m-0 mb-[23px] text-[10px] leading-[1.5] font-medium uppercase tracking-[1.6px] text-[#173b5d]">
+                <p className="m-0 mb-[23px] text-[10px] leading-[1.5] font-medium tracking-[1.6px] text-[#173b5d]">
                     Admissions
                 </p>
                 <div className="flex flex-wrap lg:flex-nowrap items-end gap-[28px] md:gap-16 lg:gap-20">
@@ -96,11 +96,11 @@ const page = () => {
             <section className={`${orientationWrap} pt-[70px] pb-[76px] sm:pb-[88px]`}>
                 <div className="grid items-start md:grid-cols-[0.95fr_1.05fr] gap-8">
                     <div className="rounded-[22px] border border-[#c6d9e7] bg-white shadow-[0_8px_25px_rgba(16,43,67,0.025)] p-8">
-                        <p className="m-0 text-[11px] font-medium leading-[16.5px] uppercase tracking-[1.76px] text-[#173b5d]">Simulateur de voie</p>
+                        <p className="m-0 text-[11px] font-medium leading-[16.5px] tracking-[1.76px] text-[#173b5d]">Simulateur de voie</p>
                         <div className="mt-5 grid gap-6">
                             {SIMULATOR_GROUPS.map(([label, options]) => (
                                 <div key={label}>
-                                    <p className="m-0 mb-[7px] text-[11.5px] leading-[17.81px] font-bold uppercase tracking-[0.92px] text-[#5e7282]">{label}</p>
+                                    <p className="m-0 mb-[7px] text-[11.5px] leading-[17.81px] font-bold tracking-[0.92px] text-[#5e7282]">{label}</p>
                                     <div className="flex flex-wrap gap-2">
                                         {options.map((option) => (
                                             <button
@@ -108,10 +108,7 @@ const page = () => {
                                                 type="button"
                                                 aria-pressed={selections[label] === option}
                                                 onClick={() => selectOption(label, option)}
-                                                className={`cursor-pointer rounded-full border px-3.5 py-[7px] text-[12.5px] min-h-[35.38px] font-semibold transition ${selections[label] === option
-                                                    ? "border-[#102b43] bg-[#102b43] text-white"
-                                                    : "border-[#c6d9e7] bg-white text-[#5e7282] hover:border-[#63a8d8] hover:text-[#63a8d8]"
-                                                    }`}
+                                                className={`cursor-pointer rounded-full border px-3.5 py-[7px] text-[12.5px] min-h-[35.38px] font-semibold transition ${selections[label] === option ? "border-[#102b43] bg-[#102b43] text-white" : "border-[#c6d9e7] bg-white text-[#5e7282] hover:border-[#63a8d8] hover:text-[#63a8d8]" }`}
                                             >
                                                 {option}
                                             </button>
@@ -120,7 +117,7 @@ const page = () => {
                                 </div>
                             ))}
                             <div>
-                                <p className="m-0 mb-[7px] text-[11.5px] leading-[17.81px] font-bold uppercase tracking-[0.92px] text-[#5e7282]">Domaine (optionnel)</p>
+                                <p className="m-0 mb-[7px] text-[11.5px] leading-[17.81px] font-bold tracking-[0.92px] text-[#5e7282]">Domaine (optionnel)</p>
                                 <input id="admission-domain" type="text" placeholder="Ex : informatique, droit, commerce..." className="h-[50px] w-full rounded-[11px] border border-[#c6d9e7] bg-white px-4 text-[15px] text-[#102b43] outline-none placeholder:text-[#9aabba] focus:border-[#63a8d8]" />
                             </div>
                             <button
@@ -143,7 +140,7 @@ const page = () => {
 
             {/* Accompaniments */}
             <section className={`${orientationWrap} pb-[78px] sm:pb-[96px]`}>
-                <p className="m-0 mb-[16px] text-[11px] font-medium uppercase tracking-[1.76px] text-[#173b5d]">Deux accompagnements</p>
+                <p className="m-0 mb-[16px] text-[11px] font-medium tracking-[1.76px] text-[#173b5d]">Deux accompagnements</p>
                 <h2 className="m-0 max-w-[12em] text-[clamp(34px,4.3vw,60px)] font-medium leading-[1.08] tracking-[-2.7px] text-[#102B43]">Public ou privé : le même sérieux.</h2>
 
                 <div className="mt-12 grid items-start gap-5 md:grid-cols-2">

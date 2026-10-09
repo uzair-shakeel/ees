@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import {
@@ -99,8 +99,8 @@ export function MarketingParents() {
           <span className="text-eef-ink">Parents</span>
         </nav>
 
-        <p className="m-0 mb-[10px] text-[9px] font-medium uppercase tracking-[0.16em] text-eef-blue">
-          PARENTS
+        <p className="m-0 mb-[10px] text-[9px] font-medium tracking-[0.16em] text-eef-blue">
+          Parents
         </p>
 
         <div className="grid min-w-0 items-start gap-5 md:gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16 xl:gap-24">
@@ -120,7 +120,7 @@ export function MarketingParents() {
             alt="Étudiants collaborant ensemble"
             className="aspect-[4/3] min-h-[180px] w-full object-cover sm:aspect-[16/10] sm:min-h-[200px] md:aspect-[21/9] md:min-h-[240px]"
           />
-          <span className="absolute bottom-3 left-3 inline-flex max-w-[calc(100%-1.5rem)] items-center rounded-full bg-white/95 px-3 py-1.5 text-[8px] font-semibold uppercase tracking-[0.1em] text-eef-navy shadow-[0_2px_12px_rgba(16,43,67,0.08)] backdrop-blur-sm sm:bottom-4 sm:left-4 sm:px-3.5 sm:text-[9px] sm:tracking-[0.12em] md:bottom-5 md:left-5 md:px-4 md:py-2 md:text-[10px] md:tracking-[0.14em]">
+          <span className="absolute bottom-3 left-3 inline-flex max-w-[calc(100%-1.5rem)] items-center rounded-full bg-white/95 px-3 py-1.5 text-[8px] font-semibold tracking-[0.1em] text-eef-navy shadow-[0_2px_12px_rgba(16,43,67,0.08)] backdrop-blur-sm sm:bottom-4 sm:left-4 sm:px-3.5 sm:text-[9px] sm:tracking-[0.12em] md:bottom-5 md:left-5 md:px-4 md:py-2 md:text-[10px] md:tracking-[0.14em]">
             Comprendre · Choisir · Avancer
           </span>
         </div>

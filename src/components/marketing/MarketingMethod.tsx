@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -50,7 +50,7 @@ export function MarketingMethod() {
           <span className="text-eef-ink">Notre méthode</span>
         </nav>
 
-        <p className="m-0 mb-[10px] text-[9px] font-medium uppercase tracking-[0.16em] text-eef-blue">
+        <p className="m-0 mb-[10px] text-[9px] font-medium tracking-[0.16em] text-eef-blue">
           Notre méthode
         </p>
 
@@ -79,7 +79,7 @@ export function MarketingMethod() {
             alt="Étudiants accompagnés dans leur projet"
             className="aspect-[4/3] min-h-[180px] w-full object-cover sm:aspect-[16/10] sm:min-h-[200px] md:aspect-[21/9] md:min-h-[240px]"
           />
-          <span className="absolute bottom-3 left-3 inline-flex max-w-[calc(100%-1.5rem)] items-center rounded-[10px] bg-white/95 px-3 py-1.5 text-[8px] font-semibold uppercase tracking-[0.1em] text-eef-navy shadow-[0_2px_12px_rgba(16,43,67,0.08)] backdrop-blur-sm sm:bottom-4 sm:left-4 sm:px-3.5 sm:text-[9px] md:bottom-5 md:left-5 md:px-4 md:py-2 md:tracking-[0.14em]">
+          <span className="absolute bottom-3 left-3 inline-flex max-w-[calc(100%-1.5rem)] items-center rounded-[10px] bg-white/95 px-3 py-1.5 text-[8px] font-semibold tracking-[0.1em] text-eef-navy shadow-[0_2px_12px_rgba(16,43,67,0.08)] backdrop-blur-sm sm:bottom-4 sm:left-4 sm:px-3.5 sm:text-[9px] md:bottom-5 md:left-5 md:px-4 md:py-2 md:tracking-[0.14em]">
             Comprendre. Choisir. S&apos;avancer.
           </span>
         </div>
@@ -88,7 +88,7 @@ export function MarketingMethod() {
       {/* Conviction */}
       <section className={`${wrap} mt-12 grid min-w-0 items-start gap-6 pb-14 md:mt-[60px] md:gap-8 md:pb-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16 xl:gap-24`}>
         <div className="min-w-0">
-          <p className="m-0 mb-[10px] text-[9px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8] md:text-[11px]">
+          <p className="m-0 mb-[10px] text-[9px] font-medium tracking-[0.16em] text-[#8aa4b8] md:text-[11px]">
             Notre conviction
           </p>
           <h2 className="m-0 max-w-[12em] text-[36px] font-medium leading-[1.15] tracking-[-0.03em] text-eef-ink md:text-[clamp(2.5rem,6vw,57px)]">
@@ -110,7 +110,7 @@ export function MarketingMethod() {
 
       {/* Principles */}
       <section className={`${wrap} pb-14 pt-2 md:pb-16 md:pt-4`}>
-        <p className="m-0 mb-8 text-[9px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8] md:mb-10 md:text-[11px]">
+        <p className="m-0 mb-8 text-[9px] font-medium tracking-[0.16em] text-[#8aa4b8] md:mb-10 md:text-[11px]">
           Ce qui guide notre méthode
         </p>
         <div className="border-t border-eef-border">
@@ -133,7 +133,7 @@ export function MarketingMethod() {
       {/* Humans */}
       <section className={`${wrap} mt-8 grid min-w-0 items-start gap-6 pb-14 md:mt-[40px] md:gap-8 md:pb-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16 xl:gap-24`}>
         <div>
-          <p className="m-0 mb-[10px] text-[11px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]">
+          <p className="m-0 mb-[10px] text-[11px] font-medium tracking-[0.16em] text-[#8aa4b8]">
             Humains, avant tout
           </p>
           <h2 className="m-0 max-w-[12em] text-[clamp(1.85rem,3.5vw,64px)] font-medium leading-[1.15] tracking-[-0.03em] text-eef-ink">

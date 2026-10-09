@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
 
@@ -12,7 +12,7 @@ type Props = {
 export function DossierHeader({
   name,
   progress,
-  modeLabel = "MA PROCÉDURE",
+  modeLabel = "Ma procédure",
   subtitle = "Suivez chaque étape jusqu’à la validation",
 }: Props) {
   const router = useRouter();
@@ -36,7 +36,7 @@ export function DossierHeader({
         </div>
         <div className="flex items-center gap-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-eef-secondary">
+            <p className="text-xs font-semibold tracking-wider text-eef-secondary">
               Progression
             </p>
             <p className="mt-0.5 font-display text-2xl text-eef-navy">{progress}%</p>

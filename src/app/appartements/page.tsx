@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { MarketingShell } from "@/components/marketing/MarketingShell";
 import Link from "next/link";
@@ -85,7 +85,7 @@ const page = () => {
                     <span className="">Appartements</span>
                 </nav>
 
-                <p className="m-0 mb-[23px] text-[10px] leading-[1.5] font-medium uppercase tracking-[1.6px] text-[#173b5d]">
+                <p className="m-0 mb-[23px] text-[10px] leading-[1.5] font-medium tracking-[1.6px] text-[#173b5d]">
                     Appartements
                 </p>
                 <div className="flex flex-wrap lg:flex-nowrap items-end gap-[28px] md:gap-16 lg:gap-20">
@@ -106,8 +106,8 @@ const page = () => {
                         alt="Étudiante cherchant un livre dans une bibliothèque"
                         className="h-[435px] min-h-[321px] w-full object-[center_45%] object-cover max-md:min-h-50"
                     />
-                    <span className="absolute bottom-5 left-5 inline-flex items-center rounded-[9px] bg-[#f5fafd] px-4.5 py-[13px] text-[9px] uppercase tracking-[1.17px] text-[#102B43]">
-                        COMPRENDRE. CHOISIR. AVANCER.
+                    <span className="absolute bottom-5 left-5 inline-flex items-center rounded-[9px] bg-[#f5fafd] px-4.5 py-[13px] text-[9px] tracking-[1.17px] text-[#102B43]">
+                        Comprendre. Choisir. Avancer.
                     </span>
                 </div>
             </section>
@@ -117,7 +117,7 @@ const page = () => {
                 <div className="grid rounded-[26px] border border-[#c6d9e7] bg-white p-6 md:grid-cols-3 gap-5">
                     {APARTMENT_FILTERS.map(([label, options]) => (
                         <div key={label}>
-                            <p className="m-0 mb-[7px] text-[11.5px] leading-[17.81px] font-bold uppercase tracking-[0.92px] text-[#5e7282]">{label}</p>
+                            <p className="m-0 mb-[7px] text-[11.5px] leading-[17.81px] font-bold tracking-[0.92px] text-[#5e7282]">{label}</p>
                             <div className="flex flex-wrap gap-2">
                                 {options.map((option) => (
                                     <button
@@ -125,10 +125,7 @@ const page = () => {
                                         type="button"
                                         aria-pressed={selectedFilters[label] === option}
                                         onClick={() => selectFilter(label, option)}
-                                        className={`cursor-pointer rounded-full border px-3.5 py-[7px] text-[12.5px] font-semibold transition ${selectedFilters[label] === option
-                                                ? "border-[#102b43] bg-[#102b43] text-white"
-                                                : "border-[#c6d9e7] bg-white text-[#5e7282] hover:border-[#63a8d8] hover:text-[#63a8d8]"
-                                            }`}
+                                        className={`cursor-pointer rounded-full border px-3.5 py-[7px] text-[12.5px] font-semibold transition ${selectedFilters[label] === option ? "border-[#102b43] bg-[#102b43] text-white" : "border-[#c6d9e7] bg-white text-[#5e7282] hover:border-[#63a8d8] hover:text-[#63a8d8]" }`}
                                     >
                                         {option}
                                     </button>
@@ -154,7 +151,7 @@ const page = () => {
 
             {/* Student protection */}
             <section id="protection-etudiante" className={`${orientationWrap} py-[72px]`}>
-                <p className="m-0 mb-[16px] text-[11px] font-medium uppercase tracking-[1.76px] text-[#173b5d]">Protection étudiante</p>
+                <p className="m-0 mb-[16px] text-[11px] font-medium tracking-[1.76px] text-[#173b5d]">Protection étudiante</p>
                 <h2 className="m-0 max-w-[12em] text-[clamp(34px,5.4vw,60px)] font-medium leading-[1.12] tracking-[-2.7px] text-[#102B43]">La confiance fait partie du produit logement.</h2>
                 <div className="mt-12 grid gap-5 md:grid-cols-3">
                     {TRUST_POINTS.map(([title, description]) => (

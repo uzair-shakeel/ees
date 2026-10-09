@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import {
@@ -75,7 +75,7 @@ export function MarketingFaq() {
     <MarketingShell>
       {/* Hero */}
       <section className={`${wrap} pt-10 pb-14 max-md:pb-10 md:pb-16`}>
-        <p className="m-0 mb-[10px] text-[9px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]">
+        <p className="m-0 mb-[10px] text-[9px] font-medium tracking-[0.16em] text-[#8aa4b8]">
           Les réponses, simplement.
         </p>
 
@@ -101,8 +101,8 @@ export function MarketingFaq() {
       {/* Accordion */}
       <section className={`${wrap} mt-10 pb-14 md:mt-[60px] md:pb-16`}>
         <div className="grid min-w-0 gap-6 lg:grid-cols-[minmax(0,0.45fr)_minmax(0,1fr)] lg:gap-14 xl:gap-20">
-          <p className="m-0 text-[10px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8] lg:sticky lg:top-24 lg:self-start">
-            L&apos;accompagnement EEF
+          <p className="m-0 text-[10px] font-medium tracking-[0.16em] text-[#8aa4b8] lg:sticky lg:top-24 lg:self-start">
+            L&apos;accompagnement eef
           </p>
 
           <div className="min-w-0 border-t border-eef-border">
@@ -132,9 +132,7 @@ export function MarketingFaq() {
                   id={panelId}
                   role="region"
                   aria-labelledby={buttonId}
-                  className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-                    isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                  }`}
+                  className={`grid transition-[grid-template-rows] duration-300 ease-out ${ isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]" }`}
                 >
                   <div className="overflow-hidden">
                     <p className="m-0 max-w-[40rem] pb-6 text-[14px] leading-[1.6] text-eef-secondary">

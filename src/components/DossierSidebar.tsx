@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -31,7 +31,7 @@ export function DossierSidebar() {
       aria-label="Mon Dossier"
       className="flex w-full gap-1 overflow-x-auto pb-1 md:w-52 md:shrink-0 md:flex-col md:gap-0.5 md:overflow-visible md:border-r md:border-eef-soft md:pb-0 md:pr-6"
     >
-      <p className="mb-2 hidden px-3 text-[10px] font-bold tracking-[0.15em] text-eef-secondary uppercase md:block">
+      <p className="mb-2 hidden px-3 text-[10px] font-bold tracking-[0.15em] text-eef-secondary md:block">
         Mon dossier
       </p>
       {PRIMARY.map((item) => {
@@ -40,11 +40,7 @@ export function DossierSidebar() {
           <Link
             key={item.href}
             href={item.href}
-            className={`whitespace-nowrap rounded-lg px-3 py-2.5 text-sm transition-colors md:w-full ${
-              active
-                ? "bg-eef-navy font-medium text-white"
-                : "text-eef-secondary hover:bg-eef-soft/80 hover:text-eef-navy"
-            }`}
+            className={`whitespace-nowrap rounded-lg px-3 py-2.5 text-sm transition-colors md:w-full ${ active ? "bg-eef-navy font-medium text-white" : "text-eef-secondary hover:bg-eef-soft/80 hover:text-eef-navy" }`}
           >
             {item.label}
           </Link>
@@ -57,11 +53,7 @@ export function DossierSidebar() {
           <Link
             key={item.href}
             href={item.href}
-            className={`whitespace-nowrap rounded-lg px-3 py-2.5 text-sm transition-colors md:w-full ${
-              active
-                ? "bg-eef-navy font-medium text-white"
-                : "text-eef-secondary hover:bg-eef-soft/80 hover:text-eef-navy"
-            }`}
+            className={`whitespace-nowrap rounded-lg px-3 py-2.5 text-sm transition-colors md:w-full ${ active ? "bg-eef-navy font-medium text-white" : "text-eef-secondary hover:bg-eef-soft/80 hover:text-eef-navy" }`}
           >
             {item.label}
           </Link>

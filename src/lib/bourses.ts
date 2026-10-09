@@ -40,9 +40,9 @@ export async function getBourse(slug: string): Promise<Bourse | undefined> {
 }
 
 export const STATUS_LABEL: Record<Statut, string> = {
-  VERIFIE: "VÉRIFIÉ",
-  EN_REVUE: "EN REVUE",
-  MANQUANT: "MANQUANT",
+  VERIFIE: "Vérifié",
+  EN_REVUE: "En revue",
+  MANQUANT: "Manquant",
 };
 
 export const PERIOD_LABEL: Record<Periode, string> = {

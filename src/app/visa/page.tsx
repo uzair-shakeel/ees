@@ -1,4 +1,4 @@
-import { MarketingShell } from "@/components/marketing/MarketingShell";
+﻿import { MarketingShell } from "@/components/marketing/MarketingShell";
 import Link from "next/link";
 
 const ASSETS = {
@@ -70,7 +70,7 @@ const page = () => {
                     <span className="">Visa</span>
                 </nav>
 
-                <p className="m-0 mb-[23px] text-[10px] leading-[1.5] font-medium uppercase tracking-[1.6px] text-[#173b5d]">
+                <p className="m-0 mb-[23px] text-[10px] leading-[1.5] font-medium tracking-[1.6px] text-[#173b5d]">
                     Visa
                 </p>
                 <div className="flex flex-wrap lg:flex-nowrap items-end gap-[28px] md:gap-16 lg:gap-20">
@@ -113,15 +113,15 @@ const page = () => {
                         alt="Étudiante cherchant un livre dans une bibliothèque"
                         className="h-[435px] min-h-[321px] w-full object-[center_45%] object-cover max-md:min-h-50"
                     />
-                    <span className="absolute bottom-5 left-5 inline-flex items-center rounded-[9px] bg-[#f5fafd] px-4.5 py-[13px] text-[9px] uppercase tracking-[1.17px] text-[#102B43]">
-                        COMPRENDRE. CHOISIR. AVANCER.
+                    <span className="absolute bottom-5 left-5 inline-flex items-center rounded-[9px] bg-[#f5fafd] px-4.5 py-[13px] text-[9px] tracking-[1.17px] text-[#102B43]">
+                        Comprendre. Choisir. Avancer.
                     </span>
                 </div>
             </section>
 
             {/* Visa journey */}
             <section className={`${orientationWrap} pb-10 pt-[70px]`}>
-                <p className="m-0 mb-4 text-[11px] font-medium uppercase tracking-[1.76px] text-[#173b5d]">Le parcours</p>
+                <p className="m-0 mb-4 text-[11px] font-medium tracking-[1.76px] text-[#173b5d]">Le parcours</p>
                 <h2 className="m-0 max-w-[12em] text-[clamp(35px,5vw,60px)] font-medium leading-[1.12] tracking-[-2.7px] text-[#102b43]">Les 10 étapes du visa étudiant.</h2>
                 <p className="mt-4 m-0 max-w-[672px] text-[17px] leading-[1.75] text-[#5e7282]">Dans Mon Dossier, chaque étape devient une case à cocher suivie, avec vos documents rattachés.</p>
 

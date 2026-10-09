@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { ADMIN_APP_PATH } from "@/lib/admin-path";
 import { getStudentsOverview } from "@/lib/admin-students";
 
@@ -73,7 +73,7 @@ export default async function StudentsListPage() {
                   <p className="font-display text-2xl text-eef-navy">
                     {student.overallProgress}
                   </p>
-                  <p className="text-[10px] uppercase tracking-[0.14em] text-eef-secondary">
+                  <p className="text-[10px] tracking-[0.14em] text-eef-secondary">
                     %
                   </p>
                 </div>

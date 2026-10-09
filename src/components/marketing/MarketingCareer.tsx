@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
@@ -87,8 +87,8 @@ export function MarketingCareer() {
           <span className="text-eef-ink">Carrière</span>
         </nav>
 
-        <p className="m-0 mb-[10px] text-[9px] font-medium uppercase tracking-[0.16em] text-eef-blue">
-          CARRIÈRE
+        <p className="m-0 mb-[10px] text-[9px] font-medium tracking-[0.16em] text-eef-blue">
+          Carrière
         </p>
 
         <div className="grid min-w-0 items-start gap-5 md:gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16 xl:gap-24">
@@ -108,7 +108,7 @@ export function MarketingCareer() {
             alt="Étudiant travaillant sur un ordinateur"
             className="aspect-[4/3] min-h-[180px] w-full object-cover sm:aspect-[16/10] sm:min-h-[200px] md:aspect-[21/9] md:min-h-[240px]"
           />
-          <span className="absolute bottom-3 left-3 inline-flex max-w-[calc(100%-1.5rem)] items-center rounded-[10px] bg-white/95 px-3 py-1.5 text-[8px] font-semibold uppercase tracking-[0.1em] text-eef-navy shadow-[0_2px_12px_rgba(16,43,67,0.08)] backdrop-blur-sm sm:bottom-4 sm:left-4 sm:px-3.5 sm:text-[9px] sm:tracking-[0.12em] md:bottom-5 md:left-5 md:px-4 md:py-2 md:tracking-[0.14em]">
+          <span className="absolute bottom-3 left-3 inline-flex max-w-[calc(100%-1.5rem)] items-center rounded-[10px] bg-white/95 px-3 py-1.5 text-[8px] font-semibold tracking-[0.1em] text-eef-navy shadow-[0_2px_12px_rgba(16,43,67,0.08)] backdrop-blur-sm sm:bottom-4 sm:left-4 sm:px-3.5 sm:text-[9px] sm:tracking-[0.12em] md:bottom-5 md:left-5 md:px-4 md:py-2 md:tracking-[0.14em]">
             Comprendre. Choisir. Avancer.
           </span>
         </div>
@@ -116,7 +116,7 @@ export function MarketingCareer() {
 
       {/* ATS Analyzer */}
       <section className={`${wrap} py-14 md:py-20`}>
-        <p className="mb-8 text-center text-[10px] font-medium uppercase tracking-[0.2em] text-[#8aa4b8] md:mb-10">
+        <p className="mb-8 text-center text-[10px] font-medium tracking-[0.2em] text-[#8aa4b8] md:mb-10">
           Comprendre · Choisir · Avancer
         </p>
 
@@ -125,12 +125,12 @@ export function MarketingCareer() {
             onSubmit={analyze}
             className="min-w-0 rounded-[22px] border border-eef-border bg-white p-5 shadow-[0_12px_40px_rgba(16,43,67,0.06)] sm:p-6 md:rounded-[28px] md:p-7"
           >
-            <p className="m-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-eef-navy">
+            <p className="m-0 text-[10px] font-semibold tracking-[0.16em] text-eef-navy">
               Analyseur de CV ATS
             </p>
 
             <div className="mt-6 md:mt-7">
-              <p className="m-0 mb-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-eef-secondary">
+              <p className="m-0 mb-3 text-[10px] font-semibold tracking-[0.14em] text-eef-secondary">
                 Poste cible
               </p>
               <div className="flex flex-wrap gap-2">
@@ -141,11 +141,7 @@ export function MarketingCareer() {
                       key={job}
                       type="button"
                       onClick={() => setTarget(job)}
-                      className={`cursor-pointer rounded-full border px-3 py-1.5 text-[12px] font-medium transition sm:px-3.5 sm:py-2 sm:text-[13px] ${
-                        active
-                          ? "border-eef-navy bg-eef-navy text-white"
-                          : "border-eef-border bg-white text-eef-ink hover:border-eef-navy hover:bg-eef-mist"
-                      }`}
+                      className={`cursor-pointer rounded-full border px-3 py-1.5 text-[12px] font-medium transition sm:px-3.5 sm:py-2 sm:text-[13px] ${ active ? "border-eef-navy bg-eef-navy text-white" : "border-eef-border bg-white text-eef-ink hover:border-eef-navy hover:bg-eef-mist" }`}
                     >
                       {job}
                     </button>
@@ -157,7 +153,7 @@ export function MarketingCareer() {
             <div className="mt-6 md:mt-7">
               <label
                 htmlFor="cv-text"
-                className="mb-3 block text-[10px] font-semibold uppercase tracking-[0.14em] text-eef-secondary"
+                className="mb-3 block text-[10px] font-semibold tracking-[0.14em] text-eef-secondary"
               >
                 Collez le texte de votre CV
               </label>
@@ -208,8 +204,8 @@ export function MarketingCareer() {
 
       {/* Beyond CV */}
       <section className={`${wrap} mt-12 pb-20 max-md:pb-14 md:mt-[60px] md:pb-24`}>
-        <p className="m-0 mb-[10px] text-[11px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]">
-          LA SUITE
+        <p className="m-0 mb-[10px] text-[11px] font-medium tracking-[0.16em] text-[#8aa4b8]">
+          La suite
         </p>
         <h2 className="m-0 text-[clamp(2rem,8vw,60px)] font-semibold leading-[1.15] tracking-[-0.02em] text-eef-ink">
           Au-delà du CV.

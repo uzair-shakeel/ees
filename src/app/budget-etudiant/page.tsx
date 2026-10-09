@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { MarketingShell } from "@/components/marketing/MarketingShell";
 import Link from "next/link";
@@ -91,7 +91,7 @@ const page = () => {
                     <span className="">Budget étudiant</span>
                 </nav>
 
-                <p className="m-0 mb-[23px] text-[10px] leading-[1.5] font-medium uppercase tracking-[1.6px] text-[#173b5d]">
+                <p className="m-0 mb-[23px] text-[10px] leading-[1.5] font-medium tracking-[1.6px] text-[#173b5d]">
                     Budget étudiant
                 </p>
                 <div className="flex flex-wrap lg:flex-nowrap items-end gap-[28px] md:gap-16 lg:gap-20">
@@ -113,7 +113,7 @@ const page = () => {
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             {BUDGET_FIELDS.map(([key, label, kind]) => (
                                 <div key={key}>
-                                    <label htmlFor={`budget-${key}`} className="mb-[7px] block text-[11.5px] font-bold uppercase tracking-[0.92px] text-[#5e7282]">
+                                    <label htmlFor={`budget-${key}`} className="mb-[7px] block text-[11.5px] font-bold tracking-[0.92px] text-[#5e7282]">
                                         {label}
                                     </label>
                                     <div className="relative">

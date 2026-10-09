@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useDeferredValue, useMemo, useState } from "react";
 import catalog from "@/content/formations-catalog.json";
@@ -108,11 +108,7 @@ function Chip({
       type="button"
       aria-pressed={pressed}
       onClick={onClick}
-      className={`cursor-pointer rounded-full border px-3 py-1.5 text-[12px] font-semibold whitespace-nowrap transition ${
-        pressed
-          ? "border-[#102b43] bg-[#102b43] text-white"
-          : "border-[#c6d9e7] bg-white text-[#5e7282] hover:border-[#63a8d8] hover:text-[#63a8d8]"
-      }`}
+      className={`cursor-pointer rounded-full border px-3 py-1.5 text-[12px] font-semibold whitespace-nowrap transition ${ pressed ? "border-[#102b43] bg-[#102b43] text-white" : "border-[#c6d9e7] bg-white text-[#5e7282] hover:border-[#63a8d8] hover:text-[#63a8d8]" }`}
     >
       {label} <span className={pressed ? "font-medium text-white/70" : "font-medium text-[#8a96a6]"}>{count}</span>
     </button>
@@ -176,7 +172,7 @@ export function FormationsExplorer() {
 
   const filterList = GROUPS.map(({ key, label }) => (
     <div key={key}>
-      <p className="m-0 mb-2 text-[11.5px] font-bold tracking-[0.08em] text-[#5e7282] uppercase">{label}</p>
+      <p className="m-0 mb-2 text-[11.5px] font-bold tracking-[0.08em] text-[#5e7282]">{label}</p>
       <div className="flex min-w-0 flex-wrap gap-1.5">
         {options[key].map((option) => (
           <Chip
@@ -267,7 +263,7 @@ export function FormationsExplorer() {
                         {item.institution} · {item.campus === item.ville ? item.ville : `${item.campus}, ${item.ville}`}
                       </p>
                     </div>
-                    <span className="shrink-0 text-[11px] tracking-[0.04em] text-[#8a96a6] uppercase">Synthétique</span>
+                    <span className="shrink-0 text-[11px] tracking-[0.04em] text-[#8a96a6]">Synthétique</span>
                   </div>
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {[item.niveau, item.domaine, item.institution_type, item.langue, item.alternance === "Oui" ? "Alternance" : null]

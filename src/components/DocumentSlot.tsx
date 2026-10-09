@@ -152,9 +152,7 @@ export function DocumentSlot({
               setDragging(false);
               onFileChange(e.dataTransfer.files?.[0]);
             }}
-            className={`eef-dropzone w-full disabled:opacity-60 ${
-              dragging ? "eef-dropzone-active" : ""
-            }`}
+            className={`eef-dropzone w-full disabled:opacity-60 ${ dragging ? "eef-dropzone-active" : "" }`}
           >
             <span className="font-display text-lg text-eef-navy">
               {uploading
@@ -164,7 +162,7 @@ export function DocumentSlot({
                   : "Déposez votre fichier ici"}
             </span>
             <span className="mt-2 block text-sm text-eef-secondary">
-              PDF ou image · ou cliquez pour parcourir
+              Pdf ou image · ou cliquez pour parcourir
             </span>
           </button>
           {error && <p className="mt-3 text-sm text-red-700">{error}</p>}

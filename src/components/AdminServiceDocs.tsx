@@ -211,9 +211,7 @@ function AdminDocRow({
               type="button"
               disabled={busy}
               onClick={() => review("pending")}
-              className={`rounded-full px-3 py-1.5 text-sm disabled:opacity-50 ${
-                waiting ? "bg-eef-navy text-white" : "text-eef-secondary hover:text-eef-navy"
-              }`}
+              className={`rounded-full px-3 py-1.5 text-sm disabled:opacity-50 ${ waiting ? "bg-eef-navy text-white" : "text-eef-secondary hover:text-eef-navy" }`}
             >
               En attente
             </button>
@@ -221,9 +219,7 @@ function AdminDocRow({
               type="button"
               disabled={busy}
               onClick={() => review("approve")}
-              className={`rounded-full px-3 py-1.5 text-sm disabled:opacity-50 ${
-                slot.status === "approved" ? "bg-eef-navy text-white" : "text-eef-secondary hover:text-eef-navy"
-              }`}
+              className={`rounded-full px-3 py-1.5 text-sm disabled:opacity-50 ${ slot.status === "approved" ? "bg-eef-navy text-white" : "text-eef-secondary hover:text-eef-navy" }`}
             >
               Approuvé
             </button>
@@ -234,9 +230,7 @@ function AdminDocRow({
                 setOpenReject(true);
                 if (comment.trim()) review("reject");
               }}
-              className={`rounded-full px-3 py-1.5 text-sm disabled:opacity-50 ${
-                slot.status === "rejected" ? "bg-eef-navy text-white" : "text-eef-secondary hover:text-eef-navy"
-              }`}
+              className={`rounded-full px-3 py-1.5 text-sm disabled:opacity-50 ${ slot.status === "rejected" ? "bg-eef-navy text-white" : "text-eef-secondary hover:text-eef-navy" }`}
             >
               Refusé
             </button>

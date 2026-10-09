@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useState } from "react";
@@ -117,7 +117,7 @@ const AFTER = [
 
 const ARTICLES = [
   {
-    tag: "ORIENTATION · LE GUIDE",
+    tag: "Orientation · Le guide",
     title: "Licence, Bachelor ou Master : comment choisir ?",
   },
   {
@@ -144,7 +144,7 @@ const ARTICLES = [
 
 const wrap = "mx-auto w-[calc(100%-2.5rem)] max-w-[1360px] lg:w-[calc(100%-8rem)]";
 const eyebrow =
-  "m-0 mb-[1.15rem] text-[10px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]";
+  "m-0 mb-[1.15rem] text-[10px] font-medium tracking-[0.16em] text-[#8aa4b8]";
 const sectionH2 =
   "m-0 font-medium text-eef-ink tracking-[-0.03em] leading-[1.14] text-[32px] sm:text-[40px] lg:text-[60px]";
 const bodyMuted = "m-0 text-[15px] leading-[1.65] text-eef-secondary";
@@ -188,7 +188,7 @@ const NAV_ITEMS = [
     links: [
       { href: "/journal", label: "Ressources" },
       { href: "/methode", label: "Notre méthode" },
-      { href: "/faq", label: "FAQ" },
+      { href: "/faq", label: "Faq" },
       { href: "/communaute", label: "Communauté" },
       { href: "/carriere", label: "Carrière" },
       { href: "/parents", label: "Parents" },
@@ -259,7 +259,7 @@ export function MarketingHome() {
         <div
           className={`${wrap} flex h-full max-w-[1512px] items-center justify-between gap-6 lg:grid lg:grid-cols-[1fr_auto_1fr]`}
         >
-          <Link href="/" className="shrink-0 justify-self-start" aria-label="Procédure EEF — Accueil">
+          <Link href="/" className="shrink-0 justify-self-start" aria-label="Procédure eef — Accueil">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={ASSETS.logo} alt="eef" className="h-10 w-[71px] object-contain" />
           </Link>
@@ -326,7 +326,7 @@ export function MarketingHome() {
         {menuOpen && (
           <div className="fixed inset-0 z-[60] min-h-dvh overflow-y-auto bg-eef-mist px-7 pb-10 pt-8 lg:hidden">
             <div className="flex items-center justify-between">
-              <Link href="/" onClick={() => setMenuOpen(false)} aria-label="Procédure EEF — Accueil">
+              <Link href="/" onClick={() => setMenuOpen(false)} aria-label="Procédure eef — Accueil">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={ASSETS.logo} alt="eef" className="h-10 w-[71px] object-contain" />
               </Link>
@@ -337,7 +337,7 @@ export function MarketingHome() {
             <nav className="mt-8 grid grid-cols-2 gap-x-5 gap-y-9" aria-label="Navigation mobile">
               {NAV_ITEMS.map((item) => (
                 <div key={item.label}>
-                  <p className="m-0 mb-5 text-[9px] font-medium uppercase tracking-[0.16em] text-eef-ink">{item.label}</p>
+                  <p className="m-0 mb-5 text-[9px] font-medium tracking-[0.16em] text-eef-ink">{item.label}</p>
                   <div className="grid gap-4">
                     {item.links.map((link) => (
                       <a key={link.label} href={link.href} onClick={() => setMenuOpen(false)} className="block text-[14px] leading-[1.45] text-eef-ink">
@@ -444,8 +444,7 @@ export function MarketingHome() {
                     key={src}
                     src={src}
                     alt=""
-                    className={`size-[46px] rounded-full border-2 border-eef-mist object-cover shadow-[0_2px_12px_rgba(16,43,67,0.09)] ${i === 0 ? "" : "-ml-[13px]"
-                      }`}
+                    className={`size-[46px] rounded-full border-2 border-eef-mist object-cover shadow-[0_2px_12px_rgba(16,43,67,0.09)] ${i === 0 ? "" : "-ml-[13px]" }`}
                   />
                 ),
               )}
@@ -463,7 +462,7 @@ export function MarketingHome() {
           className={`${wrap} grid items-stretch gap-8 py-14 sm:gap-12 sm:py-[5.5rem] lg:grid-cols-[minmax(260px,0.4fr)_minmax(0,0.6fr)] lg:gap-[clamp(3rem,6vw,5.5rem)]`}
         >
           <div className="relative flex h-full min-h-full flex-col self-stretch pb-0 lg:pb-[5.5rem]">
-            <p className={eyebrow}>01 — DE A À Z</p>
+            <p className={eyebrow}>01 — De A à Z</p>
             <h2 className={`${sectionH2} max-w-[12em]`}>
               Votre parcours,
               <br />
@@ -511,7 +510,7 @@ export function MarketingHome() {
 
         {/* 02 Start */}
         <section id="orientation" className={`${wrap} py-14 sm:py-[5.5rem]`}>
-          <p className={eyebrow}>02 — TOUT COMMENCE PAR VOUS</p>
+          <p className={eyebrow}>02 — Tout commence par vous</p>
           <h2 className={`${sectionH2} max-w-[min(13.5em,100%)]`}>
             <span className="text-eef-ink">
               Vous ne savez pas encore exactement quoi étudier ?
@@ -577,13 +576,13 @@ export function MarketingHome() {
               alt="Échange entre étudiants et conseiller"
               className="size-full object-cover"
             />
-            <span className="absolute bottom-[1.15rem] left-[1.15rem] inline-flex items-center rounded-[7px] bg-white px-3.5 py-2 text-[9px] font-semibold uppercase leading-tight tracking-[0.14em] text-eef-navy shadow-[0_2px_10px_rgba(16,43,67,0.08)]">
+            <span className="absolute bottom-[1.15rem] left-[1.15rem] inline-flex items-center rounded-[7px] bg-white px-3.5 py-2 text-[9px] font-semibold leading-tight tracking-[0.14em] text-eef-navy shadow-[0_2px_10px_rgba(16,43,67,0.08)]">
               L&apos;échange fait la différence.
             </span>
           </div>
 
           <div className="flex min-w-0 flex-col items-start pt-0.5">
-            <p className={`${eyebrow} text-eef-navy`}>03 — UN ACCOMPAGNEMENT HUMAIN</p>
+            <p className={`${eyebrow} text-eef-navy`}>03 — Un accompagnement humain</p>
             <h2 className={`${sectionH2} max-w-[11.5em]`}>
               Un vrai guide
               <br />
@@ -612,7 +611,7 @@ export function MarketingHome() {
 
         {/* 04 Method */}
         <section id="methode" className={`${wrap} py-14 sm:py-[5.5rem]`}>
-          <p className={eyebrow}>04 — CHOISIR AVEC MÉTHODE</p>
+          <p className={eyebrow}>04 — Choisir avec méthode</p>
 
           <div className="grid items-start gap-6 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-[clamp(2rem,4vw,4rem)]">
             <h2 className={`${sectionH2} max-w-[11em]`}>
@@ -632,7 +631,7 @@ export function MarketingHome() {
               alt="Entrée d'un établissement universitaire"
               className="size-full object-cover object-center"
             />
-            <span className="absolute bottom-[1.15rem] left-[1.15rem] inline-flex items-center rounded-full bg-white px-3.5 py-2 text-[9px] font-semibold uppercase leading-tight tracking-[0.12em] text-eef-navy shadow-[0_2px_10px_rgba(16,43,67,0.08)]">
+            <span className="absolute bottom-[1.15rem] left-[1.15rem] inline-flex items-center rounded-full bg-white px-3.5 py-2 text-[9px] font-semibold leading-tight tracking-[0.12em] text-eef-navy shadow-[0_2px_10px_rgba(16,43,67,0.08)]">
               Comparer moins. Comparer mieux.
             </span>
           </div>
@@ -641,9 +640,7 @@ export function MarketingHome() {
             {UNI_CRITERIA.map((item, i) => (
               <article
                 key={item.n}
-                className={`border-eef-border p-5 max-md:border-b max-md:py-[1.15rem] max-md:pl-0 max-md:pr-3.5 sm:border-r ${i === 0 ? "sm:pl-0" : ""
-                  } ${i === UNI_CRITERIA.length - 1 ? "sm:border-r-0 sm:pr-0" : ""} ${(i + 1) % 3 === 0 ? "max-lg:sm:border-r-0 max-lg:sm:pr-0" : ""
-                  } ${(i + 1) % 3 === 1 ? "max-lg:sm:pl-0" : ""}`}
+                className={`border-eef-border p-5 max-md:border-b max-md:py-[1.15rem] max-md:pl-0 max-md:pr-3.5 sm:border-r ${i === 0 ? "sm:pl-0" : "" } ${i === UNI_CRITERIA.length - 1 ? "sm:border-r-0 sm:pr-0" : ""} ${(i + 1) % 3 === 0 ? "max-lg:sm:border-r-0 max-lg:sm:pr-0" : "" } ${(i + 1) % 3 === 1 ? "max-lg:sm:pl-0" : ""}`}
               >
                 <span className="mb-2.5 block text-[9px] font-medium tracking-[0.04em] text-[#9aafbf]">
                   {item.n}
@@ -663,8 +660,8 @@ export function MarketingHome() {
 
         {/* 05 Strategy */}
         <section id="strategie" className={`${wrap} py-14 sm:py-20`}>
-          <p className="m-0 mb-5 text-[10px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]">
-            05 — LA STRATÉGIE
+          <p className="m-0 mb-5 text-[10px] font-medium tracking-[0.16em] text-[#8aa4b8]">
+            05 — La stratégie
           </p>
 
           <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-16 lg:gap-24">
@@ -714,9 +711,9 @@ export function MarketingHome() {
           id="dossier"
         >
           <p className="text-[10px] leading-[15px] mb-[23px] tracking-[1.6px] font-medium text-[#173b5d]">
-            06 — VOTRE DOSSIER
+            06 — Votre dossier
           </p>
-          <div className="flex md:flex-row flex-col items-start justify-between gap-12  lg:items-start lg:gap-[80px]">
+          <div className="flex md:flex-row flex-col items-start justify-between gap-12 lg:items-start lg:gap-[80px]">
             <div className="max-w-[720px]">
               <h2 className="text-[40px] leading-[1.1] font-medium tracking-[-1.8px] md:text-[64px] md:tracking-[-2.88px]">
                 Votre parcours doit être compris, pas simplement envoyé.
@@ -786,7 +783,7 @@ export function MarketingHome() {
           id="installation"
         >
           <p className="text-[10px] leading-[15px] mb-[23px] tracking-[1.6px] font-medium text-[#173b5d]">
-            08 — ET APRÈS L&apos;ADMISSION ?
+            08 — Et après l&apos;admission ?
           </p>
           <h2 className="max-w-[650px] text-[40px] leading-[1.1] font-medium tracking-[-1.8px] md:text-[64px] md:tracking-[-2.88px]">
             L&apos;admission n&apos;est pas la dernière étape.
@@ -871,7 +868,7 @@ export function MarketingHome() {
           <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-[10px] leading-[15px] mb-[23px] tracking-[1.6px] font-medium text-[#173b5d]">
-                LE JOURNAL EEF
+                Le journal eef
               </p>
               <h2 className="max-w-[500px] text-[40px] leading-[1.1] font-medium tracking-[-1.8px] md:text-[64px] md:tracking-[-2.88px]">
                 Comprendre avant de décider.
@@ -909,7 +906,7 @@ export function MarketingHome() {
                   className="h-full w-full object-cover transition-transform duration-500"
                 />
               </div>
-              <p className="mt-[25px] text-[10px] leading-[15px] font-medium uppercase tracking-[1.6px] text-[#173b5d]">
+              <p className="mt-[25px] text-[10px] leading-[15px] font-medium tracking-[1.6px] text-[#173b5d]">
                 {ARTICLES[0].tag}
               </p>
               <h3 className="mt-3 max-w-[540px] text-[23px] leading-[1.2] tracking-[-1.155px] font-medium text-[#102b43] md:text-[33px]">
@@ -944,14 +941,14 @@ export function MarketingHome() {
                   key={article.title}
                 >
                   <div>
-                    <p className="mb-[11px] text-[9px] leading-[13.5px] font-medium uppercase tracking-[1.44px] text-[#173b5d]">
+                    <p className="mb-[11px] text-[9px] leading-[13.5px] font-medium tracking-[1.44px] text-[#173b5d]">
                       {article.tag}
                     </p>
                     <h3 className="max-w-[340px] text-[22px] leading-[1.2] tracking-[-0.55px] font-medium text-[#102b43]">
                       {article.title}
                     </h3>
                   </div>
-                  <span className=" text-[#173b5d]" aria-hidden="true">
+                  <span className="text-[#173b5d]" aria-hidden="true">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="21"
@@ -976,8 +973,8 @@ export function MarketingHome() {
         </section>
 
         <section className="mx-auto grid w-[calc(100%-48px)] max-w-[1360px] grid-cols-1 gap-6 border-b border-[#c6d9e7] py-[56px] md:w-[calc(100%-88px)] md:py-[65px] sm:grid-cols-[1fr_1.7fr_1fr] sm:items-center sm:gap-8">
-          <p className="text-[10px] leading-[15px] font-medium uppercase tracking-[1.6px] text-[#173b5d]">
-            VOTRE ESPACE ÉTUDIANT
+          <p className="text-[10px] leading-[15px] font-medium tracking-[1.6px] text-[#173b5d]">
+            Votre espace étudiant
           </p>
           <p className="text-[26px] leading-[1.3] tracking-[-0.78px] text-[#102b43] md:text-[24px] md:leading-[1.35] md:tracking-[-0.72px]">
             Des outils pour organiser.
@@ -1015,7 +1012,7 @@ export function MarketingHome() {
           <FooterCta />
           <div className="mt-16 flex flex-col gap-12 lg:mt-20 lg:flex-row lg:items-start lg:justify-between lg:gap-[60px]">
             <div className="shrink-0">
-              <Link href="/" aria-label="Procédure EEF — Accueil">
+              <Link href="/" aria-label="Procédure eef — Accueil">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={ASSETS.logo} alt="eef" className="h-[32px] w-auto" />
               </Link>
@@ -1136,7 +1133,7 @@ export function MarketingHome() {
                 aria-label="S'orienter"
                 className="flex min-w-0 flex-col items-start"
               >
-                <p className="mb-4 text-[11px] font-semibold leading-[1.75] uppercase tracking-[1.54px] text-[#173b5d]">
+                <p className="mb-4 text-[11px] font-semibold leading-[1.75] tracking-[1.54px] text-[#173b5d]">
                   S&apos;orienter
                 </p>
                 <a
@@ -1162,7 +1159,7 @@ export function MarketingHome() {
                 aria-label="Candidater"
                 className="flex min-w-0 flex-col items-start"
               >
-                <p className="mb-4 text-[11px] font-semibold leading-[1.75] uppercase tracking-[1.54px] text-[#173b5d]">
+                <p className="mb-4 text-[11px] font-semibold leading-[1.75] tracking-[1.54px] text-[#173b5d]">
                   Candidater
                 </p>
                 <a
@@ -1181,14 +1178,14 @@ export function MarketingHome() {
                   className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
                   href="/procedure-eef"
                 >
-                  Procédure EEF
+                  Procédure eef
                 </Link>
               </nav>
               <nav
                 aria-label="S'installer"
                 className="flex min-w-0 flex-col items-start"
               >
-                <p className="mb-4 text-[11px] font-semibold leading-[1.75] uppercase tracking-[1.54px] text-[#173b5d]">
+                <p className="mb-4 text-[11px] font-semibold leading-[1.75] tracking-[1.54px] text-[#173b5d]">
                   S&apos;installer
                 </p>
                 <a
@@ -1211,11 +1208,11 @@ export function MarketingHome() {
                 </a>
               </nav>
               <nav
-                aria-label="Procédure EEF"
+                aria-label="Procédure eef"
                 className="flex min-w-0 flex-col items-start"
               >
-                <p className="mb-4 text-[11px] font-semibold leading-[1.75] uppercase tracking-[1.54px] text-[#173b5d]">
-                  Procédure EEF
+                <p className="mb-4 text-[11px] font-semibold leading-[1.75] tracking-[1.54px] text-[#173b5d]">
+                  Procédure eef
                 </p>
                 <Link
                   className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
@@ -1233,7 +1230,7 @@ export function MarketingHome() {
                   className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
                   href="/faq"
                 >
-                  FAQ
+                  Faq
                 </Link>
                 <a
                   className="text-[13px] leading-[2.3] text-[#5e7282] hover:text-[#102b43]"
@@ -1247,7 +1244,7 @@ export function MarketingHome() {
 
           <div className="mt-14 flex flex-col gap-4 border-t border-[#c6d9e7] pt-[26px] max-md:mt-12 md:mt-20 md:flex-row md:items-center md:justify-between">
             <p className="text-[11px] leading-[19.25px] text-[#5e7282]">
-              © 2026 Procédure EEF
+              © 2026 Procédure eef
             </p>
             <nav
               aria-label="Informations légales"
@@ -1268,7 +1265,7 @@ export function MarketingHome() {
             </nav>
           </div>
           <p className="relative z-10 mt-[18px] max-w-[700px] text-[11px] leading-[19.25px] text-[#5e7282]/85">
-            Procédure EEF est un service indépendant et n&apos;est pas affilié à
+            Procédure eef est un service indépendant et n&apos;est pas affilié à
             Campus France ou au gouvernement français.
           </p>
         </div>

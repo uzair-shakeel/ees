@@ -280,11 +280,7 @@ export function BoursesExplorer({
               type="button"
               aria-pressed={on}
               onClick={() => toggleNiveau(level)}
-              className={`cursor-pointer rounded-full border px-3.5 py-2 text-[12px] font-semibold whitespace-nowrap transition ${
-                on
-                  ? "border-[#173b5d] bg-[#173b5d] text-white"
-                  : "border-[#c6d9e7] bg-white text-[#5e7282] hover:border-[#63a8d8] hover:text-[#63a8d8]"
-              }`}
+              className={`cursor-pointer rounded-full border px-3.5 py-2 text-[12px] font-semibold whitespace-nowrap transition ${ on ? "border-[#173b5d] bg-[#173b5d] text-white" : "border-[#c6d9e7] bg-white text-[#5e7282] hover:border-[#63a8d8] hover:text-[#63a8d8]" }`}
             >
               {level} <span className={on ? "font-medium text-white/70" : "font-medium text-[#8a96a6]"}>{counts[level]}</span>
             </button>
@@ -345,9 +341,7 @@ export function BoursesExplorer({
                   {it.niveaux.map((level) => (
                     <span
                       key={level}
-                      className={`inline-flex shrink-0 items-center whitespace-nowrap rounded-[6px] px-2 py-[3px] text-[11.5px] ${
-                        niveaux.includes(level) ? "bg-[#e7eef8] font-semibold text-[#1f3a5f]" : "bg-[#f1f5f9] font-medium text-[#5d6b7e]"
-                      }`}
+                      className={`inline-flex shrink-0 items-center whitespace-nowrap rounded-[6px] px-2 py-[3px] text-[11.5px] ${ niveaux.includes(level) ? "bg-[#e7eef8] font-semibold text-[#1f3a5f]" : "bg-[#f1f5f9] font-medium text-[#5d6b7e]" }`}
                     >
                       {level}
                     </span>

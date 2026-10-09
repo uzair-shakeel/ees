@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
@@ -94,7 +94,7 @@ export function MarketingJournal() {
     <MarketingShell>
       {/* Hero */}
       <section className={`${wrap} pt-10 pb-10 max-md:pb-8`}>
-        <p className="m-0 mb-[10px] text-[9px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]">
+        <p className="m-0 mb-[10px] text-[9px] font-medium tracking-[0.16em] text-[#8aa4b8]">
           Des repères pour chaque étape
         </p>
         <h1 className={`m-0 ${marketingHeroH1}`}>
@@ -132,11 +132,7 @@ export function MarketingJournal() {
                 role="tab"
                 aria-selected={active}
                 onClick={() => setCategory(cat)}
-                className={`shrink-0 cursor-pointer border-b-2 pb-3 text-[13px] font-medium whitespace-nowrap transition ${
-                  active
-                    ? "border-eef-blue text-eef-navy"
-                    : "border-transparent text-eef-secondary hover:text-eef-navy"
-                }`}
+                className={`shrink-0 cursor-pointer border-b-2 pb-3 text-[13px] font-medium whitespace-nowrap transition ${ active ? "border-eef-blue text-eef-navy" : "border-transparent text-eef-secondary hover:text-eef-navy" }`}
               >
                 {cat}
               </button>
@@ -159,7 +155,7 @@ export function MarketingJournal() {
                     className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.02] md:aspect-[16/9]"
                   />
                 </div>
-                <p className="mt-4 m-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-eef-blue md:mt-5">
+                <p className="mt-4 m-0 text-[11px] font-semibold tracking-[0.14em] text-eef-blue md:mt-5">
                   {main.badge ?? main.category}
                 </p>
                 <h2 className="mt-2.5 m-0 max-w-[22em] text-[clamp(1.25rem,4.5vw,27px)] font-semibold leading-[1.25] tracking-[-0.02em] text-eef-ink md:mt-3">
@@ -191,7 +187,7 @@ export function MarketingJournal() {
                       />
                     </div>
                     <div className="min-w-0 sm:mt-4">
-                      <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-eef-blue">
+                      <p className="m-0 text-[11px] font-semibold tracking-[0.14em] text-eef-blue">
                         {article.category}
                       </p>
                       <h3 className="mt-1.5 m-0 text-[16px] font-semibold leading-[1.3] tracking-[-0.02em] text-eef-ink sm:mt-2 sm:text-[17px] md:text-[18px]">
@@ -219,7 +215,7 @@ export function MarketingJournal() {
             <h2 className="m-0 text-[clamp(1.6rem,5vw,46px)] font-medium leading-[1.15] tracking-[-0.03em] text-eef-ink">
               Pour aller plus loin.
             </h2>
-            <p className="m-0 text-[11px] font-medium uppercase tracking-[0.16em] text-[#8aa4b8]">
+            <p className="m-0 text-[11px] font-medium tracking-[0.16em] text-[#8aa4b8]">
               Les guides EEF
             </p>
           </div>
@@ -240,7 +236,7 @@ export function MarketingJournal() {
                   />
                 </div>
                 <div className="min-w-0">
-                  <p className="m-0 text-[10px] font-semibold uppercase tracking-[0.14em] text-eef-blue sm:text-[11px]">
+                  <p className="m-0 text-[10px] font-semibold tracking-[0.14em] text-eef-blue sm:text-[11px]">
                     {article.category}
                   </p>
                   <h3 className="mt-1 m-0 text-[15px] font-semibold leading-[1.35] tracking-[-0.02em] text-eef-ink sm:mt-1.5 sm:text-[17px] md:text-[18px]">
