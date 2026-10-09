@@ -3,9 +3,12 @@
 import { getCountries, getCountryCallingCode, type CountryCode } from "libphonenumber-js/min";
 import * as FlagIcons from "country-flag-icons/react/3x2";
 import { ComponentType, FormEvent, SVGProps, useEffect, useRef, useState } from "react";
+import {
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_TEL_URL,
+  CONTACT_WHATSAPP_URL,
+} from "@/lib/contact";
 
-const PHONE_DISPLAY = "+33 6 12 34 56 78";
-const PHONE_E164 = "33612345678";
 const CONTACT_EMAIL = "info@etudesenfrance.org";
 const WAVE_BG = "/assets/abstract-navy-wave-cover.png";
 
@@ -184,7 +187,7 @@ export function FooterCta({
             Parler à un conseiller <IconArrowRight />
           </a>
           <a
-            href={`https://wa.me/${PHONE_E164}`}
+            href={CONTACT_WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-white/70 bg-transparent px-5 text-[13px] font-medium text-white transition hover:bg-white/10"
@@ -195,9 +198,9 @@ export function FooterCta({
         </div>
         <ul className="mt-7 m-0 flex list-none flex-col gap-2.5 p-0 text-[14px] text-white/80">
           <li>
-            <a href={`tel:+${PHONE_E164}`} className="inline-flex items-center gap-2.5 transition hover:text-white">
+            <a href={CONTACT_TEL_URL} className="inline-flex items-center gap-2.5 transition hover:text-white">
               <IconPhone />
-              {PHONE_DISPLAY}
+              {CONTACT_PHONE_DISPLAY}
             </a>
           </li>
           <li>
@@ -296,7 +299,7 @@ export function FooterCta({
                     autoComplete="tel"
                     required
                     value={phone}
-                    placeholder={`${dial} 6 12 34 56 78`}
+                    placeholder={`${dial} 7 68 53 61 39`}
                     aria-invalid={phoneError ? true : undefined}
                     aria-describedby={phoneError ? "cta-phone-error" : undefined}
                     onChange={(event) => {
