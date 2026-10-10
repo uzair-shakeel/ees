@@ -23,9 +23,9 @@ export default async function AdminLayout({
             <Link href={ADMIN_APP_PATH} aria-label="eef Ops — Accueil">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/assets/eef-logo.png"
+                src="/marketing/assets/img-001.png"
                 alt="eef"
-                className="h-8 w-auto object-contain"
+                className="h-9 w-auto object-contain"
               />
             </Link>
             <span className="text-xs tracking-[0.16em] text-eef-secondary">

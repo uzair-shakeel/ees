@@ -47,7 +47,7 @@ function AdminLoginForm() {
         <div className="mb-8 text-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/eef-logo.png"
+            src="/marketing/assets/img-001.png"
             alt="eef"
             className="mx-auto h-10 w-auto object-contain"
           />
