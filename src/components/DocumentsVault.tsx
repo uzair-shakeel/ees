@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef, useState } from "react";
 import { StatusBadge } from "./StatusBadge";
 import type { VaultDoc } from "@/lib/document-vault";
@@ -128,15 +129,13 @@ export function DocumentsVault({ initialDocs }: Props) {
                       {busy ? "Envoi…" : doc.status === "rejected" ? "Remplacer" : "Ajouter"}
                     </button>
                   </>
-                ) : doc.cloudinaryUrl ? (
-                  <a
-                    href={doc.cloudinaryUrl}
-                    target="_blank"
-                    rel="noreferrer"
+                ) : doc.submissionId ? (
+                  <Link
+                    href={`/mon-dossier/documents/${doc.submissionId}`}
                     className="text-xs text-eef-deep hover:underline"
                   >
                     Voir
-                  </a>
+                  </Link>
                 ) : null}
               </div>
             </div>
