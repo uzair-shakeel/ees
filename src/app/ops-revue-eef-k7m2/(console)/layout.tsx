@@ -19,9 +19,14 @@ export default async function AdminLayout({
     <div className="min-h-full bg-eef-mist">
       <header className="border-b border-eef-soft bg-white/70 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1180px] items-center justify-between px-5 py-4 sm:px-8">
-          <div className="flex items-baseline gap-3">
-            <Link href={ADMIN_APP_PATH} className="font-display text-[1.65rem] leading-none text-eef-blue">
-              eef
+          <div className="flex items-center gap-3">
+            <Link href={ADMIN_APP_PATH} aria-label="eef Ops — Accueil">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/eef-logo.png"
+                alt="eef"
+                className="h-8 w-auto object-contain"
+              />
             </Link>
             <span className="text-xs tracking-[0.16em] text-eef-secondary">
               Ops

@@ -45,7 +45,10 @@ export default async function DocumentPreviewPage({ params }: Props) {
   if (!application || String(application.userId) !== session.userId) notFound();
 
   const label = labelForKey(submission.requirementKey);
-  const kind = fileKind(submission.cloudinaryUrl, submission.originalFilename);
+  const kind = fileKind(
+    submission.cloudinaryUrl,
+    submission.originalFilename ?? null,
+  );
   const status = submission.status as "missing" | "pending" | "approved" | "rejected";
 
   return (

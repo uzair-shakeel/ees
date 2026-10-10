@@ -45,7 +45,12 @@ function AdminLoginForm() {
     <main className="flex min-h-full flex-1 items-center justify-center bg-eef-mist px-4 py-12">
       <div className="w-full max-w-[420px]">
         <div className="mb-8 text-center">
-          <p className="font-display text-3xl text-eef-blue">eef</p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/eef-logo.png"
+            alt="eef"
+            className="mx-auto h-10 w-auto object-contain"
+          />
           <p className="mt-3 text-xs tracking-[0.16em] text-eef-secondary">Console</p>
           <h1 className="mt-3 font-display text-2xl text-eef-navy">Connexion admin</h1>
         </div>
