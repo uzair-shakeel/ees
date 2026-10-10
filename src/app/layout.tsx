@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
+import { PageLoader } from "@/components/PageLoader";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import "./globals.css";
 
@@ -26,6 +28,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       }
     >
       <body className={`${inter.className} flex min-h-full flex-col bg-eef-mist text-eef-navy`}>
+        <Script
+          id="eef-page-loaded"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){function m(){document.documentElement.classList.add("eef-loaded");}if(document.readyState==="complete")m();else window.addEventListener("load",m,{once:true});})();`,
+          }}
+        />
+        <PageLoader />
         {children}
         <WhatsAppFloat />
       </body>

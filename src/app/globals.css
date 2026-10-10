@@ -206,6 +206,56 @@ body {
   transform: scale(1.01);
 }
 
+.eef-page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(245 250 253 / 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: opacity 450ms ease-out, visibility 450ms ease-out;
+}
+
+.eef-page-loader--out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+html.eef-loaded .eef-page-loader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@keyframes eef-loader-zoom {
+  0%,
+  100% {
+    transform: scale(0.86);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.eef-loader-zoom {
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+  animation: eef-loader-zoom 1.15s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .eef-loader-zoom {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
 @keyframes eef-step-in {
   from {
     opacity: 0;
