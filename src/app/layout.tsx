@@ -20,6 +20,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="fr"
       className={`${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
       style={
         {
           ["--font-display" as string]:

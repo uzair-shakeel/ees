@@ -42,12 +42,12 @@ function AdminLoginForm() {
   }
 
   return (
-    <main className="flex min-h-full flex-1 items-center justify-center bg-eef-mist px-4 py-12">
+    <main className="flex min-h-full flex-1 items-center justify-center bg-[#eaf4fb] px-4 py-12">
       <div className="w-full max-w-[420px]">
         <div className="mb-8 text-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/marketing/assets/img-001.png"
+            src="/assets/logo.png"
             alt="eef"
             className="mx-auto h-10 w-auto object-contain"
           />
@@ -55,7 +55,7 @@ function AdminLoginForm() {
           <h1 className="mt-3 font-display text-2xl text-eef-navy">Connexion admin</h1>
         </div>
 
-        <div className="eef-panel p-6 sm:p-8">
+        <div className="eef-panel border-[#d7e6f2] bg-white p-6 sm:p-8">
           <form onSubmit={onSubmit} className="space-y-4">
             <div>
               <label className="mb-1.5 block text-sm font-medium text-eef-navy">Email</label>
